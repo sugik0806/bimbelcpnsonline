@@ -37,6 +37,7 @@ function load_soal() {
             var res = hashes.replace("/bimbelcpnsonline/soal/detail/", "");
             console.info(res);
             console.info(hashes); 
+            console.info(window.location); 
 
             if (data[i].file != "") {
                 gambar = '*';

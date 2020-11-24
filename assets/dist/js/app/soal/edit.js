@@ -111,6 +111,7 @@ function kotrol_element() {
                 var res = hashes.replace("/bimbelcpnsonline/soal/edit/", "");
                 console.info(res);
                 console.info(hashes); 
+                console.info(window.location); 
 
                 // if (data[i].file != "") {
                 //     gambar = '*';
