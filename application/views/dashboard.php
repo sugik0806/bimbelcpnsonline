@@ -186,7 +186,7 @@
             </table>
         </div> -->
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">Pemberitahuan</h3>
