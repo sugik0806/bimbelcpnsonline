@@ -32,10 +32,10 @@ function load_soal() {
      $("#totalsoal").html(data.length);
 
         for (var i = 0; i < data.length; i++) {
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            //var url = base_url+'/soal/detail/';
-            var res = hashes[0].substring(49, 100); // akan berbeda hasil jika di live
-            //console.info(data[i].file);
+            var hashes = window.location.pathname;
+
+            var res = hashes.replace("/bimbelcpnsonline/soal/detail/", "");
+            console.info(res);
 
             if (data[i].file != "") {
                 gambar = '*';

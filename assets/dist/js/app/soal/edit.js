@@ -105,9 +105,10 @@ function kotrol_element() {
          //$("#totalsoal").html(data.length);
 
             for (var i = 0; i < data.length; i++) {
-                var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                //var url = base_url+'/soal/detail/';
-                var res = hashes[0].substring(47, 100); // akan berbeda hasil jika di live
+                //var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                var hashes = window.location.pathname;
+
+                var res = hashes.replace("/bimbelcpnsonline/soal/edit/", "");
                 console.info(res);
 
                 // if (data[i].file != "") {
