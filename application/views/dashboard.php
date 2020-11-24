@@ -71,7 +71,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <div class="box box-primary">
+        <!-- <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Informasi Akun</h3>
             </div>
@@ -94,7 +94,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -135,7 +135,7 @@
 
 <div class="row">
     <div class="col-sm-6">
-        <div class="box box-primary">
+       <!--  <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Informasi Akun</h3>
             </div>
@@ -152,7 +152,7 @@
               <span  class="info-box-number"><?=$mahasiswa->nama_matkul?></span>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- <div class="box box-solid">
             <div class="box-header bg-green">
