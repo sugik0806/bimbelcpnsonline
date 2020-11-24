@@ -40,6 +40,10 @@
 			<!-- TinyMCE TextEditor -->
 			<!-- <script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script> -->
 
+  			<!-- <script src="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.js"></script> -->
+
+  			
+
 			<!-- App JS -->
 			<script src="<?= base_url() ?>assets/dist/js/app/dashboard.js"></script>
 

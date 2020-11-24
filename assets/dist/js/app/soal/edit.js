@@ -4,6 +4,11 @@ $(document).ready(function(){
     kotrol_element();
     load_soal();    
     // tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
+     $('#soal, #jawaban_a, #jawaban_b, #jawaban_c, #jawaban_d, #jawaban_e, #pembahasan').summernote({
+        placeholder: 'Ketik Data ..',
+        tabsize: 2,
+        height: 100
+      });
 });
 
 function load_jenis(id) {
@@ -109,9 +114,9 @@ function kotrol_element() {
                 var hashes = window.location.pathname;
 
                 var res = hashes.replace("/soal/edit/", "");
-                console.info(res);
-                console.info(hashes); 
-                console.info(window.location); 
+                // console.info(res);
+                // console.info(hashes); 
+                // console.info(window.location); 
 
                 // if (data[i].file != "") {
                 //     gambar = '*';
@@ -192,7 +197,7 @@ function kotrol_element() {
         async:false,
         success: function (data) {
             btn.removeAttr('disabled').text('Simpan');
-            if (data.status) {
+            //if (data.status) {
                 Swal({
                     "title": "Sukses",
                     "text": "Data Berhasil disimpan",
@@ -202,17 +207,17 @@ function kotrol_element() {
                         //window.location.href = base_url+'soal';
                     }
                 });
-            } else {
-                console.log(data.errors);
-                $.each(errors, function (key, value) {
-                    $('[name="' + key + '"]').nextAll('.help-block').eq(0).text(value);
-                    $('[name="' + key + '"]').closest('.form-group').addClass('has-error');
-                    if (value == '') {
-                        $('[name="' + key + '"]').nextAll('.help-block').eq(0).text('');
-                        $('[name="' + key + '"]').closest('.form-group').removeClass('has-error').addClass('has-success');
-                    }
-                });
-            }
+            //} else {
+            //     console.log(data.errors);
+            //     $.each(errors, function (key, value) {
+            //         $('[name="' + key + '"]').nextAll('.help-block').eq(0).text(value);
+            //         $('[name="' + key + '"]').closest('.form-group').addClass('has-error');
+            //         if (value == '') {
+            //             $('[name="' + key + '"]').nextAll('.help-block').eq(0).text('');
+            //             $('[name="' + key + '"]').closest('.form-group').removeClass('has-error').addClass('has-success');
+            //         }
+            //     });
+            // }
         }
     });
 }); 

@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/themes/royal.min.css">
 	<!-- /texarea editor; -->
 
+	<!-- <link href="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet"> -->
+
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/mystyle.css">
 
