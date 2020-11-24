@@ -34,7 +34,7 @@ function load_soal() {
         for (var i = 0; i < data.length; i++) {
             var hashes = window.location.pathname;
 
-            var res = hashes.replace("/bimbelcpnsonline/soal/detail/", "");
+            var res = hashes.replace("/soal/detail/", "");
             console.info(res);
             console.info(hashes); 
             console.info(window.location); 

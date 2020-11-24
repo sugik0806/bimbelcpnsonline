@@ -108,7 +108,7 @@ function kotrol_element() {
                 //var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
                 var hashes = window.location.pathname;
 
-                var res = hashes.replace("/bimbelcpnsonline/soal/edit/", "");
+                var res = hashes.replace("/soal/edit/", "");
                 console.info(res);
                 console.info(hashes); 
                 console.info(window.location); 
