@@ -75,10 +75,13 @@ class Invoice extends CI_Controller {
 
                     if ($datamhs->kelas_id == 1) {
                         $paket = 'Paket Materi Rp 150.000';
+                        $bayar = 'Rp 150.000';
                     }else if ($datamhs->kelas_id == 2) {
                         $paket = 'Paket Soal Rp 250.000';
+                        $bayar = 'Rp 250.000';
                     }else if ($datamhs->kelas_id == 3) {
                         $paket = 'Paket Bimbel Rp 350.000';
+                        $bayar = 'Rp 350.000';
                     }
 
                     $token = $datamhs->token;
@@ -149,20 +152,20 @@ class Invoice extends CI_Controller {
                             </head>
                             <body>
 
-                            <h2 style="text-align:center">Responsive Pricing Tables</h2>
-                            <p style="text-align:center">Resize the browser window to see the effect.</p>
+                            <h2 style="text-align:center">INVOICE: '.$token.'></h2>
+                            <p style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi.
 
                             
 
                             <div class="col-md-12 text-center">
                               <ul class="price">
                                 <li class="header" style="background-color:#4CAF50">'.$paket.'</li>
-                                <li class="grey">Silakan Transfer 750000</li>
+                                <li class="grey">Silakan Transfer '.$bayar.'</li>
                                 <li>Ke rekening BCA</li>
                                 <li>156121921152</li>
                                 <li>Atas Nama</li>
                                 <li>Irawati</li>
-                                <li class="grey"><a href="http://localhost:81/bimbelcpnsonline/invoice/konfirmasi/'.$token.'" class="button">Konfirmasi</a></li>
+                                <li class="grey"><a href="https://member.bimbelcpnsonline.id/invoice/konfirmasi/'.$token.'" class="button">Konfirmasi</a></li>
                               </ul>
                             </div>
 
