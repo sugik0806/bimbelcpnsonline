@@ -6,7 +6,7 @@
 	<img src="<?= base_url('assets/dist/img/b.png') ?>" width="30%" alt="" srcset="">
 	</center>
 	<h3 class="text-center mt-0 mb-4">
-		<b>B</b>imbel <b>D</b>aring <b>P</b>intar
+		<b>B</b>imbel <b>CPNS</b><b> O</b>nline
 	</h3> </a>
 	<p class="login-box-msg">Masukan akun anda</p>
 	<!-- <p class="login-box-msg">Gunakan <b>Email</b> sebagai <b>Password</b> saat pertama login</p> -->
@@ -44,11 +44,17 @@
 			<!-- <a href="<?=base_url()?>auth/registrasi" class="text-center pull-right"><?= lang('index_create_user_link');?></a> -->
 
 
-			<a class="btn btn-success" href="https://bimbelcpnsonline.id/#services-section">Daftar Sekarang</a> Jika Belum Terdaftar !
+			
 		</h5>
+		<br>
+		<br>
+		<br>
+		<hr>
+			<a class="btn btn-warning" href="https://bimbelcpnsonline.id/#services-section">Daftar Sekarang</a> 
+			<label>Jika Belum Terdaftar !</label>
 		
-
 	</div>
+	
 </div>
 
 <script type="text/javascript">

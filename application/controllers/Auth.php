@@ -366,23 +366,7 @@ class Auth extends CI_Controller
 
 	public function registrasi()
 	{	
-
-		// $data = (['Nama' => 'Paket Materi','value' => 1],
-		// 		 ['Nama' => 'Paket Materi','value' => 2],
-		// 		 ['Nama' => 'Paket Bimbel','value' => 3]
-		// 		);
-		$listpaket = array(
-            	 ['nama' => 'Paket Materi','value' => 1],
-				 ['nama' => 'Paket Soal','value' => 2],
-				 ['nama' => 'Paket Bimbel','value' => 3]
-        );
-
-        //$this->load->view('_templates/dashboard/_header.php', $data);
-		// $this->load->view('master/dokumen/data');
-		// $this->load->view('_templates/dashboard/_footer.php');
-
-
-		$this->load->view('_templates/auth/_header.php', $listpaket);
+		$this->load->view('_templates/auth/_header.php');
 		//$this->load->view('auth/registrasi.php');
 		$this->load->view('auth/registrasi', $this->data);
 		$this->load->view('_templates/auth/_footer.php');
@@ -428,7 +412,9 @@ class Auth extends CI_Controller
 						'nim' => $email,
 						'email' => $email,
 						'jenis_kelamin' => $this->input->post('gender', true),
-						'kelas_id' => $this->input->post('jurusan', true)
+						'kelas_id' => $this->input->post('jurusan', true),
+						'id_matkul' => 2, //skd
+						'whatsapp' => $this->input->post('whatsapp', true)
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);
@@ -461,7 +447,7 @@ class Auth extends CI_Controller
 
 			$data = [
 				'status'	=> true,
-				'msg'	 => 'User berhasil dibuat. NIP digunakan sebagai password pada saat login.'
+				'msg'	 => 'User berhasil dibuat. 123456 digunakan sebagai password Standart pada saat login.'
 			];
 		$this->output_json($data);
 	}

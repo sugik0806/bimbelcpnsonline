@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<img src="<?= base_url('assets/dist/img/b.png') ?>" width="80%" alt="" srcset="">
 						</center>
 						<h3 class="text-center mt-0 mb-12">
-							<b>B</b>imbingan <b>CPNS</b><b> O</b>nline
+							<b>B</b>imbel <b>CPNS</b><b> O</b>nline
 						</h3> </a><br>
 					</div>
 					<div class=" col-md-8">
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	 			<label for="whatsapp">Whatsapp</label>
 	 			<p>
-	 				<input class="form-control" type="text" id="whatsapp" name="whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
+	 				<input class="form-control" type="number" id="whatsapp" name="whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('whatsapp'); ?> </p>
 	 			
