@@ -152,7 +152,7 @@ class Invoice extends CI_Controller {
                             </head>
                             <body>
 
-                            <h2 style="text-align:center">INVOICE: '.$token.'></h2>
+                            <h2 style="text-align:center">INVOICE: '.$token.'</h2>
                             <p style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi.
 
                             
