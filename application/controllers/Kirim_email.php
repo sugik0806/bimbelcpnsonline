@@ -16,6 +16,12 @@ class Kirim_email extends CI_Controller {
                  
                 }
 
+                public function output_json($data, $encode = true)
+                {
+                  if ($encode) $data = json_encode($data);
+                  $this->output->set_content_type('application/json')->set_output($data);
+                }
+
                 function index() 
                 {
 
@@ -53,7 +59,7 @@ class Kirim_email extends CI_Controller {
                     $mail->isHTML(true);
 
                     // Email body content
-                    $mailContent = $content; // isi email
+                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke<br> https://member.bimbelcpnsonline.id'; // isi email
                     $mail->Body = $mailContent;
             
                     // Send email
@@ -61,8 +67,14 @@ class Kirim_email extends CI_Controller {
                         echo 'Message could not be sent.';
                         echo 'Mailer Error: ' . $mail->ErrorInfo;
                     }else{
-                        echo 'Message has been sent';
+                        //echo 'Message has been sent';
                         //redirect('invoice/konfirmasi/'.$token);
+                        $data = [
+                          'status'  => true,
+                          'msg'  => 'Reset Password Berhasil. Password '. $token
+                        ];
+                      //redirect('mahasiswa');  
+                      $this->output_json($data);  
                     }
                 }
  

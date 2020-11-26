@@ -159,7 +159,7 @@ class Mahasiswa extends CI_Controller
 		$last_name = end($nama);
 
 		$username = $data->email;
-		$password = 123456;
+		$password = $data->token;
 		$email = $data->email;
 		$additional_data = [
 			'first_name'	=> $first_name,
@@ -181,8 +181,9 @@ class Mahasiswa extends CI_Controller
 			$this->ion_auth->register($username, $password, $email, $additional_data, $group);
 			$data = [
 				'status'	=> true,
-				'msg'	 => 'User berhasil dibuat. Password defauld 123456'
+				'msg'	 => 'User berhasil dibuat. Password '.$password
 			];
+			redirect('Kirim_email/kirim_email/'.$password.'/Password Anda/ Password Anda'. $password);
 		}
 		$this->output_json($data);
 	}
@@ -192,13 +193,15 @@ class Mahasiswa extends CI_Controller
 		$id = $this->input->get('id', true);
 		$data = $this->master->getMahasiswaById($id);
 		$email = $data->email;
-		$this->ion_auth->reset_password($email, 123456);
+		$token = $data->token;
+		$this->ion_auth->reset_password($email, $email);
 
 		$data = [
 				'status'	=> true,
-				'msg'	 => 'Reset Password Berhasil. Password defauld 123456'
+				'msg'	 => 'Reset Password Berhasil. Password Anda '. $token
 			];
 		//redirect('mahasiswa');	
+		redirect('Kirim_email/kirim_email/'.$token.'/Password/Password'. $token);	
 		$this->output_json($data);	
 	}
 
