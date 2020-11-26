@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
  
-class Invoice extends CI_Controller {
+class Kirim_email extends CI_Controller {
  
     public function __construct() { 
                 parent::__construct(); 
