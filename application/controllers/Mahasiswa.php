@@ -183,7 +183,7 @@ class Mahasiswa extends CI_Controller
 				'status'	=> true,
 				'msg'	 => 'User berhasil dibuat. Password '.$password
 			];
-			redirect('Kirim_email/kirim_email/'.$password.'/Password Anda/ Password Anda'. $password);
+			redirect('Kirim_email/kirim_email/'.$password.'/Password/Password'. $password);
 		}
 		$this->output_json($data);
 	}
