@@ -95,7 +95,7 @@ $(document).ready(function () {
                 if (data.status == true) {
                     Swal({
                         "title": "Sukses",
-                        "text": "User berhasil dibuat. email digunakan sebagai password pada saat login.",
+                        "text": data.msg,
                         "type": "success"
                     }).then((result) => {
                         if (result.value) {

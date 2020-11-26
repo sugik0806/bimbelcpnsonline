@@ -418,7 +418,14 @@ class Auth extends CI_Controller
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);
-			        $this->create_user($email);
+			        
+			        //$this->create_user($email); jika auto bikin user
+
+			        	$data = [
+		        				'status'	=> true,
+		        				'msg'	 => 'Registrasi Berhasil Silakan Transfer Dan Konfirmasi Pembayanan Anda Untuk Mendapatakan Username dan Password'
+		        			];
+		        		$this->output_json($data);
 
 				}
 
