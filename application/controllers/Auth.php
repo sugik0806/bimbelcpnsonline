@@ -47,13 +47,9 @@ class Auth extends CI_Controller
 		];
 		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-		$listpaket = array(
-            	 ['nama' => 'Paket Materi','value' => 1],
-				 ['nama' => 'Paket Soal','value' => 2],
-				 ['nama' => 'Paket Bimbel','value' => 3]
-        );
 
-		$this->load->view('_templates/auth/_header.php', $listpaket);
+
+		$this->load->view('_templates/auth/_header.php');
 		$this->load->view('auth/login', $this->data);
 		$this->load->view('_templates/auth/_footer.php');
 	}
@@ -407,6 +403,8 @@ class Auth extends CI_Controller
 					];
 					$this->output_json($data);
 				} else {
+					$this->load->helper('string');
+					$token = strtoupper(random_string('alpha', 5));
 					$data = [
 						'nama' => $username,
 						'nim' => $email,
@@ -414,18 +412,29 @@ class Auth extends CI_Controller
 						'jenis_kelamin' => $this->input->post('gender', true),
 						'kelas_id' => $this->input->post('jurusan', true),
 						'id_matkul' => 2, //skd
-						'whatsapp' => $this->input->post('whatsapp', true)
+						'whatsapp' => $this->input->post('whatsapp', true),
+						'token' => $token
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);
+
+			        //kirim email disini
 			        
 			        //$this->create_user($email); jika auto bikin user
 
 			        	$data = [
 		        				'status'	=> true,
+		        				'token' => $token,
 		        				'msg'	 => 'Registrasi Berhasil Silakan Transfer Dan Konfirmasi Pembayanan Anda Untuk Mendapatakan Username dan Password'
 		        			];
 		        		$this->output_json($data);
+			        //$emailencr = urlencode($this->encryption->encrypt($email));
+			        // http://localhost:81/bimbelcpnsonline/invoice/kirim_email/b63a61f2889d8a7898fcb5e57b3ec05eaecf02f846506220b182988fad6a43d361de0774830768338949777b8387dcc89f0701579d9c90140297e61c0b54442f%2BUl7Ltd5zAKzFMfuCJrptH6mE6fz1C8rgOZfiQmv%2FX3sxE3R9%2Fx17j1g1dYbXRkP/2
+
+
+			        // http://localhost:81/bimbelcpnsonline/ujian/?key=a6d791be8738f3209ad807a845086bc68fce2f1c529e94043b40014cb56a3547dddd69f680d45fbff0b30c445ef92a0a76f8d15a6dabe62f0200a2da71e43328VvzdnLBpTRk1AGl8OcZ8QGSMnkkAtLP7TauXQWfNwpA%3D
+
+			        //redirect('invoice/kirim_email/'. $this->input->post('whatsapp', true). '/' . $this->input->post('jurusan', true));
 
 				}
 

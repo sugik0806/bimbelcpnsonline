@@ -118,6 +118,16 @@ class Master_model extends CI_Model {
         return $this->db->get()->row();
     }
 
+    public function getMahasiswaByToken($token)
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('kelas', 'kelas_id=id_kelas');
+        $this->db->join('jurusan', 'jurusan_id=id_jurusan');
+        $this->db->where(['token' => $token]);
+        return $this->db->get()->row();
+    }
+
     public function getJurusan()
     {
         $this->db->select('id_jurusan, nama_jurusan');

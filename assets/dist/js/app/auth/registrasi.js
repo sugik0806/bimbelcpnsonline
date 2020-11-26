@@ -99,7 +99,8 @@ $(document).ready(function () {
                         "type": "success"
                     }).then((result) => {
                         if (result.value) {
-                            window.location.href = base_url+'login';
+                            //window.location.href = base_url+'login';
+                            window.location.href = base_url+'invoice/kirim_email/'+ data.token;
                         }
                     });
                 } else {
