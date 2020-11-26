@@ -47,7 +47,13 @@ class Auth extends CI_Controller
 		];
 		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-		$this->load->view('_templates/auth/_header.php');
+		$listpaket = array(
+            	 ['nama' => 'Paket Materi','value' => 1],
+				 ['nama' => 'Paket Soal','value' => 2],
+				 ['nama' => 'Paket Bimbel','value' => 3]
+        );
+
+		$this->load->view('_templates/auth/_header.php', $listpaket);
 		$this->load->view('auth/login', $this->data);
 		$this->load->view('_templates/auth/_footer.php');
 	}
@@ -360,7 +366,23 @@ class Auth extends CI_Controller
 
 	public function registrasi()
 	{	
-		$this->load->view('_templates/auth/_header.php');
+
+		// $data = (['Nama' => 'Paket Materi','value' => 1],
+		// 		 ['Nama' => 'Paket Materi','value' => 2],
+		// 		 ['Nama' => 'Paket Bimbel','value' => 3]
+		// 		);
+		$listpaket = array(
+            	 ['nama' => 'Paket Materi','value' => 1],
+				 ['nama' => 'Paket Soal','value' => 2],
+				 ['nama' => 'Paket Bimbel','value' => 3]
+        );
+
+        //$this->load->view('_templates/dashboard/_header.php', $data);
+		// $this->load->view('master/dokumen/data');
+		// $this->load->view('_templates/dashboard/_footer.php');
+
+
+		$this->load->view('_templates/auth/_header.php', $listpaket);
 		//$this->load->view('auth/registrasi.php');
 		$this->load->view('auth/registrasi', $this->data);
 		$this->load->view('_templates/auth/_footer.php');

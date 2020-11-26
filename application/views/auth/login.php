@@ -39,10 +39,13 @@
 			<!-- /.col -->
 		</div>
 		<?= form_close(); ?>
-		<!-- <h5>
-			<a href="<?=base_url()?>auth/forgot_password" class="text-center"><?= lang('login_forgot_password');?></a>
-			<a href="<?=base_url()?>auth/registrasi" class="text-center pull-right"><?= lang('index_create_user_link');?></a>
-		</h5> -->
+		<h5>
+			<!-- <a href="<?=base_url()?>auth/forgot_password" class="text-center"><?= lang('login_forgot_password');?></a> -->
+			<!-- <a href="<?=base_url()?>auth/registrasi" class="text-center pull-right"><?= lang('index_create_user_link');?></a> -->
+
+
+			<a class="btn btn-success" href="https://bimbelcpnsonline.id/#services-section">Daftar Sekarang</a> Jika Belum Terdaftar !
+		</h5>
 		
 
 	</div>

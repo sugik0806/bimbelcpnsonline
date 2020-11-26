@@ -31,13 +31,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<img src="<?= base_url('assets/dist/img/b.png') ?>" width="80%" alt="" srcset="">
 						</center>
 						<h3 class="text-center mt-0 mb-12">
-							<b>C</b>omputer <b>B</b>ased <b>T</b>est
-						</h3> </a>
+							<b>B</b>imbingan <b>CPNS</b><b> O</b>nline
+						</h3> </a><br>
 					</div>
 					<div class=" col-md-8">
-						<h2>Pendaftaran Akun</h2>
+						
+				
+						<?php if( $this->uri->segment(3) == 1) : ?>
+							<h2 class="alert alert-info text-center">Pendaftaran Akun <b>Paket Materi Rp 150.000</b></h2>
+						<?php elseif( $this->uri->segment(3) == 2) : ?>
+							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Soal Rp 250.000</b></h2>
+						<?php elseif( $this->uri->segment(3) == 3) : ?>
+							<h2 class="alert alert-warning text-center">Pendaftaran Akun <b>Paket Bimbel Rp 350.000</b></h2>
+						<?php elseif( !$this->uri->segment(3) == 3) : ?>
+							<h2>Pendaftaran Akun</h2>
+						<?php endif; ?>
 
-						<!-- <div id="infoMessage" class="text-center"><?php echo $data;?></div> -->
+
+						<!-- <div id="infoMessage" class="text-center"><?php echo $listpaket;?></div> -->
 
 
 						<?= form_open("auth/cek_registrasi", array('id'=>'registrasi'));?>
@@ -58,6 +69,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 				<input class="form-control" type="text" id="email" name="email" value="<?php echo set_value('email'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('email'); ?> </p>
+
+	 			<label for="whatsapp">Whatsapp</label>
+	 			<p>
+	 				<input class="form-control" type="text" id="whatsapp" name="whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
+	 			</p>
+	 			<p> <?php echo form_error('whatsapp'); ?> </p>
 	 			
 
 	 			<div class="form-group">
@@ -70,13 +87,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 				<small class="help-block"></small>
 	 			</div>
 	 			<div class="form-group">
-	 				<label for="jurusan">Paket</label>
-	 				<select id="jurusan" name="jurusan" class="form-control select2">
-	 					<option value="">-- Pilih --</option>
-	 					<option value="1">Paket Materi</option>
-	 					<option value="2">Paket Tryout</option>
-	 					<option value="3">Paket Bimbel</option>
-	 				</select>
+
+	 				<?php if( $this->uri->segment(3)) : ?>
+	 					<label hidden="true" for="jurusan">Paket</label>
+	 					<input class="form-control" type="hidden" id="jurusan" name="jurusan" value="<?php echo $this->uri->segment(3); ?>"/>
+	 				<?php elseif( !$this->uri->segment(3)) : ?>
+	 					<label for="jurusan">Paket</label>
+	 					<select id="jurusan" name="jurusan" class="form-control select2">
+	 						<option value="">-- Pilih --</option>
+	 						<option value="1">Paket Materi</option>
+	 						<option value="2">Paket Soal</option>
+	 						<option value="3">Paket Bimbel</option>
+	 					</select>
+	 					
+	 				<?php endif; ?>
+
 	 				<small class="help-block"></small>
 	 			</div>
 
@@ -90,7 +115,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	            <!-- <?=$data?> -->
 
-	            <div class="col-xs-4 pull-right">
+	            <!-- <div class="col-xs-6">
+	            	<a class="btn btn-primary btn-block btn-flat pull-left" style="border-radius:2px;background-color:#228B22;color:#fffffa" href="https://wa.me/6282244795027?text=Mohon%20info,%20Bimbingan%20Belajar%20CPNS%20di%20bimbelCPNSonline.id" target="_blank">Daftar Via Whatsapp</a>
+	            </div> -->
+
+	            <div class="col-xs-6 pull-right">
+
 	            	<?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
 	            </div>
 
