@@ -23,6 +23,15 @@ class Master_model extends CI_Model {
         return $insert;
     }
 
+
+     public function updateData($data, $where)
+    {
+        $this->db->set('url_bukti', $data{'url_bukti'});
+        $this->db->where('token', $where{'token'});
+        $this->db->update($data{'tabel'}); 
+        // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
+    }
+
     public function delete($table, $data, $pk)
     {
         $this->db->where_in($pk, $data);

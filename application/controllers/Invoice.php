@@ -10,6 +10,7 @@ class Invoice extends CI_Controller {
                 $this->load->database();
                 $this->load->library('form_validation');
                 $this->load->helper(['url', 'language']);
+                $this->load->helper('my');// Load Library Ignited-Datatables
                 $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
                 $this->lang->load('auth');
                 $this->load->model('Registrasi_model', 'regis');
@@ -22,9 +23,35 @@ class Invoice extends CI_Controller {
                  
                 }
 
+                public function output_json($data, $encode = true)
+                {
+                    if($encode) $data = json_encode($data);
+                    $this->output->set_content_type('application/json')->set_output($data);
+                }
+
                 function index() 
                 {
 
+                }
+
+                public function validasi()
+                {
+
+                    $this->form_validation->set_rules('file_bukti', 'File Bukti', 'required');
+                }
+
+                public function file_config()
+                {
+                    $allowed_type   = [
+                        "image/jpeg", "image/jpg", "image/png", "image/gif",
+                        "audio/mpeg", "audio/mpg", "audio/mpeg3", "audio/mp3", "audio/x-wav", "audio/wave", "audio/wav",
+                        "video/mp4", "application/octet-stream"
+                    ];
+                    $config['upload_path']      = FCPATH.'uploads/file_konfirmasi/';
+                    $config['allowed_types']    = 'jpeg|jpg|png|gif|mpeg|mpg|mpeg3|mp3|wav|wave|mp4';
+                    $config['encrypt_name']     = TRUE;
+                    
+                    return $this->load->library('upload', $config);
                 }
 
                 function konfirmasi($token) 
@@ -45,7 +72,8 @@ class Invoice extends CI_Controller {
                         'kelas_id' => $datapeserta->kelas_id,
                         'harga' => $datapeserta->harga,
                         'jurusan' => $datapeserta->nama_jurusan,
-                        'nama' => $datapeserta->nama
+                        'nama' => $datapeserta->nama,
+                        'file' => $datapeserta->url_bukti
                     ];
 
 
@@ -53,6 +81,88 @@ class Invoice extends CI_Controller {
                     $this->load->view('auth/invoice', $data);
                     $this->load->view('_templates/auth/_footer');
                 }
+
+                function lakukan_konfirmasi($token) 
+                {
+                    $method = $this->input->post('method', true);
+                    $this->validasi();
+                    $this->file_config();
+
+                    
+                    if($this->form_validation->run() === true){
+                        $this->form_validation->set_rules('file_bukti', 'File Bukti', 'required');
+                        $data = [
+                            'status'    => false,
+                            'errors'    => [
+                                'file_bukti' => form_error('file_bukti')
+                            ]
+                        ];
+                        //$this->output_json($data);
+                    }else{
+
+                        $i = 0;
+                        foreach ($_FILES as $key => $val) {
+                            $img_src = FCPATH.'uploads/file_konfirmasi/';
+                            //$getdata  = $this->master->getMahasiswaByToken($token);
+                            
+                            $error = '';
+                            
+                                 //print_r($img_src);
+                                if(!empty($_FILES['file_bukti']['name'])){
+                                    if (!$this->upload->do_upload('file_bukti')){
+                                        $error = $this->upload->display_errors();
+                                        show_error($error, 500, 'File Bukti Error');
+                                        exit();
+                                    }else{
+                                        if($method === 'edit'){
+                                            // if(!unlink($img_src.$getsoal->file)){
+                                            //     show_error('Error saat delete gambar <br/>'.var_dump($getsoal), 500, 'Error Edit Gambar');
+                                            //     exit();
+                                            // }
+                                        }
+                                        // $data['file_bukti'] = $this->upload->data('file_name');
+                                        // $data['tipe_file'] = $this->upload->data('file_type');
+                                    }
+                                }
+
+                           
+                           $i++;  
+                        }
+                            
+                        
+
+                        if($method==='add'){
+                            $dataR = [
+                                'status' => true
+                            ];
+                            //push array
+                            $data = [
+                                'tabel' => 'mahasiswa',
+                                'url_bukti' =>  $this->upload->data('file_name')
+                            ];
+                            $where = [
+                                'token' => $token
+                            ];
+
+                            //update data
+                            $this->master->updateData($data, $where);
+                            //$this->output_json($data);
+
+                            $kontenHTML = '<p>konfirmasi berhasil akun kamu akan aktif segera !</p>';
+                            $subject = 'konfirmasi berhasil';
+                            
+                            $this->kirim_email_konfirmasi($token, $subject, $kontenHTML);
+                            //redirect('soal');
+                        }else{
+                            show_error('Method tidak diketahui, kembali ke halaman sebelumnya', 404);
+
+                        }
+
+                       
+                    }
+
+                }
+
 
                 public function kirim_email($token)
                 {
@@ -195,6 +305,52 @@ class Invoice extends CI_Controller {
                     }else{
                         //echo 'Message has been sent';
                         redirect('invoice/konfirmasi/'.$token);
+                    }
+                }
+
+                public function kirim_email_konfirmasi($token, $subject, $kontenHTML)
+                {
+                    print_r($token, $subject);
+                    $datamhs  = $this->master->getMahasiswaByToken($token);
+                    //print_r($datamhs->email);
+
+                    // PHPMailer object
+                    $response = false;
+                    $mail = new PHPMailer();
+                   
+                
+                    // SMTP configuration
+                    $mail->isSMTP();
+                    $mail->Host     = 'mail.bimbelcpnsonline.id'; //sesuaikan sesuai nama domain hosting/server yang digunakan
+                    $mail->SMTPAuth = true;
+                    $mail->Username = '_mainaccount@bimbelcpnsonline.id'; // user email
+                    $mail->Password = '8SKoRi86!R7es#'; // password email
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->Port     = 465;
+                
+                    $mail->setFrom('info@bimbelcpnsonline.id', ''); // user email
+                    $mail->addReplyTo('info@bimbelcpnsonline.id', ''); //user email
+                
+                    // Add a recipient
+                    $mail->addAddress($datamhs->email); //email tujuan pengiriman email
+                
+                    // Email subject
+                    $mail->Subject = $subject; //subject email
+                
+                    // Set email format to HTML
+                    $mail->isHTML(true);
+                
+                    // Email body content
+                    $mailContent = $kontenHTML; // isi email
+                    $mail->Body = $mailContent;
+                
+                    // Send email
+                    if(!$mail->send()){
+                        echo 'Message could not be sent.';
+                        echo 'Mailer Error: ' . $mail->ErrorInfo;
+                    }else{
+                        //echo 'Message has been sent';
+                        $this->konfirmasi($token);
                     }
                 }
  

@@ -81,6 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div class="col-md-12" style="padding-top: 100px">
+		<?=form_open_multipart('invoice/lakukan_konfirmasi/'.$token, array('id'=>'formkonfirmasi'), array('method'=>'add'));?>
 		<div class="container div-1">
 			<div class="login-box-body">
 				    <div class="col-md-6 text-center" style="padding-top: 50px">
@@ -98,23 +99,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<br>
 						
 						<br>
+
+						<?php if(!empty($file)) : ?>
+						    <?=tampil_media('uploads/file_konfirmasi/'.$file);?>
+						<?php endif;?>
 						<!-- <a href="#" class="button">Konfirmasi</a> -->
 
 					</div>
 					<div class=" col-md-6">
-						<div class="col-md-10">
+						<div class="col-md-12">
 						  <ul class="price">
 						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?> Rp. <?php echo $harga;?></li>
 						    <li class="grey">Silakan Transfer Rp. <?php echo $harga;?></li>
 						    <li>Rekening BCA</li>
 						    <li>8886985856</li>
 						    <li>Atas Nama : Irawati</li>
-						    <li class="grey"><a href="#" class="button">Konfirmasi</a></li>
+						    <input type="hidden" name="token" id="token" value="<?php echo $token;?>">
+						    <li class="grey"><button type="submit" id="submit" class="btn btn-success"><i class="fa fa-save"></i> Konfirmasi</button></li>
+
 						  </ul><br>
 
 						  <h5 class="text-danger" style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi.</h5>
 
-						  <label for="bukti" class="control-label">Upload Bukti Transfer</label>
+						  <label for="file_bukti" class="control-label">Upload Bukti Transfer</label>
 						  <div class="form-group">
 						      <input type="file" name="file_bukti" class="form-control">
 						      <small class="help-block" style="color: #dc3545"><?=form_error('file_bukti')?></small>
@@ -125,6 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    		<div class="row"></div>
 		    </div>
 	    </div>
+	     <?=form_close();?>
 	</div>
 </body>
 </html>
