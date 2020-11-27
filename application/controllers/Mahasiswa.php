@@ -194,7 +194,7 @@ class Mahasiswa extends CI_Controller
 		$data = $this->master->getMahasiswaById($id);
 		$email = $data->email;
 		$token = $data->token;
-		$this->ion_auth->reset_password($email, $email);
+		$this->ion_auth->reset_password($email, $token);
 
 		$data = [
 				'status'	=> true,

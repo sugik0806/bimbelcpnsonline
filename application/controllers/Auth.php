@@ -465,6 +465,8 @@ class Auth extends CI_Controller
 				'status'	=> true,
 				'msg'	 => 'User berhasil dibuat. 123456 digunakan sebagai password Standart pada saat login.'
 			];
+
+			//redirect('Kirim_email/kirim_email/'.$password.'/Password/Password'. $password);
 		$this->output_json($data);
 	}
 

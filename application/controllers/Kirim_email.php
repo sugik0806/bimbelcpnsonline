@@ -59,7 +59,7 @@ class Kirim_email extends CI_Controller {
                     $mail->isHTML(true);
 
                     // Email body content
-                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke<br> https://member.bimbelcpnsonline.id'; // isi email
+                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke https://member.bimbelcpnsonline.id'; // isi email
                     $mail->Body = $mailContent;
             
                     // Send email
@@ -71,7 +71,7 @@ class Kirim_email extends CI_Controller {
                         //redirect('invoice/konfirmasi/'.$token);
                         $data = [
                           'status'  => true,
-                          'msg'  => 'Reset Password Berhasil. Password '. $token
+                          'msg'  => 'Buat / Reset Password Berhasil. Password '. $token
                         ];
                       //redirect('mahasiswa');  
                       $this->output_json($data);  
