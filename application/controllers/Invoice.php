@@ -7,6 +7,12 @@ class Invoice extends CI_Controller {
  
     public function __construct() { 
                 parent::__construct(); 
+                $this->load->database();
+                $this->load->library('form_validation');
+                $this->load->helper(['url', 'language']);
+                $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+                $this->lang->load('auth');
+                $this->load->model('Registrasi_model', 'regis');
                 
                 require APPPATH.'libraries/phpmailer/src/Exception.php';
                 require APPPATH.'libraries/phpmailer/src/PHPMailer.php';
@@ -24,22 +30,28 @@ class Invoice extends CI_Controller {
                 function konfirmasi($token) 
                 {
 
-                    $this->data['password'] = [
-                        'name' => 'password',
-                        'id' => 'password',
-                        'type' => 'password',
-                        'placeholder' => 'Password',
-                        'class' => 'form-control',
-                    ];
+                    $datapeserta  = $this->master->getMahasiswaByToken($token);
+
+                    // $this->data['password'] = [
+                    //     'name' => 'password',
+                    //     'id' => 'password',
+                    //     'type' => 'password',
+                    //     'placeholder' => 'Password',
+                    //     'class' => 'form-control',
+                    // ];
 
                     $data = [
-                        'user' => $this->ion_auth->user()->row(),
-                        'judul' => 'Invoice',
-                        'subjudul' => 'Invoice'
+                        'token' => $token,
+                        'kelas_id' => $datapeserta->kelas_id,
+                        'harga' => $datapeserta->harga,
+                        'jurusan' => $datapeserta->nama_jurusan,
+                        'nama' => $datapeserta->nama
                     ];
-                    $this->load->view('_templates/auth/_header.php', $data);
-                    $this->load->view('auth/invoice');
-                    $this->load->view('_templates/auth/_footer.php');
+
+
+                    $this->load->view('_templates/auth/_header');
+                    $this->load->view('auth/invoice', $data);
+                    $this->load->view('_templates/auth/_footer');
                 }
 
                 public function kirim_email($token)
