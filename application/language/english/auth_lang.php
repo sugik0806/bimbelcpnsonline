@@ -49,7 +49,7 @@ $lang['deactivate_subheading']               = 'Are you sure you want to deactiv
 $lang['deactivate_confirm_y_label']          = 'Yes:';
 $lang['deactivate_confirm_n_label']          = 'No:';
 $lang['deactivate_submit_btn']               = 'Submit';
-$lang['deactivate_validation_confirm_label'] = 'Konfirmasi';
+$lang['deactivate_validation_confirm_label'] = 'Konfirmasi Pembayaran';
 $lang['deactivate_validation_user_id_label'] = 'user ID';
 
 // Create User

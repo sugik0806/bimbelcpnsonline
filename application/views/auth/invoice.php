@@ -91,17 +91,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</center>
 						<h3 class=" mt-0 mb-12">
 							<b>B</b>imbel <b>CPNS</b><b> O</b>nline
-						</h3> </a><br>
+						</h3> </a>
 
 						<h2 style="text-align:center">INVOICE: <?php echo$this->uri->segment(3);?></h2>
 						<h3 style="text-align:center">Calon Peserta: <?php echo $nama;?></h3>
-						<h3 style="text-align:center"><?php echo $jurusan;?> Rp. <?php echo $harga;?></h3>
+						<!-- <h3 style="text-align:center"><?php echo $jurusan;?> Rp. <?php echo $harga;?></h3> -->
 						<br>
 						
 						<br>
 
 						<?php if(!empty($file)) : ?>
-						    <?=tampil_media('uploads/file_konfirmasi/'.$file);?>
+							<div class="col-md-12">
+								<?=tampil_media('uploads/file_konfirmasi/'.$file);?>
+							</div>
+						    
 						<?php endif;?>
 						<!-- <a href="#" class="button">Konfirmasi</a> -->
 
@@ -114,18 +117,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						    <li>Rekening BCA</li>
 						    <li>000000000000</li>
 						    <li>Atas Nama : Irawati</li>
+						    
+							
 						    <input type="hidden" name="token" id="token" value="<?php echo $token;?>">
-						    <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-success btn-block btn-flat'));?></li>
+						    
+
+						    <?php if(!empty($file)) : ?>
+
+						        <li class="grey"><label class="btn btn-success btn-block btn-flat disabled">Konfirmasi Berhasil</label>
+						        </li>
+
+						    <?php else : ?>
+
+					    	    <li><label for="file_bukti" class="control-label pull-left">Upload Bukti Transfer</label>
+					    		  <div class="form-group">
+					    		      <input type="file" name="file_bukti" class="form-control">
+					    		      <small class="help-block" style="color: #dc3545"><?=form_error('file_bukti')?></small>
+					    		  </div>
+					    		</li>
+						    	<h5 class="text-danger" style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi Pembayaran.</h5>  
+						        <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-success btn-block btn-flat'));?>
+						        </li>
+
+						    <?php endif;?>
 
 						  </ul><br>
-
-						  <h5 class="text-danger" style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi.</h5>
-
-						  <label for="file_bukti" class="control-label">Upload Bukti Transfer</label>
-						  <div class="form-group">
-						      <input type="file" name="file_bukti" class="form-control">
-						      <small class="help-block" style="color: #dc3545"><?=form_error('file_bukti')?></small>
-						  </div>
+						  <h5 class="text-center">Jika ada kendala Konfirmasi Sistem, Klik Konfirmasi Via Whatsapp !</h5>
+						  <a class="btn btn-success form-control" style="border-radius:2px;background-color:#228B22;color:#fffffa" href="https://wa.me/6282244795027?text=Mohon%20dibantu,%20Saya%20kesulitan%20Konfirmasi%20via%20sistem%20bimbelCPNSonline.id" target="_blank">Konfirmasi Via Whatsapp</a>  
 
 						</div>
 		    		</div>
