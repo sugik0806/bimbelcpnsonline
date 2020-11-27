@@ -41,8 +41,8 @@ class Kirim_email extends CI_Controller {
                     $mail->isSMTP();
                     $mail->Host     = 'mail.bimbelcpnsonline.id'; //sesuaikan sesuai nama domain hosting/server yang digunakan
                     $mail->SMTPAuth = true;
-                    $mail->Username = '_mainaccount@bimbelcpnsonline.id'; // user email
-                    $mail->Password = '8SKoRi86!R7es#'; // password email
+                    $mail->Username = 'info@bimbelcpnsonline.id'; // user email
+                    $mail->Password = 'eliminasi12345rainbow'; // password email
                     $mail->SMTPSecure = 'ssl';
                     $mail->Port     = 465;
             
