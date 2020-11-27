@@ -176,15 +176,15 @@ class Invoice extends CI_Controller {
             
                     // SMTP configuration
                     $mail->isSMTP();
-                    $mail->Host     = 'mail.bimbelcpnsonline.id'; //sesuaikan sesuai nama domain hosting/server yang digunakan
+                    $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'info@bimbelcpnsonline.id'; // user email
-                    $mail->Password = 'eliminasi12345rainbow'; // password email
+                    $mail->Username = $this->config->item('email'); // user email
+                    $mail->Password = $this->config->item('pass_email'); // password email
                     $mail->SMTPSecure = 'ssl';
                     $mail->Port     = 465;
             
-                    $mail->setFrom('info@bimbelcpnsonline.id', ''); // user email
-                    $mail->addReplyTo('info@bimbelcpnsonline.id', ''); //user email
+                    $mail->setFrom($this->config->item('email'), ''); // user email
+                    $mail->addReplyTo($this->config->item('email'), ''); //user email
             
                     // Add a recipient
                     $mail->addAddress($datamhs->email); //email tujuan pengiriman email
@@ -321,15 +321,15 @@ class Invoice extends CI_Controller {
                 
                     // SMTP configuration
                     $mail->isSMTP();
-                    $mail->Host     = 'mail.bimbelcpnsonline.id'; //sesuaikan sesuai nama domain hosting/server yang digunakan
+                    $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'info@bimbelcpnsonline.id'; // user email
-                    $mail->Password = 'eliminasi12345rainbow'; // password email
+                    $mail->Username = $this->config->item('email'); // user email
+                    $mail->Password = $this->config->item('pass_email'); // password email
                     $mail->SMTPSecure = 'ssl';
                     $mail->Port     = 465;
-                
-                    $mail->setFrom('info@bimbelcpnsonline.id', ''); // user email
-                    $mail->addReplyTo('info@bimbelcpnsonline.id', ''); //user email
+            
+                    $mail->setFrom($this->config->item('email'), ''); // user email
+                    $mail->addReplyTo($this->config->item('email'), ''); //user email
                 
                     // Add a recipient
                     $mail->addAddress($datamhs->email); //email tujuan pengiriman email

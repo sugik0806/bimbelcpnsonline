@@ -39,15 +39,15 @@ class Kirim_email extends CI_Controller {
             
                     // SMTP configuration
                     $mail->isSMTP();
-                    $mail->Host     = 'mail.bimbelcpnsonline.id'; //sesuaikan sesuai nama domain hosting/server yang digunakan
+                    $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'info@bimbelcpnsonline.id'; // user email
-                    $mail->Password = 'eliminasi12345rainbow'; // password email
+                    $mail->Username = $this->config->item('email'); // user email
+                    $mail->Password = $this->config->item('pass_email'); // password email
                     $mail->SMTPSecure = 'ssl';
                     $mail->Port     = 465;
             
-                    $mail->setFrom('info@bimbelcpnsonline.id', ''); // user email
-                    $mail->addReplyTo('info@bimbelcpnsonline.id', ''); //user email
+                    $mail->setFrom($this->config->item('email'), ''); // user email
+                    $mail->addReplyTo($this->config->item('email'), ''); //user email
             
                     // Add a recipient
                     $mail->addAddress($data->email); //email tujuan pengiriman email
@@ -59,7 +59,7 @@ class Kirim_email extends CI_Controller {
                     $mail->isHTML(true);
 
                     // Email body content
-                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke https://member.bimbelcpnsonline.id'; // isi email
+                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke '. $this->config->item('urlbimbel'); // isi email
                     $mail->Body = $mailContent;
             
                     // Send email
