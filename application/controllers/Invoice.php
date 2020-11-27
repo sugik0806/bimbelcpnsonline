@@ -148,10 +148,11 @@ class Invoice extends CI_Controller {
                             $this->master->updateData($data, $where);
                             //$this->output_json($data);
 
-                            $kontenHTML = '<p>konfirmasi berhasil akun kamu akan aktif segera !</p>';
-                            $subject = 'konfirmasi berhasil';
+                            $kontenHTML = '<p>Konfirmasi Berhasil Akun Kamu Akan Aktif Segera !</p>';
+                            $subject = 'Konfirmasi Berhasil';
                             
                             $this->kirim_email_konfirmasi($token, $subject, $kontenHTML);
+                            $this->kirim_email_admin($token, $subject, $kontenHTML);
                             //redirect('soal');
                         }else{
                             show_error('Method tidak diketahui, kembali ke halaman sebelumnya', 404);
@@ -177,12 +178,11 @@ class Invoice extends CI_Controller {
                     // SMTP configuration
                     $mail->isSMTP();
                     $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
-                    $mail->SMTPAuth = true;
+                    $mail->SMTPAuth = $this->config->item('smptauth');
                     $mail->Username = $this->config->item('email'); // user email
                     $mail->Password = $this->config->item('pass_email'); // password email
-                    $mail->SMTPSecure = 'ssl';
-                    $mail->Port     = 465;
-            
+                    $mail->SMTPSecure = $this->config->item('smptsecure');
+                    $mail->Port     =$this->config->item('port');
                     $mail->setFrom($this->config->item('email'), ''); // user email
                     $mail->addReplyTo($this->config->item('email'), ''); //user email
             
@@ -310,7 +310,7 @@ class Invoice extends CI_Controller {
 
                 public function kirim_email_konfirmasi($token, $subject, $kontenHTML)
                 {
-                    print_r($token, $subject);
+                    //print_r($token, $subject);
                     $datamhs  = $this->master->getMahasiswaByToken($token);
                     //print_r($datamhs->email);
 
@@ -322,12 +322,11 @@ class Invoice extends CI_Controller {
                     // SMTP configuration
                     $mail->isSMTP();
                     $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
-                    $mail->SMTPAuth = true;
+                    $mail->SMTPAuth = $this->config->item('smptauth');
                     $mail->Username = $this->config->item('email'); // user email
                     $mail->Password = $this->config->item('pass_email'); // password email
-                    $mail->SMTPSecure = 'ssl';
-                    $mail->Port     = 465;
-            
+                    $mail->SMTPSecure = $this->config->item('smptsecure');
+                    $mail->Port     =$this->config->item('port');
                     $mail->setFrom($this->config->item('email'), ''); // user email
                     $mail->addReplyTo($this->config->item('email'), ''); //user email
                 
@@ -351,6 +350,51 @@ class Invoice extends CI_Controller {
                     }else{
                         //echo 'Message has been sent';
                         $this->konfirmasi($token);
+                    }
+                }
+
+                public function kirim_email_admin($token, $subject, $kontenHTML)
+                {
+                    //print_r($token, $subject);
+                    $datamhs  = $this->master->getMahasiswaByToken($token);
+                    //print_r($datamhs->email);
+
+                    // PHPMailer object
+                    $response = false;
+                    $mail = new PHPMailer();
+                   
+                
+                    // SMTP configuration
+                    $mail->isSMTP();
+                    $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
+                    $mail->SMTPAuth = $this->config->item('smptauth');
+                    $mail->Username = $this->config->item('email'); // user email
+                    $mail->Password = $this->config->item('pass_email'); // password email
+                    $mail->SMTPSecure = $this->config->item('smptsecure');
+                    $mail->Port     =$this->config->item('port');
+                    $mail->setFrom($this->config->item('email'), ''); // user email
+                    $mail->addReplyTo($this->config->item('email'), ''); //user email
+                
+                    // Add a recipient
+                    $mail->addAddress('copycut7@gmail.com'); //email tujuan pengiriman email
+                
+                    // Email subject
+                    $mail->Subject = 'Aktifkan Akun '. $datamhs->email; //subject email
+                
+                    // Set email format to HTML
+                    $mail->isHTML(true);
+                
+                    // Email body content
+                    $mailContent = 'Calon Peserta Dengan Email ' . $datamhs->email . ' Sudah Melakukan Konfirmasi Pembayaran, Segera Aktifkan User Pada Menu Master Peserta, <br> Klik '. $this->config->item('urlbimbel') .' Untuk Login' ; // isi email
+                    $mail->Body = $mailContent;
+                
+                    // Send email
+                    if(!$mail->send()){
+                        echo 'Message could not be sent.';
+                        echo 'Mailer Error: ' . $mail->ErrorInfo;
+                    }else{
+                        //echo 'Message has been sent';
+                        //$this->konfirmasi($token);
                     }
                 }
  

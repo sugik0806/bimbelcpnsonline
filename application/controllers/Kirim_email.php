@@ -40,12 +40,11 @@ class Kirim_email extends CI_Controller {
                     // SMTP configuration
                     $mail->isSMTP();
                     $mail->Host     = $this->config->item('webemail'); //sesuaikan sesuai nama domain hosting/server yang digunakan
-                    $mail->SMTPAuth = true;
+                    $mail->SMTPAuth = $this->config->item('smptauth');
                     $mail->Username = $this->config->item('email'); // user email
                     $mail->Password = $this->config->item('pass_email'); // password email
-                    $mail->SMTPSecure = 'ssl';
-                    $mail->Port     = 465;
-            
+                    $mail->SMTPSecure = $this->config->item('smptsecure');
+                    $mail->Port     =$this->config->item('port');
                     $mail->setFrom($this->config->item('email'), ''); // user email
                     $mail->addReplyTo($this->config->item('email'), ''); //user email
             

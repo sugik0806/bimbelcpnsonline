@@ -112,10 +112,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?> Rp. <?php echo $harga;?></li>
 						    <li class="grey">Silakan Transfer Rp. <?php echo $harga;?></li>
 						    <li>Rekening BCA</li>
-						    <li>8886985856</li>
+						    <li>000000000000</li>
 						    <li>Atas Nama : Irawati</li>
 						    <input type="hidden" name="token" id="token" value="<?php echo $token;?>">
-						    <li class="grey"><button type="submit" id="submit" class="btn btn-success"><i class="fa fa-save"></i> Konfirmasi</button></li>
+						    <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-success btn-block btn-flat'));?></li>
 
 						  </ul><br>
 
