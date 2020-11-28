@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class=" col-md-6">
 						 <?php if(!empty($file)) : ?>
 							<nav aria-label="breadcrumb">
-								<h4>Tahapan Daftar</h4>
+								<h4>Tiga Langkah Pendaftaran</h4>
 							  <ol class="breadcrumb">
 							    <li class="breadcrumb-item">1. Pendaftaran</li>
 							    <li class="breadcrumb-item">2. Konfirmasi</li>
@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</nav>
 						   <?php else : ?>
 						    <nav aria-label="breadcrumb">
-						    	<h4>Tahapan Daftar</h4>
+						    	<h4>Tiga Langkah Pendaftaran</h4>
 						      <ol class="breadcrumb">
 						        <li class="breadcrumb-item">1. Pendaftaran</li>
 						        <li class="breadcrumb-item active"><b>2. Konfirmasi</b></li>
