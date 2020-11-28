@@ -9,7 +9,7 @@ class Invoice extends CI_Controller {
                 parent::__construct(); 
                 $this->load->database();
                 $this->load->library('form_validation');
-                $this->load->helper(['url', 'language']);
+                $this->load->helper(['url', 'language', 'number']);
                 $this->load->helper('my');// Load Library Ignited-Datatables
                 $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
                 $this->lang->load('auth');
@@ -67,13 +67,15 @@ class Invoice extends CI_Controller {
                     //     'class' => 'form-control',
                     // ];
 
+
                     $data = [
                         'token' => $token,
                         'kelas_id' => $datapeserta->kelas_id,
                         'harga' => $datapeserta->harga,
                         'jurusan' => $datapeserta->nama_jurusan,
                         'nama' => $datapeserta->nama,
-                        'file' => $datapeserta->url_bukti
+                        'file' => $datapeserta->url_bukti,
+                        'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik)
                     ];
 
 
@@ -88,17 +90,16 @@ class Invoice extends CI_Controller {
                     $this->validasi();
                     $this->file_config();
 
-                    
-                    if($this->form_validation->run() === true){
-                        $this->form_validation->set_rules('file_bukti', 'File Bukti', 'required');
-                        $data = [
-                            'status'    => false,
-                            'errors'    => [
-                                'file_bukti' => form_error('file_bukti')
-                            ]
-                        ];
-                        //$this->output_json($data);
-                    }else{
+                        //print_r($this->form_validation->run());
+                        if (empty($_FILES['file_bukti']['name']))
+                        {
+                            $data = [
+                                'status' => false,
+                                'msg'    => 'File Bukti Masih Kosong !'
+                            ];
+                            $this->output_json($data);
+                            //redirect('auth/registrasi');
+                        }else{
 
                         $i = 0;
                         foreach ($_FILES as $key => $val) {
@@ -148,7 +149,7 @@ class Invoice extends CI_Controller {
                             $this->master->updateData($data, $where);
                             //$this->output_json($data);
 
-                            $kontenHTML = '<p>Konfirmasi Berhasil Akun Kamu Akan Aktif Segera !</p>';
+                            $kontenHTML = '<p>Konfirmasi Berhasil, Akun Kamu Akan Segera Aktif !</p> </br> Tautan untuk login <a href="https://member.bimbelcpnsonline.id"  class="button">Menuju Halaman Login</a>';
                             $subject = 'Konfirmasi Berhasil';
                             
                             $this->kirim_email_konfirmasi($token, $subject, $kontenHTML);
@@ -196,14 +197,14 @@ class Invoice extends CI_Controller {
                     $mail->isHTML(true);
 
                     if ($datamhs->kelas_id == 1) {
-                        $paket = 'Paket Materi Rp 150.000';
-                        $bayar = 'Rp 150.000';
+                        $paket = 'Paket Materi';
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
                     }else if ($datamhs->kelas_id == 2) {
-                        $paket = 'Paket Soal Rp 250.000';
-                        $bayar = 'Rp 250.000';
+                        $paket = 'Paket Soal';
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
                     }else if ($datamhs->kelas_id == 3) {
-                        $paket = 'Paket Bimbel Rp 350.000';
-                        $bayar = 'Rp 350.000';
+                        $paket = 'Paket Bimbel';
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
                     }
 
                     $token = $datamhs->token;
@@ -282,7 +283,7 @@ class Invoice extends CI_Controller {
                             <div class="col-md-12 text-center">
                               <ul class="price">
                                 <li class="header" style="background-color:#4CAF50">'.$paket.'</li>
-                                <li class="grey">Silakan Transfer '.$bayar.'</li>
+                                <li class="grey">Silakan Transfer '.$bayar.'<p style="text-align:center">Sudah dikurangi angka unik</p></li>
                                 <li>Ke rekening BCA</li>
                                 <li>156121921152</li>
                                 <li>Atas Nama</li>
@@ -300,8 +301,11 @@ class Invoice extends CI_Controller {
             
                     // Send email
                     if(!$mail->send()){
-                        echo 'Message could not be sent.';
-                        echo 'Mailer Error: ' . $mail->ErrorInfo;
+                        $data = [
+                                'status'    => false,
+                                'msg'    => 'Email Salah !' .$mail->ErrorInfo
+                            ];
+                        $this->output_json($data);
                     }else{
                         //echo 'Message has been sent';
                         redirect('invoice/konfirmasi/'.$token);
@@ -349,7 +353,15 @@ class Invoice extends CI_Controller {
                         echo 'Mailer Error: ' . $mail->ErrorInfo;
                     }else{
                         //echo 'Message has been sent';
-                        $this->konfirmasi($token);
+                        $data = [
+                            'status'    => true,
+                            'token' => $token,
+                            'msg' => 'Berhasil Konfirmasi dan Kirim Email ke ' . $datamhs->email,
+                            'errors'    => ''
+                        ];
+                        $this->output_json($data);
+
+                        //$this->konfirmasi($token);
                     }
                 }
 

@@ -80,18 +80,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-	<div class="col-md-12" style="padding-top: 100px">
+	<div class="col-md-12" style="padding-top: 30px; padding-bottom: 30px">
 		<?=form_open_multipart('invoice/lakukan_konfirmasi/'.$token, array('id'=>'formkonfirmasi'), array('method'=>'add'));?>
 		<div class="container div-1">
 			<div class="login-box-body">
 				    <div class="col-md-6 text-center" style="padding-top: 50px">
 						<center>
-							<a href="" target="_blank" rel="noopener noreferrer">
-								<img src="<?= base_url('assets/dist/img/b.png') ?>" width="15%" alt="" srcset="">
+							<!-- <a href="" target="_blank" rel="noopener noreferrer"> -->
+								<img src="<?= base_url('assets/dist/img/b.png') ?>" width="40%" alt="" srcset="">
 						</center>
-						<h3 class=" mt-0 mb-12">
+						<!-- <h3 class=" mt-0 mb-12">
 							<b>B</b>imbel <b>CPNS</b><b> O</b>nline
-						</h3> </a>
+						</h3>  -->
+					<!-- </a> -->
 
 						<h2 style="text-align:center">INVOICE: <?php echo$this->uri->segment(3);?></h2>
 						<h3 style="text-align:center">Calon Peserta: <?php echo $nama;?></h3>
@@ -101,19 +102,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<br>
 
 						<?php if(!empty($file)) : ?>
-							<div class="col-md-12">
+							<div class="col-md-1"></div>
+							<div class="col-md-10">
 								<?=tampil_media('uploads/file_konfirmasi/'.$file);?>
 							</div>
+							<div class="col-md-1"></div>
 						    
 						<?php endif;?>
 						<!-- <a href="#" class="button">Konfirmasi</a> -->
 
 					</div>
 					<div class=" col-md-6">
+						 <?php if(!empty($file)) : ?>
+							<nav aria-label="breadcrumb">
+								<h4>Tahapan Daftar</h4>
+							  <ol class="breadcrumb">
+							    <li class="breadcrumb-item">1. Pendaftaran</li>
+							    <li class="breadcrumb-item">2. Konfirmasi</li>
+							    <li class="breadcrumb-item active"><b>3. Selesai</b></li>
+							  </ol>
+							</nav>
+						   <?php else : ?>
+						    <nav aria-label="breadcrumb">
+						    	<h4>Tahapan Daftar</h4>
+						      <ol class="breadcrumb">
+						        <li class="breadcrumb-item">1. Pendaftaran</li>
+						        <li class="breadcrumb-item active"><b>2. Konfirmasi</b></li>
+						        <li class="breadcrumb-item">3. Selesai</li>
+						      </ol>
+						    </nav>
+						   <?php endif;?>
+
 						<div class="col-md-12">
 						  <ul class="price">
-						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?> Rp. <?php echo $harga;?></li>
-						    <li class="grey">Silakan Transfer Rp. <?php echo $harga;?></li>
+						  	<!-- 4CAF50 -->
+						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?></li>
+						    <li class="grey">Silakan Transfer Rp. <?php echo $jumlah_transfer;?></li>
 						    <li>Rekening BCA</li>
 						    <li>000000000000</li>
 						    <li>Atas Nama : Irawati</li>
@@ -124,7 +148,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						    <?php if(!empty($file)) : ?>
 
-						        <li class="grey"><label class="btn btn-success btn-block btn-flat disabled">Konfirmasi Berhasil</label>
+						        <li class="grey"><label class="btn btn-primary btn-flat disabled">Konfirmasi Berhasil</label>
 						        </li>
 
 						    <?php else : ?>
@@ -136,14 +160,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					    		  </div>
 					    		</li>
 						    	<h5 class="text-danger" style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi Pembayaran.</h5>  
-						        <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-success btn-block btn-flat'));?>
+						        <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-primary'));?>
 						        </li>
 
 						    <?php endif;?>
 
 						  </ul><br>
 						  <h5 class="text-center">Jika ada kendala Konfirmasi Sistem, Klik Konfirmasi Via Whatsapp !</h5>
-						  <a class="btn btn-success form-control" style="border-radius:2px;background-color:#228B22;color:#fffffa" href="https://wa.me/6282244795027?text=Mohon%20dibantu,%20Saya%20kesulitan%20Konfirmasi%20via%20sistem%20bimbelCPNSonline.id" target="_blank">Konfirmasi Via Whatsapp</a>  
+						  <div class="text-center">
+						  	<a class="btn btn-success" href="https://wa.me/6282244795027?text=Mohon%20dibantu,%20Saya%20kesulitan%20Konfirmasi%20via%20sistem%20bimbelCPNSonline.id" target="_blank">Konfirmasi Via Whatsapp</a>  
+						  </div>
+						  
 
 						</div>
 		    		</div>
@@ -154,3 +181,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</div>
 </body>
 </html>
+
+<script type="text/javascript">
+	let base_url = '<?=base_url();?>';
+</script>
+<script src="<?=base_url()?>assets/dist/js/app/auth/invoice.js"></script>

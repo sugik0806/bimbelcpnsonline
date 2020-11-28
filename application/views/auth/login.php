@@ -2,12 +2,13 @@
 	<!-- /.login-logo -->
 	<div class="login-box-body">
 	<center>
-	<a href="https://blogbugabagi.blogspot.com" target="_blank" rel="noopener noreferrer">
-	<img src="<?= base_url('assets/dist/img/b.png') ?>" width="30%" alt="" srcset="">
+	<a href="#" target="_blank" rel="noopener noreferrer">
+	<img src="<?= base_url('assets/dist/img/b.png') ?>" width="50%" alt="" srcset="">
 	</center>
-	<h3 class="text-center mt-0 mb-4">
+	<!-- <h3 class="text-center mt-0 mb-4">
 		<b>B</b>imbel <b>CPNS</b><b> O</b>nline
-	</h3> </a>
+	</h3>  -->
+</a>
 	<p class="login-box-msg">Masukan akun anda</p>
 	<!-- <p class="login-box-msg">Gunakan <b>Email</b> sebagai <b>Password</b> saat pertama login</p> -->
 
@@ -50,7 +51,7 @@
 		<br>
 		<br>
 		<hr>
-			<a class="btn btn-warning" href="https://bimbelcpnsonline.id/#services-section">Daftar Sekarang</a> 
+			<a class="btn btn-success" href="https://bimbelcpnsonline.id/#services-section">Daftar Sekarang</a> 
 			<label>Jika Belum Terdaftar !</label>
 		
 	</div>

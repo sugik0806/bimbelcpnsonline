@@ -22,27 +22,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-	<div class="col-md-12" style="padding-top: 100px">
+	<div class="col-md-12" style="padding-top: 5%; padding-bottom: 5%">
 		<div class="container div-1">
 			<div class="login-box-body">
-				<div class="col-md-4" style="padding-top: 50px">
-					<center>
-						<a href="" target="_blank" rel="noopener noreferrer">
+
+					<div class="col-md-4">
+						<center>
+						
 							<img src="<?= base_url('assets/dist/img/b.png') ?>" width="80%" alt="" srcset="">
 						</center>
-						<h3 class="text-center mt-0 mb-12">
+						<!-- <h3 class="text-center mt-0 mb-12">
 							<b>B</b>imbel <b>CPNS</b><b> O</b>nline
-						</h3> </a><br>
+						</h3>  -->
 					</div>
 					<div class=" col-md-8">
+
+						<nav aria-label="breadcrumb">
+							<h4>Tahapan Daftar</h4>
+						  <ol class="breadcrumb">
+						    <li class="breadcrumb-item active"><b>1. Registrasi</b></li>
+						    <li class="breadcrumb-item">2. Konfirmasi</li>
+						    <li class="breadcrumb-item">3. Selesai</li>
+						  </ol>
+						</nav>
 						
 				
 						<?php if( $this->uri->segment(3) == 1) : ?>
 							<h2 class="alert alert-info text-center">Pendaftaran Akun <b>Paket Materi Rp 150.000</b></h2>
+							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 2) : ?>
 							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Soal Rp 250.000</b></h2>
+							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 3) : ?>
 							<h2 class="alert alert-warning text-center">Pendaftaran Akun <b>Paket Bimbel Rp 350.000</b></h2>
+							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( !$this->uri->segment(3) == 3) : ?>
 							<h2>Pendaftaran Akun</h2>
 						<?php endif; ?>
@@ -54,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?= form_open("auth/cek_registrasi", array('id'=>'registrasi'));?>
 						<label for="name">Nama</label>
 						<p>
-							<input class="form-control" type="text" id="name" name="name" value="<?=set_value('name')?>"/>
+							<input class="form-control" type="text" id="name" name="name" placeholder="Isikan Nama" value="<?=set_value('name')?>"/>
 						</p>
 						<small class="help-block" style="color: #dc3545"><?=form_error('name')?></small>
 
@@ -66,13 +79,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 			
 	 			<label for="email">Email</label>
 	 			<p>
-	 				<input class="form-control" type="text" id="email" name="email" value="<?php echo set_value('email'); ?>"/>
+	 				<input class="form-control" type="text" id="email" name="email" placeholder="contoh: email@email.com (email aktif)" value="<?php echo set_value('email'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('email'); ?> </p>
 
 	 			<label for="whatsapp">Whatsapp</label>
 	 			<p>
-	 				<input class="form-control" type="number" id="whatsapp" name="whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
+	 				<input class="form-control" type="number" id="whatsapp" name="whatsapp" placeholder="Isikan Nomor Whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('whatsapp'); ?> </p>
 	 			
@@ -124,18 +137,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            	<?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
 	            </div>
 
+	            <div class="col-md-12 pull-right text-right" style="padding-top: 10px; padding-bottom: 20px">
+	            	<h5>Jika sudah punya akun silakan klik
+	            		<b><a href="<?=base_url()?>" class="text-center"><?= lang('login_submit_btn');?></a></b>
+	            	</h5>
+	            </div>
+
 	            <?= form_close(); ?>
 
 	        </div>
-
-	        <div class="col-md-6 pull-right text-right" style="padding-top: 10px">
-	        	<h4>Jika sudah punya akun silakan klik
-	        		<a href="<?=base_url()?>" class="text-center"><?= lang('login_submit_btn');?></a>
-	        	</h4>
-	        </div>
-
-	        <div class="row"></div>
-
 
 
 	    </div>

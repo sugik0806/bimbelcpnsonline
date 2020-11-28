@@ -10,7 +10,7 @@ class Auth extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->library('form_validation');
-		$this->load->helper(['url', 'language']);
+		$this->load->helper(['url', 'language', 'string']);
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 		$this->lang->load('auth');
 		$this->load->model('Registrasi_model', 'regis');
@@ -370,11 +370,13 @@ class Auth extends CI_Controller
 
 	public function cek_registrasi()
 	{
-		$this->form_validation->set_rules('name', 'jurusan', 'required');
+		$this->form_validation->set_rules('name', 'jurusan', 'email', 'gender', 'whatsapp', 'required');
 
+		$this->form_validation->set_rules('name', str_replace(':', '', $this->lang->line('login_identity_label')), 'required|trim');
 		$this->form_validation->set_rules('jurusan', str_replace(':', '', $this->lang->line('login_identity_label')), 'required|trim');
 		$this->form_validation->set_rules('email', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
 		$this->form_validation->set_rules('gender', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
+		$this->form_validation->set_rules('whatsapp', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
 
 			$username = $this->input->post('name', true);
 			$email = $this->input->post('email', true);
@@ -384,26 +386,26 @@ class Auth extends CI_Controller
 			{
 				$data = [
 					'status' => false,
-					'msg'	 => 'Lengkapi Semua Isian !'
+					'msg'	 => 'Lengkapi Semua Isian Sesuai Format!'
 				];
 				$this->output_json($data);
 				//redirect('auth/registrasi');
 			}else{
-
+				//print_r($this->regis->email_check_mahasiswa($email));
 				if ($this->ion_auth->username_check($username)) {
 					$data = [
 						'status' => false,
 						'msg'	 => 'Username tidak tersedia (sudah digunakan).'
 					];
 					$this->output_json($data);
-				} else if ($this->ion_auth->email_check($email)) {
+				} else if ($this->regis->email_check_mahasiswa($email)) {
 					$data = [
 						'status' => false,
 						'msg'	 => 'Email tidak tersedia (sudah digunakan).'
 					];
 					$this->output_json($data);
 				} else {
-					$this->load->helper('string');
+					
 					$token = strtoupper(random_string('alpha', 5));
 					$data = [
 						'nama' => $username,
@@ -413,7 +415,8 @@ class Auth extends CI_Controller
 						'kelas_id' => $this->input->post('jurusan', true),
 						'id_matkul' => 2, //skd
 						'whatsapp' => $this->input->post('whatsapp', true),
-						'token' => $token
+						'token' => $token,
+						'angka_unik' => random_string('numeric',3)
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

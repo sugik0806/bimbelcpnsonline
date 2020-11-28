@@ -61,5 +61,11 @@ class Registrasi_model extends CI_Model {
         return $this->db->get_where('tb_soal', ['id_soal' => $id])->row();
     }
 
+    public function email_check_mahasiswa($email = '')
+    {
 
+        return $this->db->get_where('mahasiswa', ['email' => $email])->row();
+
+                     
+    }
 }
