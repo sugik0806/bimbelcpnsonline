@@ -59,15 +59,6 @@ class Invoice extends CI_Controller {
 
                     $datapeserta  = $this->master->getMahasiswaByToken($token);
 
-                    // $this->data['password'] = [
-                    //     'name' => 'password',
-                    //     'id' => 'password',
-                    //     'type' => 'password',
-                    //     'placeholder' => 'Password',
-                    //     'class' => 'form-control',
-                    // ];
-
-
                     $data = [
                         'token' => $token,
                         'kelas_id' => $datapeserta->kelas_id,
@@ -75,7 +66,8 @@ class Invoice extends CI_Controller {
                         'jurusan' => $datapeserta->nama_jurusan,
                         'nama' => $datapeserta->nama,
                         'file' => $datapeserta->url_bukti,
-                        'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik)
+                        'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik),
+                        'email' => $datapeserta->email
                     ];
 
 
@@ -104,8 +96,6 @@ class Invoice extends CI_Controller {
                         $i = 0;
                         foreach ($_FILES as $key => $val) {
                             $img_src = FCPATH.'uploads/file_konfirmasi/';
-                            //$getdata  = $this->master->getMahasiswaByToken($token);
-                            
                             $error = '';
                             
                                  //print_r($img_src);
@@ -116,21 +106,13 @@ class Invoice extends CI_Controller {
                                         exit();
                                     }else{
                                         if($method === 'edit'){
-                                            // if(!unlink($img_src.$getsoal->file)){
-                                            //     show_error('Error saat delete gambar <br/>'.var_dump($getsoal), 500, 'Error Edit Gambar');
-                                            //     exit();
-                                            // }
                                         }
-                                        // $data['file_bukti'] = $this->upload->data('file_name');
-                                        // $data['tipe_file'] = $this->upload->data('file_type');
                                     }
                                 }
 
                            
                            $i++;  
                         }
-                            
-                        
 
                         if($method==='add'){
                             $dataR = [
@@ -145,10 +127,8 @@ class Invoice extends CI_Controller {
                                 'token' => $token
                             ];
 
-                            //update data
                             $this->master->updateData($data, $where);
-                            //$this->output_json($data);
-
+                            
                             $kontenHTML = '<p>Konfirmasi Berhasil, Akun Kamu Akan Segera Aktif !</p> </br> Tautan untuk login <a href="https://member.bimbelcpnsonline.id"  class="button">Menuju Halaman Login</a>';
                             $subject = 'Konfirmasi Berhasil';
                             

@@ -122,6 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							    <li class="breadcrumb-item active"><b>3. Selesai</b></li>
 							  </ol>
 							</nav>
+							<h5 class="alert bg-info text-center">Setelah Data Konfirmasi Kami Verifikasi Password Akan di kirim via Email ! <b><?php echo $email;?></b></h5>
 						   <?php else : ?>
 						    <nav aria-label="breadcrumb">
 						    	<h4>Tiga Langkah Pendaftaran</h4>
