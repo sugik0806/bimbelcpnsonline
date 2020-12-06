@@ -24,6 +24,7 @@
 
         </div>
         <?= form_open('dokumen/delete', array('id' => 'bulk')) ?>
+       <div class="table-responsive px-4 pb-3" style="border: 0">
         <table id="dokumen" class="w-100 table table-striped table-bordered table-hover">
             <thead>
                 <tr>
@@ -51,6 +52,7 @@
                 </tr>
             </tfoot>
         </table>
+        </div> 
         <a href="<?=base_url('dashboard')?>" class="btn btn-flat btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
         <?= form_close() ?>
     </div>

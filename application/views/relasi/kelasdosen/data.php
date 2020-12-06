@@ -15,6 +15,7 @@
 			</div>
         </div>
 		<?=form_open('',array('id'=>'bulk'))?>
+        <div class="table-responsive px-4 pb-3" style="border: 0">
         <table id="kelasdosen" class="w-100 table table-striped table-bordered table-hover">
             <thead>
                 <tr>
@@ -41,6 +42,7 @@
                 </tr>
             </tfoot>
         </table>
+        </div>
 		<?=form_close()?>
     </div>
 </div>
