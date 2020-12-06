@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							    <li class="breadcrumb-item active"><b>3. Selesai</b></li>
 							  </ol>
 							</nav>
-							<h5 class="alert bg-info text-center">Setelah Data Konfirmasi Kami Verifikasi Password Akan di kirim via Email ! <b><?php echo $email;?></b></h5>
+							<h5 class="alert bg-info text-center">Setelah Data Konfirmasi Kami Verifikasi Password Akan di kirim via Email ! <b><?php echo $email;?></b>, Periksa Pada Kotak Masuk Atau SPAM</h5>
 						   <?php else : ?>
 						    <nav aria-label="breadcrumb">
 						    	<h4>Tiga Langkah Pendaftaran</h4>
@@ -132,6 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						        <li class="breadcrumb-item">3. Selesai</li>
 						      </ol>
 						    </nav>
+						    <h5 class="alert bg-info text-center">Invoice juga kami kirim via Email ! <b><?php echo $email;?></b>, Periksa Pada Kotak Masuk Atau SPAM</h5>
 						   <?php endif;?>
 
 						<div class="col-md-12">
@@ -140,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?></li>
 						    <li class="grey">Silakan Transfer Rp. <?php echo $jumlah_transfer;?></li>
 						    <li>Rekening BCA</li>
-						    <li>000000000000</li>
+						    <li>0901466148</li>
 						    <li>Atas Nama : Irawati</li>
 						    
 							

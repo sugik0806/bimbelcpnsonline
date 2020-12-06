@@ -201,7 +201,7 @@
                        <div class="col-lg-6 col-xs-6">
                            <div class="small-box bg-red">
                            <div class="inner">
-                               <h3>Unduh</h3>
+                               <h4>Unduh</h4>
                                <p>Materi</p>
                            </div>
                            <div class="icon">
@@ -219,7 +219,7 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>Tryout</h3>
+                                <h4>Tryout</h4>
                                 <p>List Tryout</p>
                             </div>
                             <div class="icon">
@@ -238,7 +238,7 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>Unduh</h3>
+                                <h4>Unduh</h4>
                                 <p>Materi</p>
                             </div>
                             <div class="icon">
@@ -253,7 +253,7 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                             <div class="inner">
-                                <h3>Tryout</h3>
+                                <h4>Tryout</h4>
                                 <p>List Tryout</p>
                             </div>
                             <div class="icon">

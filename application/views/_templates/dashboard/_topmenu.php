@@ -1,6 +1,6 @@
 <a href="<?=base_url('dashboard')?>" class="logo">
     <span class="logo-mini"><b>BDP</b></span>
-    <span class="logo-lg"><b>B</b>imbel <b>D</b>aring <b>P</b>intar </span>
+    <span class="logo-lg"><b>B</b>imbel <b>CPNS</b> <b>O</b>nline </span>
 </a>
 
 <nav class="navbar navbar-static-top" role="navigation">
@@ -14,14 +14,14 @@
                 <!-- Menu Toggle Button -->
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <!-- The user image in the navbar-->
-                    <img src="<?=base_url()?>assets/dist/img/user1.png" class="user-image" alt="User Image">
+                    <img src="<?=base_url()?>assets/dist/img/bmerahp.png" class="user-image" alt="User Image">
                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
                     <span class="hidden-xs">Hi, <?=$user->first_name?></span>
                 </a>
                 <ul class="dropdown-menu">
                     <!-- The user image in the menu -->
                     <li class="user-header">
-                        <img src="<?=base_url()?>assets/dist/img/user1.png" class="img-circle" alt="User Image">
+                        <img src="<?=base_url()?>assets/dist/img/bmerahp.png" class="img-circle" alt="User Image">
                         <p>
                             <?=$user->first_name.' '.$user->last_name?>
                             <small>Dibuat sejak <?=date('M, Y', $user->created_on)?></small>

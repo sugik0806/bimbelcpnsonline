@@ -6,11 +6,11 @@
 			<!-- Main Footer -->
 			<footer class="main-footer">
 				<!-- To the right -->
-				<div class="pull-right hidden-xs">
-					Redivice by <a target="_blank" href="https://bimbel.com"><b>Bimbel Daring Pintar</b></a> | Computer Based Test v3
-				</div>
+				<!-- <div class="pull-right hidden-xs">
+					Redivice by <a target="_blank" href=""><b>Bimbel CPNS Online</b></a> | Computer Based Test v3
+				</div> -->
 				<!-- Default to the left -->
-				<strong>Copyright &copy; 2019. By <a href="https://instagram.com/mghifariarfan" target="blank">Muhammad Ghifari Arfananda</a>. </strong> All rights reserved
+				<strong>Copyright &copy; 2020 <a href="https://bimbelcpnsonline.id" target="blank"><b>Bimbel CPNS Online</b></a> </strong> All rights reserved
 			</footer>
 
 			</div>

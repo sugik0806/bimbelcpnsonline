@@ -58,7 +58,7 @@ class Kirim_email extends CI_Controller {
                     $mail->isHTML(true);
 
                     // Email body content
-                    $mailContent = 'Password Anda '. $token.  ', Silakan login ke '. $this->config->item('urlbimbel'); // isi email
+                    $mailContent = 'Password Anda '. $token.  ' Gunakan Email Sebagai Username, Silakan login ke '. $this->config->item('urlbimbel'); // isi email
                     $mail->Body = $mailContent;
             
                     // Send email

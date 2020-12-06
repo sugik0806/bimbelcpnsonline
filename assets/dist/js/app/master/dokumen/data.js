@@ -49,7 +49,6 @@ $(document).ready(function() {
         orderable: false,
         searchable: false
       },
-      { data: "nama_matkul" },
       { data: "tipe" },
       { data: "nama_dokumen" }
     ],
@@ -57,7 +56,7 @@ $(document).ready(function() {
     columnDefs: [
       {
         searchable: false,
-        targets: 4,
+        targets: 3,
         data: {
           id_dokumen: "id_dokumen",
           ada: "ada"
@@ -83,7 +82,7 @@ $(document).ready(function() {
         }
       },
       {
-        targets: 5,
+        targets: 4,
         data: "id_dokumen",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
