@@ -30,7 +30,7 @@ var table;
     function load_pertanyaan(id){
 
         $.ajax({
-            type  : 'ajax',
+            type  : 'POST',
             url   : base_url+'ujian/datapertanyaan/' + id,
             async : true,
             dataType : 'json',
