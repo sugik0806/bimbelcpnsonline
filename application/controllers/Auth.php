@@ -10,7 +10,7 @@ class Auth extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->library('form_validation');
-		$this->load->helper(['url', 'language', 'string']);
+		$this->load->helper(['url', 'language', 'string', 'date']);
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 		$this->lang->load('auth');
 		$this->load->model('Registrasi_model', 'regis');
@@ -416,7 +416,8 @@ class Auth extends CI_Controller
 						'id_matkul' => 2, //skd
 						'whatsapp' => $this->input->post('whatsapp', true),
 						'token' => $token,
-						'angka_unik' => random_string('numeric',3)
+						'angka_unik' => random_string('numeric',3),
+						'tanggal_daftar' => date('Y-m-d')
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);
