@@ -49,14 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 						<?php if( $this->uri->segment(3) == 1) : ?>
 							<h2 class="alert alert-info text-center">Pendaftaran Akun <b>Paket Materi Rp 150.000</b></h2>
-							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
+							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 2) : ?>
 							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Soal Rp 250.000</b></h2>
-							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
+							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 3) : ?>
 							<h2 class="alert alert-warning text-center">Pendaftaran Akun <b>Paket Bimbel Rp 350.000</b></h2>
-							<h5 class="pull-right"><b>Ada pengurangan angka unik !</b></h5>
-						<?php elseif( !$this->uri->segment(3) == 3) : ?>
+							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>
+						<?php elseif( !$this->uri->segment(3)) : ?>
 							<h2>Pendaftaran Akun</h2>
 						<?php endif; ?>
 
