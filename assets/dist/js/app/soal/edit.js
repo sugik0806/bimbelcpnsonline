@@ -205,6 +205,7 @@ function kotrol_element() {
                 }).then((result) => {
                     if (result.value) {
                         //window.location.href = base_url+'soal';
+                       location.reload();
                     }
                 });
             //} else {

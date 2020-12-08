@@ -101,7 +101,22 @@ $(document).ready(function(){
  
 
 	$('.select2').select2();
-    tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
+   // tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
+    // $('#soal, #jawaban_a, #jawaban_b, #jawaban_c, #jawaban_d, #jawaban_e, #pembahasan').summernote({
+    //     placeholder: 'Hello stand alone ui',
+    //     tabsize: 2,
+    //     height: 120//,
+    //     // toolbar: [
+    //     //   ['style', ['style']],
+    //     //   ['font', ['bold', 'underline', 'clear']],
+    //     //   ['color', ['color']],
+    //     //   ['para', ['ul', 'ol', 'paragraph']],
+    //     //   ['table', ['table']],
+    //     //   ['insert', ['link', 'picture', 'video']],
+    //     //   ['view', ['fullscreen', 'codeview', 'help']]
+    //     // ]
+    //   });
+
 
 	// $('.froala-editor').froalaEditor({
 	// 	theme: 'royal',

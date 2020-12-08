@@ -282,7 +282,7 @@ class Soal extends CI_Controller {
                
                 }else{
 
-                    //print_r('2222');
+                    //print_r($abjad[$i]);
                     $file_abj = 'file_'.$abjad[$i];
                     if(!empty($_FILES[$file_abj]['name'])){    
                         if (!$this->upload->do_upload($key)){

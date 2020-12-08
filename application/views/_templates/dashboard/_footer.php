@@ -38,11 +38,12 @@
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/mode/xml.min.js"></script>
 			<!-- <script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script> -->
 			<!-- TinyMCE TextEditor -->
-			<script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script>
+			<!-- <script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script> -->
+			<!-- <script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->
 
   			<!-- <script src="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.js"></script> -->
 
-  			
+  			<!-- <script src="https://cdn.tiny.cloud/1/vukw2jnqljxly7zpan5yipei7xps7etce89uvsfit2liyrvy/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
 
 			<!-- App JS -->
 			<script src="<?= base_url() ?>assets/dist/js/app/dashboard.js"></script>
