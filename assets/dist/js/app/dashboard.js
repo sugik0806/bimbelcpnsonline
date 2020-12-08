@@ -101,12 +101,13 @@ $(document).ready(function(){
  
 
 	$('.select2').select2();
+    tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
 
-	$('.froala-editor').froalaEditor({
-		theme: 'royal',
-		quickInsertTags: null,
-		toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'strikeThrough', 'underline', '|', 'align', 'insertTable', 'insertLink','formatOL', 'formatUL', '|', 'html']
-	});
+	// $('.froala-editor').froalaEditor({
+	// 	theme: 'royal',
+	// 	quickInsertTags: null,
+	// 	toolbarButtons: ['fullscreen', '|', 'bold', 'italic', 'strikeThrough', 'underline', '|', 'align', 'insertTable', 'insertLink','formatOL', 'formatUL', '|', 'html']
+	// });
 
 	setInterval(function() {
 		var date = new Date();
