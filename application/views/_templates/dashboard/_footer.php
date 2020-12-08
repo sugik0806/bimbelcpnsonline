@@ -36,7 +36,7 @@
 			<!-- Textarea editor -->
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/lib/codemirror.min.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/mode/xml.min.js"></script>
-			<!-- <script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script> -->
+			<script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script>
 			<!-- TinyMCE TextEditor -->
 			<!-- <script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script> -->
 			<!-- <script src="//cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script> -->

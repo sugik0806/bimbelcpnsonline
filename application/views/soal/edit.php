@@ -151,7 +151,7 @@ div  {background-color: lightblue;}
                                         <?php endif;?>
                                     </div>
                                     <div class="form-group col-sm-9">
-                                        <textarea name="jawaban_<?= $abj; ?>" id="jawaban_<?= $abj; ?>" class="form-control froala-editor"><?=$soal->$opsi?></textarea>
+                                        <textarea name="jawaban_<?= $abj; ?>" id="jawaban_<?= $abj; ?>" class="form-control froala-editor test"><?=$soal->$opsi?></textarea>
                                         <small class="help-block" style="color: #dc3545"><?=form_error('jawaban_'.$abj)?></small>
                                     </div>
                                 </div>

@@ -24,12 +24,12 @@
 
 	<!-- textarea editor -->
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/codemirror/lib/codemirror.min.css">
-   <!--  <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/froala_editor.pkgd.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/froala_editor.pkgd.min.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/froala_style.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/themes/royal.min.css"> -->
+    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/froala_editor/css/themes/royal.min.css">
 	<!-- /texarea editor; -->
 
-	<link href="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
+	<!-- <link href="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet"> -->
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/mystyle.css">
