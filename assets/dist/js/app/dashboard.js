@@ -51,7 +51,7 @@ $(document).ready(function(){
  //            }
 
  //        });
-
+//sugik
  	$.ajax({
             type  : 'get',
             url   : base_url+'dashboard/getDataMahasiswa',
