@@ -53,7 +53,7 @@ $(document).ready(function(){
  //        });
 
  	$.ajax({
-            type  : 'POST',
+            type  : 'get',
             url   : base_url+'dashboard/getDataMahasiswa',
             async : true,
             dataType : 'json',
