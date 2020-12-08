@@ -3,7 +3,7 @@ $(document).ready(function(){
     ajaxcsrf();
     kotrol_element();
     load_soal();    
-    // tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
+     tinymce.init({ selector:'textarea', menubar:'', theme: 'modern'});
      // $('#soal, #jawaban_a, #jawaban_b, #jawaban_c, #jawaban_d, #jawaban_e, #pembahasan').summernote({
      //    placeholder: 'Ketik Data ..',
      //    tabsize: 2,

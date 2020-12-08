@@ -36,9 +36,9 @@
 			<!-- Textarea editor -->
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/lib/codemirror.min.js"></script>
 			<script src="<?= base_url() ?>assets/bower_components/codemirror/mode/xml.min.js"></script>
-			<script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script>
+			<!-- <script src="<?= base_url() ?>assets/bower_components/froala_editor/js/froala_editor.pkgd.min.js"></script> -->
 			<!-- TinyMCE TextEditor -->
-			<!-- <script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script> -->
+			<script src="<?= base_url() ?>assets/bower_components/tinymce/js/tinymce/tinymce.min.js"></script>
 
   			<!-- <script src="<?=base_url()?>assets/plugins/summernote-0.8.18-dist/summernote.min.js"></script> -->
 
