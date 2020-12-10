@@ -40,7 +40,7 @@ class Matkul extends CI_Controller
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function data()
+	public function data() 
 	{
 		$this->output_json($this->master->getDataMatkul(), false);
 	}
