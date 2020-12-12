@@ -10,7 +10,7 @@
 				<img src="<?=base_url()?>assets/dist/img/bmerahp.png" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p><?=$user->username?></p>
+				<p><?=$user->first_name?></p>
 				<small><?=$user->email?></small>
 			</div>
 		</div>
