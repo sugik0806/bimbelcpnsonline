@@ -623,12 +623,12 @@ if (!empty($soal_urut_ok)) {
 				  <div class="box-header with-border">
 				    <h3 class="box-title">Pertanyaan</h3>
 				    <div class="box-tools pull-right">
-				    <span data-toggle="tooltip" title="ada '.$s->id_soal.' Pertanyaan" class="badge bg-yellow">'.$s->id_soal.'</span>
+				    <!--span data-toggle="tooltip" title="ada '.$s->id_soal.' Pertanyaan" class="badge bg-yellow">'.$s->id_soal.'</span-->
 				      <span data-toggle="tooltip" title="ada '.$totalper->jml_pertanyaan.' Pertanyaan" class="badge bg-red">'.$totalper->jml_pertanyaan.'</span>
-				      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i> klik Untuk Buka / Tutup Pertanyaan</button>
+				      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i> Buka / Tutup</button>
 				    
-				      <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-				      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				      <!--button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
+				      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button-->
 				    </div>
 				  </div>
 				  <div class="box-body">
