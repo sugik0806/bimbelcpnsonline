@@ -38,6 +38,8 @@ function buka(id_widget) {
     $("#widget_" + id_widget).show();
 
     simpan();
+
+    window.location.href = '#';
 }
 
 function next() {
@@ -69,6 +71,8 @@ function next() {
     }
 
     simpan();
+
+    window.location.href = '#';
 }
 
 function back() {
@@ -101,6 +105,8 @@ function back() {
     }
 
     simpan();
+
+    window.location.href = '#';
 }
 
 function tidak_jawab() {
