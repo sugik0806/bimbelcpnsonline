@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/mystyle.css">
     <link rel="stylesheet" href="<?=base_url()?>assets/plugins/iCheck/square/blue.css">
+    <link rel="icon" href="<?=base_url()?>assets/dist/img/b.png" type="png">
     <style>
     .blogbugabagi 
     {

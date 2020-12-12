@@ -8,6 +8,7 @@
 	<!-- <h3 class="text-center mt-0 mb-4">
 		<b>B</b>imbel <b>CPNS</b><b> O</b>nline
 	</h3>  -->
+	<link rel="icon" href="<?=base_url()?>assets/dist/img/b.png" type="png">
 </a>
 	<p class="login-box-msg">Masukan akun anda</p>
 	<!-- <p class="login-box-msg">Gunakan <b>Email</b> sebagai <b>Password</b> saat pertama login</p> -->
