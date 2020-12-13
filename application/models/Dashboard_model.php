@@ -50,6 +50,7 @@ class Dashboard_model extends CI_Model {
         $this->db->join('m_ujian mu', "mu.id_ujian = h.ujian_id");
         $this->db->join('kelas d', 'm.kelas_id = d.id_kelas');
         $this->db->where('mu.matkul_id', 2);
+        $this->db->where('m.id_mahasiswa', $id);
         return $this->db->get()->result();
 
     }
@@ -92,6 +93,7 @@ class Dashboard_model extends CI_Model {
         $this->db->join('m_ujian mu', "mu.id_ujian = h.ujian_id");
         $this->db->join('kelas d', 'm.kelas_id = d.id_kelas');
         $this->db->where('mu.matkul_id', 1);
+        $this->db->where('m.id_mahasiswa', $id);
         return $this->db->get()->result();
 
     }
