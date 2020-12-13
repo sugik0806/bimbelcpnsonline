@@ -281,14 +281,14 @@
 
 </div>
     
-<div class="row col-md-12">
+<div class="col-sm-12">
     <div class="row">
         <?php if( $mahasiswa->id_matkul == 1 ) : ?>
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-sm-12">
                 <canvas style="background: #ffffff" id="cart3"></canvas>
             </div>
         <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>  
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-sm-12">
                 <canvas style="background: #ffffff" id="cart2"></canvas>
             </div>
         <?php endif ?>    
