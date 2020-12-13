@@ -1006,6 +1006,7 @@ if (!empty($soal_urut_ok)) {
 	{
 		// Decrypt Id
 		$id_tes = $this->input->post('id', true);
+		print_r($id_tes);
 		$id_tes = $this->encryption->decrypt($id_tes);
 		$mhs	  = $this->mhs;
 		$ujian 	  = $this->ujian->HslUjianStatus($id_tes, $mhs->id_mahasiswa);

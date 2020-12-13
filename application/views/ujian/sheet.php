@@ -4,7 +4,7 @@ if(time() >= $soal->waktu_habis)
     if ($soal->review == 'Y') {
         # code...
     }else{
-        redirect('ujian/list', 'location', 301);
+        //redirect('ujian/list', 'location', 301);
     }
     
 }

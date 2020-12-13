@@ -300,8 +300,9 @@ function modeNormal($id) {
 }
 
 function waktuHabis() {
-    selesai();
     alert('Waktu ujian telah habis!');
+    selesai();
+    window.location.href = base_url + 'ujian/list';
 }
 
 function simpan_akhir() {
