@@ -618,7 +618,7 @@ if (!empty($soal_urut_ok)) {
 			}
 
 			if ($mhs->id_mahasiswa == 1 && $q_soal->review == "Y"){
-				$html .= '<a class="btn btn-warning btn_soal btn-sm" onclick="return modeNormal('.$id.');">Ke Mode Ujian</a>';
+				$html .= '<a class="btn btn-warning btn_soal btn-sm" style="margin-bottom: 15px" onclick="return modeNormal('.$id.');">Ke Mode Ujian</a>';
 			}
 
 		$html .= '</div>  <!-- end pilihan jawaban -->';
