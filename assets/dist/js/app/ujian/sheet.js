@@ -268,6 +268,37 @@ function selesai() {
     });
 }
 
+function modeNormal($id) {
+    simpan();
+    ajaxcsrf();
+    $.ajax({
+        type: "POST",
+        url: base_url + "ujian/modeNormal",
+        data: { id: $id },
+        beforeSend: function () {
+            //simpan();
+            // $('.ajax-loading').show();    
+        },
+        // success: function (r) {
+        //     console.log(r);
+        //     if (r.status) {
+        //         location.reload();
+        //     }
+        // }
+        success: function (result) {
+            Swal({
+                "type": result.status ? "success" : "error",
+                "title": result.status ? "Berhasil" : "Gagal",
+                "text": result.status ? "Berhasil" : "Gagal"
+            }).then((data) => {
+                if(result.status){
+                    location.reload();
+                }
+            });
+        }
+    });
+}
+
 function waktuHabis() {
     selesai();
     alert('Waktu ujian telah habis!');

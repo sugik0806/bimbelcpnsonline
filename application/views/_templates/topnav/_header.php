@@ -39,7 +39,7 @@
 				<section class="content-header">
 					<h1>
 						<?=$judul?>
-						<small><?=$subjudul?></small>
+						<small><?=$nama_ujian?></small>
 					</h1>
 					<ol class="breadcrumb">
 						<li><a href="<?=base_url()?>"><i class="fa fa-dashboard"></i> Beranda</a></li>

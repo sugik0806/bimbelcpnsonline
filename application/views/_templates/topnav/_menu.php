@@ -17,10 +17,10 @@
 		</div>
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
-				<li><a href="#" onclick="simpan_akhir()">Akhiri</a></li>
+				<li ><a class="btn " href="#" onclick="simpan_akhir()">Akhiri Ujian</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-						<?=$user->username?> <span class="caret"></span>
+						<?=$user->first_name?> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="<?=base_url('logout')?>">Logout</a></li>

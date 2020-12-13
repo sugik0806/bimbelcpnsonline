@@ -364,6 +364,15 @@ public function getJumlahPertanyaan($id, $mhs, $id_soal)
         // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
     }
 
+     public function modeNormal($input, $where)
+    {
+        $this->db->set('review', $input{'review'});
+        $this->db->set('status', $input{'status'});
+        $this->db->where('ujian_id', $where{'ujian_id'});
+        $this->db->update('h_ujian'); 
+        // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
+    }
+
      public function updatePertanyaan($input, $where)
     {
         $this->db->set('pertanyaan', $input{'pertanyaan'});

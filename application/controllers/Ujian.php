@@ -244,6 +244,7 @@ class Ujian extends CI_Controller {
 			'user' 		=> $user,
 			'judul'		=> 'Tryout',
 			'subjudul'	=> 'Token Tryout',
+			'nama_ujian' => $this->ujian->getUjianById($id)->nama_ujian,
 			'mhs' 		=> $this->ujian->getIdMahasiswa($user->username),
 			'ujian'		=> $this->ujian->getUjianById($id),
 			'encrypted_id' => urlencode($this->encryption->encrypt($id)),
@@ -611,6 +612,14 @@ if (!empty($soal_urut_ok)) {
 				$html .= '<input type="hidden" class="form-control" value="'.$klas.'" placeholder="'.$klas.'" id="jawaban_benar_'.$no.'" name="jawaban_benar_'.$no.'">';		
 
 			}
+			if ($mhs->id_mahasiswa == 1 && $q_soal->review != "Y"){
+				$html .= '
+				<br><span class="badge bg-yellow">'.'<b>Jawaban Benar : '.$jawaban_benar.'</b>'.'</span>';
+			}
+
+			if ($mhs->id_mahasiswa == 1 && $q_soal->review == "Y"){
+				$html .= '<a class="btn btn-warning btn_soal btn-sm" onclick="return modeNormal('.$id.');">Ke Mode Ujian</a>';
+			}
 
 		$html .= '</div>  <!-- end pilihan jawaban -->';
 
@@ -703,6 +712,7 @@ if (!empty($soal_urut_ok)) {
 			'mhs'		=> $this->mhs,
 			'judul'		=> 'Tryout',
 			'subjudul'	=> 'Lembar Tryout',
+			'nama_ujian' => $ujian->nama_ujian,
 			'soal'		=> $detail_tes,
 			'no' 		=> $no,
 			'html' 		=> $html,
@@ -713,6 +723,23 @@ if (!empty($soal_urut_ok)) {
 		$this->load->view('_templates/topnav/_header.php', $data);
 		$this->load->view('ujian/sheet');
 		$this->load->view('_templates/topnav/_footer.php');
+	}
+
+	public function modeNormal()
+	{
+		$id = $this->input->post('id', true);
+			$d_update = [
+				
+				'review' => 'N',
+				'status' => 'Y'
+				
+			];
+			$where = [
+				'ujian_id' =>$this->input->post('id', true)
+			];
+
+			$this->ujian->modeNormal($d_update, $where);
+		 $this->output_json(['status'=>true]);
 	}
 
 	public function pertanyaan($id_count)
