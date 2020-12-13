@@ -300,8 +300,8 @@ function modeNormal($id) {
 }
 
 function waktuHabis() {
-    alert('Waktu ujian telah habis!');
     selesai();
+    alert('Waktu ujian telah habis!');
 }
 
 function simpan_akhir() {

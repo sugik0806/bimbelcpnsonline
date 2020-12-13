@@ -73,7 +73,7 @@
 
 
             <div class="row">
-                 <div class="col-md-12">
+                 <div class="col-md-12" style="padding-top: 5px">
                     <!-- <?php $list ?> -->
 
                      <?php foreach($list as $ls) : ?>
@@ -82,9 +82,16 @@
                       <div class="info-box" style="background: #f0fcfd">
                         <span class="info-box-icon" style="background: #d0f4f9"><img src="<?=base_url()?>assets/dist/img/b.png" width="100%" alt="" srcset=""></span>
                         <div class="info-box-content">
-                          <span class="info-box-text"><?=$ls->nama_ujian?></span>
-                          <span class="info-box-number"><?=$ls->jumlah_soal?></span>
-                         
+                          <span class="info-box-number"><?=$ls->nama_ujian?></span>
+                          <span class="info-box-text">Soal <?=$ls->jumlah_soal?></span>
+                          <span class="info-box-text"><?=$ls->menit?></span>
+                          <?php if( $ls->ada > 0) : ?>
+                              <span class="info-box-text text-right">TWK: <?=$ls->twk?></span>
+                              <span class="info-box-text text-right">TIU: <?=$ls->tiu?></span>
+                              <span class="info-box-text text-right">TKP: <?=$ls->tkp?></span>
+
+                              <span class="info-box-number text-right">Nilai Kamu: <?=$ls->nilai?></span>
+                          <?php endif; ?>
                           <div class="progress">
                             <div class="progress-bar" style="width: <?=$ls->id_ujian?>%"></div>
                           </div>
