@@ -302,7 +302,6 @@ function modeNormal($id) {
 function waktuHabis() {
     alert('Waktu ujian telah habis!');
     selesai();
-    window.location.href = base_url + 'ujian/list';
 }
 
 function simpan_akhir() {
