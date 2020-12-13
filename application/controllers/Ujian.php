@@ -728,10 +728,21 @@ if (!empty($soal_urut_ok)) {
 	public function modeNormal()
 	{
 		$id = $this->input->post('id', true);
+		
+		$dd = date("d");
+		$mm = date("m");
+		$yy = date("y");
+		$h = date("H");
+		$i = date("i");
+		$s = date("s");
+		$hplus = $h + 1;
+
 			$d_update = [
 				
 				'review' => 'N',
-				'status' => 'Y'
+				'status' => 'Y',
+				'tgl_selesai'=> $yy.'-'.$mm.'-'.$dd.' '.$hplus.':'.$i.':'.$s
+ 
 				
 			];
 			$where = [
