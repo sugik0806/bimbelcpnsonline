@@ -45,17 +45,15 @@ class Ujian_model extends CI_Model {
 
     public function getListUjianbox($id, $kelas, $id_matkul)
     {
-        $this->db->select("a.id_ujian, e.nama_dosen, d.nama_kelas, a.nama_ujian, b.nama_matkul, a.jumlah_soal, h.twk, h.tiu, h.tkp, h.nilai, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, CONCAT( a.waktu, ' Menit') as menit,  (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N') AS ada");
+        $this->db->select("a.id_ujian, e.nama_dosen, d.nama_kelas, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N') AS ada");
         $this->db->from('m_ujian a'); 
         $this->db->join('matkul b', 'a.matkul_id = b.id_matkul');
         $this->db->join('kelas_dosen c', "a.dosen_id = c.dosen_id");
         $this->db->join('kelas d', 'c.kelas_id = d.id_kelas');
         $this->db->join('dosen e', 'e.id_dosen = c.dosen_id');
-        $this->db->join('h_ujian h', 'h.ujian_id = a.id_ujian', 'left');
         $this->db->where('d.id_kelas', $kelas);
         $this->db->where('b.id_matkul', $id_matkul);
         $this->db->where('a.terbit', true);
-        $this->db->where('h.mahasiswa_id', $id);
         $this->db->order_by('a.id_ujian', 'asc');
         return $this->db->get()->result();
 
