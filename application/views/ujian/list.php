@@ -85,6 +85,7 @@
                           <span class="info-box-number"><?=$ls->nama_ujian?></span>
                           <span class="info-box-text">Soal <?=$ls->jumlah_soal?></span>
                           <span class="info-box-text"><?=$ls->menit?></span>
+
                           <?php foreach($listHasil as $lsh) : ?>
                               <?php if( $ls->ada > 0) : ?>
                                   <span class="info-box-text text-right">TWK: <?=$lsh->twk?></span>
@@ -92,11 +93,17 @@
                                   <span class="info-box-text text-right">TKP: <?=$lsh->tkp?></span>
 
                                   <span class="info-box-number text-right">Nilai Kamu: <?=$lsh->nilai?></span>
+                              
+                                  <div class="progress">
+                                    <div class="progress-bar bg-red" style="width: <?=$lsh->nilai*100/500?>%"></div>
+                                  </div>
+                              <?php else : ?>
+                                  <div class="progress">
+                                    <div class="progress-bar" style="width: 0%"></div>
+                                  </div>
                               <?php endif; ?>
                           <?php endforeach; ?>
-                          <div class="progress">
-                            <div class="progress-bar" style="width: <?=$ls->id_ujian?>%"></div>
-                          </div>
+
                           <span class="progress-description text-right">
                                 <?php if( $ls->ada > 0) : ?>
                                         <a class="btn btn-success" href="<?=base_url('hasilujian/cetak/'.$ls->id_ujian)?>" target="_blank">
