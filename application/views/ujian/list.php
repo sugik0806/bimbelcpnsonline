@@ -84,14 +84,16 @@
                         <div class="info-box-content">
                           <span class="info-box-number"><?=$ls->nama_ujian?></span>
                           <span class="info-box-text">Soal <?=$ls->jumlah_soal?></span>
-                          <!-- <span class="info-box-text"><?=$ls->menit?></span> -->
-                         <!--  <?php if( $ls->ada > 0) : ?>
-                              <span class="info-box-text text-right">TWK: <?=$ls->twk?></span>
-                              <span class="info-box-text text-right">TIU: <?=$ls->tiu?></span>
-                              <span class="info-box-text text-right">TKP: <?=$ls->tkp?></span>
+                          <span class="info-box-text"><?=$ls->menit?></span>
+                          <?php foreach($listHasil as $lsh) : ?>
+                              <?php if( $ls->ada > 0) : ?>
+                                  <span class="info-box-text text-right">TWK: <?=$lsh->twk?></span>
+                                  <span class="info-box-text text-right">TIU: <?=$lsh->tiu?></span>
+                                  <span class="info-box-text text-right">TKP: <?=$lsh->tkp?></span>
 
-                              <span class="info-box-number text-right">Nilai Kamu: <?=$ls->nilai?></span>
-                          <?php endif; ?> -->
+                                  <span class="info-box-number text-right">Nilai Kamu: <?=$lsh->nilai?></span>
+                              <?php endif; ?>
+                          <?php endforeach; ?>
                           <div class="progress">
                             <div class="progress-bar" style="width: <?=$ls->id_ujian?>%"></div>
                           </div>

@@ -222,13 +222,16 @@ class Ujian extends CI_Controller {
 		$user = $this->ion_auth->user()->row();
 
 		$list = $this->ujian->getListUjianbox($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $this->mhs->id_matkul);
+		$listHasil = $this->ujian->getListUjianboxHasil($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $this->mhs->id_matkul);
+
 		
 		$data = [
 			'user' 		=> $user,
 			'judul'		=> 'Tryout',
 			'subjudul'	=> 'List Tryout',
 			'mhs' 		=> $this->ujian->getIdMahasiswa($user->username),
-			'list' => $list
+			'list' => $list,
+			'listHasil' => $listHasil
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('ujian/list');
