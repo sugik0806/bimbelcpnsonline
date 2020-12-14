@@ -94,9 +94,9 @@
 
                                   <span class="info-box-number text-right">Nilai Kamu: <?=$lsh->nilai?></span>
                                    <span class="info-box-text text-right"><?=$lsh->nilai*100/500?>% Berpeluang Lolos SKD</span>
-                              
+                                   
                                   <div class="progress">
-                                    <div class="progress-bar bg-red" style="width: <?=$lsh->nilai*100/500?>%"></div>
+                                    <div class="progress-bar bg-red" style="width: <?=number_format($lsh->nilai*100/500)?>%"></div>
                                   </div>
                               <?php else : ?>
                                   <div class="progress">
