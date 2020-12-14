@@ -87,21 +87,18 @@
                           <span class="info-box-text"><?=$ls->menit?></span>
 
                           <?php foreach($listHasil as $lsh) : ?>
-                              <?php if( $ls->ada > 0) : ?>
+                              <?php if( $ls->ada > 0 && ($ls->id_ujian == $lsh->id_ujian)) : ?>
                                   <span class="info-box-text text-right">TWK: <?=$lsh->twk?></span>
                                   <span class="info-box-text text-right">TIU: <?=$lsh->tiu?></span>
                                   <span class="info-box-text text-right">TKP: <?=$lsh->tkp?></span>
 
                                   <span class="info-box-number text-right">Nilai Kamu: <?=$lsh->nilai?></span>
                                    <span class="info-box-text text-right"><?=$lsh->nilai*100/500?>% Berpeluang Lolos SKD</span>
-                                   
+
                                   <div class="progress">
                                     <div class="progress-bar bg-red" style="width: <?=number_format($lsh->nilai*100/500)?>%"></div>
                                   </div>
-                              <?php else : ?>
-                                  <div class="progress">
-                                    <div class="progress-bar" style="width: 0%"></div>
-                                  </div>
+                            
                               <?php endif; ?>
                           <?php endforeach; ?>
 
