@@ -502,10 +502,19 @@ if (!empty($soal_urut_ok)) {
 
 		$html .= '<div class="step" id="widget_'.$no.'">';
 
+		if (!empty($s->file)) {
+			$html .= '
+		    		<div class="text-center">
+		    			<img src="'.base_url().$path.$s->file.'" width="60%">
+		    		</div>
+					 ';
+		}
+
 		$html .= '
-		<div class="text-center">
-			<div class="w-25">'.tampil_media($path.$s->file).'</div>
-		</div>
+		<!--div class="text-center">
+			<div class="w-25" style="width:100%; height:100%;">'.tampil_media($path.$s->file).'</div>
+		</div-->
+
 
 		'.$s->soal.'
 			<h3 class="box-title">
