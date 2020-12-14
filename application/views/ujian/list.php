@@ -41,14 +41,14 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="table-responsive px-4 pb-3" style="border: 0">
+            <div class="table-responsive px-4 pb-3" style="border: 0">
                 <table id="ujian" class="w-100 table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Nama Tryout</th>
                         <th>Mata Bimbingan</th>
-						<th>Pembimbing</th>
+						<!-- <th>Pembimbing</th> -->
                         <th>Jumlah Soal</th>
                         <th>Waktu (Durasi)</th>
                         <th>Terlambat</th>
@@ -60,7 +60,7 @@
                         <th>No.</th>
                         <th>Nama Tryout</th>
                         <th>Mata Bimbingan</th>
-						<th>Pembimbing</th>
+						<!-- <th>Pembimbing</th> -->
                         <th>Jumlah Soal</th>
                         <th>Waktu (Durasi)</th>
                         <th>Terlambat</th>
@@ -69,7 +69,7 @@
                 </tfoot>
                 </table>
                 <a href="<?=base_url('dashboard')?>" class="btn btn-flat btn-sm bg-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
-            </div> -->
+            </div>
 
 
             <div class="row">
