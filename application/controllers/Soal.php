@@ -50,6 +50,116 @@ class Soal extends CI_Controller {
 		$this->load->view('soal/data');
 		$this->load->view('_templates/dashboard/_footer.php');
     }
+
+    public function import($import_data = null)
+    {
+        $data = [
+            'user' => $this->ion_auth->user()->row(),
+            'judul' => 'Soal',
+            'subjudul' => 'Import Data Soal',
+            'matkul' => $this->master->getAllMatkul(),
+            'pembimbing' => $this->master->getAllPembimbing(),
+            'tipe' => $this->master->getAlltipe(),
+            'ujian' => $this->master->getAllUjian()
+        ];
+        if ($import_data != null) $data['import'] = $import_data;
+
+        $this->load->view('_templates/dashboard/_header', $data);
+        $this->load->view('soal/import');
+        $this->load->view('_templates/dashboard/_footer');
+    }
+
+    public function preview()
+    {
+        $config['upload_path']      = './uploads/import/';
+        $config['allowed_types']    = 'xls|xlsx|csv';
+        $config['max_size']         = 2048;
+        $config['encrypt_name']     = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('upload_file')) {
+            $error = $this->upload->display_errors();
+            echo $error;
+            die;
+        } else {
+            $file = $this->upload->data('full_path');
+            $ext = $this->upload->data('file_ext');
+
+            switch ($ext) {
+                case '.xlsx':
+                    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+                    break;
+                case '.xls':
+                    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+                    break;
+                case '.csv':
+                    $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+                    break;
+                default:
+                    echo "unknown file ext";
+                    die;
+            }
+
+            $spreadsheet = $reader->load($file);
+            $sheetData = $spreadsheet->getActiveSheet()->toArray();
+            $data = [];
+            for ($i = 1; $i < count($sheetData); $i++) {
+                $data[] = [
+                    'dosen_id' => $sheetData[$i][1],
+                    'matkul_id' => $sheetData[$i][2],
+                    'bobot' => $sheetData[$i][3],
+                    'soal' => $sheetData[$i][6],
+                    'opsi_a' => $sheetData[$i][7],
+                    'opsi_b' => $sheetData[$i][8],
+                    'opsi_c' => $sheetData[$i][9],
+                    'opsi_d' => $sheetData[$i][10],
+                    'opsi_e' => $sheetData[$i][11],
+                    'jawaban' => $sheetData[$i][17],
+                    'tipe' => $sheetData[$i][20],
+                    'id_ujian' => $sheetData[$i][21],
+                    'Pembahasan' => $sheetData[$i][22]
+
+                ];
+            }
+
+            unlink($file);
+
+            $this->import($data);
+        }
+    }
+
+    public function do_import()
+    {
+
+        $input = json_decode($this->input->post('data', true));
+        $data = [];
+        foreach ($input as $d) {
+            $data[] = [
+                'dosen_id' => $d->dosen_id,
+                'matkul_id' => $d->matkul_id,
+                'bobot' => $d->bobot,
+                'soal' => $d->soal,
+                'opsi_a' => $d->opsi_a,
+                'opsi_b' => $d->opsi_b,
+                'opsi_c' => $d->opsi_c,
+                'opsi_d' => $d->opsi_d,
+                'opsi_e' => $d->opsi_e,
+                'jawaban' => $d->jawaban,
+                'tipe' => $d->tipe,
+                'id_ujian' => $d->id_ujian,
+                'Pembahasan' => $d->Pembahasan
+
+            ];
+        }
+
+        $save = $this->master->create('tb_soal', $data, true);
+        if ($save) {
+            redirect('soal');
+        } else {
+            redirect('soal/import');
+        }
+    }
     
     public function detail($id)
     {

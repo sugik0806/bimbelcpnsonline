@@ -213,6 +213,19 @@ class Master_model extends CI_Model {
     {
         return $this->db->get('matkul')->result();
     }
+    public function getAllPembimbing()
+    {
+        return $this->db->get('dosen')->result();
+    }
+    public function getAllTipe()
+    {   
+        return $this->db->get('jenis')->result();
+    }
+       
+    public function getAllUjian()
+    {
+        return $this->db->get('m_ujian')->result();
+    }
 
     public function getMatkulById($id, $single = false)
     {

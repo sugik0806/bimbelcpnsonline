@@ -82,6 +82,7 @@
 			<div class="col-sm-3 pull-right">
 				<div class="pull-right">
 					<a href="<?=base_url('soal/add')?>" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-plus"></i> Buat Soal</a>
+					<a href="<?= base_url('soal/import') ?>" class="btn btn-sm btn-flat btn-success"><i class="fa fa-upload"></i> Import</a>
 					<button type="button" onclick="reload_ajax()" class="btn btn-flat btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
 				</div>
 			</div>
