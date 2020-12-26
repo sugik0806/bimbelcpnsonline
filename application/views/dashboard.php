@@ -31,7 +31,7 @@
     <div class="col-lg-6 col-xs-12">
         <canvas id="cart2"></canvas>
     </div>
-    <div style="padding-top: 20px" class="col-lg-12 col-xs-12">
+    <div style="padding-top: 50px;" class="col-lg-11 col-xs-12">
         <canvas id="cart3"></canvas>
     </div>
 </div>
@@ -48,8 +48,8 @@
 			backgroundColor: [
 			'rgba(75, 192, 192, 0.2)',
 			'rgba(153, 102, 255, 0.2)',
-            'rgba(103, 12, 15, 0.2)',
-            'rgba(93, 133, 155, 0.2)'
+      'rgba(103, 12, 15, 0.2)',
+      'rgba(93, 133, 155, 0.2)'
 			]
 		}]
 		},
@@ -67,8 +67,8 @@
       backgroundColor: [
       'rgba(75, 192, 192, 0.2)',
       'rgba(153, 102, 255, 0.2)',
-            'rgba(103, 12, 15, 0.2)',
-            'rgba(93, 133, 155, 0.2)'
+      'rgba(103, 12, 15, 0.2)',
+      'rgba(93, 133, 155, 0.2)'
       ]
 		}]
 		},
@@ -94,7 +94,7 @@
       // }
   var ctx = document.getElementById("cart3").getContext('2d');
   var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'horizontalBar',
     data: {
     labels: [<?php foreach($info_box_geo as $info) : ?>"<?=$info->nama_provinsi;?>", <?php endforeach; ?>],
     datasets: [{
