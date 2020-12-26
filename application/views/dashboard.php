@@ -24,22 +24,22 @@
     </div>
     <?php endforeach; ?>
 </div>
-<div class="row">
+<div class="row" style="padding-top: 5%">
     <div class="col-lg-6 col-xs-12">
         <canvas id="cart1"></canvas>
     </div>
     <div class="col-lg-6 col-xs-12">
         <canvas id="cart2"></canvas>
     </div>
-    <div style="padding-top: 50px;" class="col-lg-11 col-xs-12">
+    <!-- <div style="padding-top: 50px;" class="col-lg-11 col-xs-12">
         <canvas id="cart3"></canvas>
-    </div>
+    </div> -->
 </div>
 <!-- Diagram -->
 <script type="text/javascript">
 	var ctx = document.getElementById("cart1").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'pie',
+		type: 'line',
 		data: {
 		labels: [<?php foreach($info_box as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
 		datasets: [{
@@ -58,17 +58,29 @@
 <script type="text/javascript">
 	var ctx = document.getElementById("cart2").getContext('2d');
 	var myChart = new Chart(ctx, {
-		type: 'line',
+		type: 'horizontalBar',
 		data: {
-		labels: [<?php foreach($info_box as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
+		labels: [<?php foreach($info_box_geo as $info) : ?>"<?=$info->nama_provinsi;?>", <?php endforeach; ?>],
 		datasets: [{
-			label: 'CBT',
-			data:[<?php foreach($info_box as $info) : ?><?=$info->total;?>,<?php endforeach; ?>],
-      backgroundColor: [
+			label: 'Geografi Peserta',
+			data:[<?php foreach($info_box_geo as $info) : ?><?=$info->total;?>,<?php endforeach; ?>],
+       backgroundColor: [
       'rgba(75, 192, 192, 0.2)',
       'rgba(153, 102, 255, 0.2)',
       'rgba(103, 12, 15, 0.2)',
-      'rgba(93, 133, 155, 0.2)'
+      'rgba(93, 133, 155, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(103, 12, 15, 0.2)',
+      'rgba(93, 133, 155, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(103, 12, 15, 0.2)',
+      'rgba(93, 133, 155, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(103, 12, 15, 0.2)',
+      'rgba(93, 133, 155, 0.2)',
       ]
 		}]
 		},
@@ -76,22 +88,7 @@
 </script>
 
 
-<script type="text/javascript">
-      // var ict_unit = [];
-      // var efficiency = [];
-      // var dynamicColors = function() {
-      //     var r = Math.floor(Math.random() * 255);
-      //     var g = Math.floor(Math.random() * 255);
-      //     var b = Math.floor(Math.random() * 255);
-      //     return "rgb(" + r + "," + g + "," + b + ")";
-      // };
-
-
-      // for (var i in data) {
-      //     ict_unit.push("ICT Unit " + data[i].ict_unit);
-      //     efficiency.push(data[i].efficiency);
-      //      var coloR=dynamicColors();
-      // }
+<!-- <script type="text/javascript">
   var ctx = document.getElementById("cart3").getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'horizontalBar',
@@ -121,7 +118,7 @@
     }]
     },
   });
-</script>
+</script> -->
 
             <!-- End-Diagram -->
 <?php elseif( $this->ion_auth->in_group('dosen') ) : ?>
