@@ -140,9 +140,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  	<!-- 4CAF50 -->
 						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?></li>
 						    <li class="grey">Silakan Transfer Rp. <?php echo $jumlah_transfer;?></li>
-						    <li>Rekening BCA</li>
-						    <li>0901466148</li>
-						    <li>Atas Nama : Irawati</li>
+						    <li>Rekening Mandiri</li>
+						    <li>9000025229858</li>
+						    <li>Atas Nama : Sugik Kusmanto</li>
 						    
 							
 						    <input type="hidden" name="token" id="token" value="<?php echo $token;?>">

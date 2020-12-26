@@ -31,6 +31,9 @@
     <div class="col-lg-6 col-xs-12">
         <canvas id="cart2"></canvas>
     </div>
+    <div class="col-lg-12 col-xs-12">
+        <canvas id="cart3"></canvas>
+    </div>
 </div>
 <!-- Diagram -->
 <script type="text/javascript">
@@ -64,6 +67,21 @@
 		}]
 		},
 	});
+</script>
+
+
+<script type="text/javascript">
+  var ctx = document.getElementById("cart3").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+    labels: [<?php foreach($info_box_geo as $info) : ?>"<?=$info->nama_provinsi;?>", <?php endforeach; ?>],
+    datasets: [{
+      label: 'CBT',
+      data:[<?php foreach($info_box_geo as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
+    }]
+    },
+  });
 </script>
 
             <!-- End-Diagram -->

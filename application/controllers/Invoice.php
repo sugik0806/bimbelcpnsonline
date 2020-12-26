@@ -264,10 +264,10 @@ class Invoice extends CI_Controller {
                               <ul class="price">
                                 <li class="header" style="background-color:#4CAF50">'.$paket.'</li>
                                 <li class="grey">Silakan Transfer '.$bayar.'<p style="text-align:center">Sudah dikurangi angka unik</p></li>
-                                <li>Ke rekening BCA</li>
-                                <li>0901466148</li>
+                                <li>Ke rekening Mandiri</li>
+                                <li>9000025229858</li>
                                 <li>Atas Nama</li>
-                                <li>Irawati</li>
+                                <li>Sugik Kusmanto</li>
                                 <li class="grey"><a href="https://member.bimbelcpnsonline.id/invoice/konfirmasi/'.$token.'" class="button">Konfirmasi</a></li>
                               </ul>
                             </div>

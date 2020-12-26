@@ -65,6 +65,15 @@ class Dashboard extends CI_Controller {
 		return $info_box_skb;
 	}
 
+	public function user_box_geo()
+	{
+		$box['box'] = $this->dashboard->getDashboardPesertaGEO();
+		$info_box_geo = json_decode(json_encode($box['box']), FALSE);
+		return $info_box_geo;
+	}
+
+	
+
 	public function index()
 	{
 		$user = $this->user;
@@ -76,6 +85,8 @@ class Dashboard extends CI_Controller {
 
 		if ( $this->ion_auth->is_admin() ) {
 			$data['info_box'] = $this->admin_box();
+
+			$data['info_box_geo'] = $this->user_box_geo();
 		} elseif ( $this->ion_auth->in_group('dosen') ) {
 			$matkul = ['matkul' => 'dosen.matkul_id=matkul.id_matkul'];
 			$data['dosen'] = $this->dashboard->get_where('dosen', 'nip', $user->username, $matkul)->row();
