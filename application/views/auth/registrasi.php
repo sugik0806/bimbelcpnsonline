@@ -89,10 +89,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 			</p>
 	 			<p> <?php echo form_error('whatsapp'); ?> </p>
 	 			
+	 			
+ 			    <label>Provinsi</label>
+ 			    <?php ?>
+ 			    <select name="provinsi" required="required" id="provinsi" class="form-control select2 form-group" style="width:100% !important">
+ 			        <option value="" disabled selected>Pilih Provinsi</option>
+ 			        <?php foreach ($provinsi as $d) : ?>
+ 			            <option value="<?=$d->id_provinsi?>"><?=$d->nama_provinsi?></option>
+ 			        <?php endforeach; ?>
+ 			    </select>
+ 			    <small class="help-block" style="color: #dc3545"><?=form_error('provinsi')?></small>
+ 			    
+ 			   <!--  <input type="hidden" name="id" value="<?=$jenis->id;?>"> -->
+ 			   
+ 			    <?php ?>
+	 			   
+	 			
 
 	 			<div class="form-group">
 	 				<label for="gender">Jenis Kelamin</label>
-	 				<select id="gender" name="gender" class="form-control select2">
+	 				<select id="gender" name="gender" class="form-control select2 form-group">
 	 					<option value="">-- Pilih --</option>
 	 					<option value="L">Laki-laki</option>
 	 					<option value="P">Perempuan</option>

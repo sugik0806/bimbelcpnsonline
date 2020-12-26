@@ -48,6 +48,7 @@ class Mahasiswa extends CI_Controller
 			'subjudul' => 'Tambah Data Peserta'
 		];
 		$data['matkul'] = $this->master->getAllMatkul();
+		$data['provinsi'] = $this->master->getProvinsi();
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('master/mahasiswa/add');
 		$this->load->view('_templates/dashboard/_footer.php');
@@ -62,7 +63,8 @@ class Mahasiswa extends CI_Controller
 			'subjudul'	=> 'Edit Data Peserta',
 			'jurusan'	=> $this->master->getJurusan(),
 			'kelas'		=> $this->master->getKelasByJurusan($mhs->jurusan_id),
-			'mahasiswa' => $mhs
+			'mahasiswa' => $mhs,
+			'provinsi'  => $this->master->getProvinsi()
 		];
 		$data['matkul'] = $this->master->getAllMatkul();
 		$this->load->view('_templates/dashboard/_header.php', $data);
@@ -111,6 +113,7 @@ class Mahasiswa extends CI_Controller
 					'jurusan' => form_error('jurusan'),
 					'kelas' => form_error('kelas'),
 					'matkul_id' => form_error('matkul_id'),
+					'provinsi' => form_error('provinsi'),
 				]
 			];
 			$this->output_json($data);
@@ -122,6 +125,7 @@ class Mahasiswa extends CI_Controller
 				'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
 				'kelas_id' 		=> $this->input->post('kelas', true),
 				'id_matkul' 	=> $this->input->post('matkul_id', true),
+				'id_provinsi'      => $this->input->post('provinsi', true),
 			];
 			if ($method === 'add') {
 				$action = $this->master->create('mahasiswa', $input);

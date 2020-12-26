@@ -362,6 +362,8 @@ class Auth extends CI_Controller
 
 	public function registrasi()
 	{	
+		$this->data['provinsi'] = $this->master->getProvinsi();
+
 		$this->load->view('_templates/auth/_header.php');
 		//$this->load->view('auth/registrasi.php');
 		$this->load->view('auth/registrasi', $this->data);
@@ -377,6 +379,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('email', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
 		$this->form_validation->set_rules('gender', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
 		$this->form_validation->set_rules('whatsapp', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
+		$this->form_validation->set_rules('provinsi', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
 
 			$username = $this->input->post('name', true);
 			$email = $this->input->post('email', true);
@@ -417,7 +420,8 @@ class Auth extends CI_Controller
 						'whatsapp' => $this->input->post('whatsapp', true),
 						'token' => $token,
 						'angka_unik' => random_string('numeric',3),
-						'tanggal_daftar' => date('Y-m-d')
+						'tanggal_daftar' => date('Y-m-d'),
+						'id_provinsi' => $this->input->post('provinsi', true)
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

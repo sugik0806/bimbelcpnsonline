@@ -26,6 +26,19 @@
                         <input placeholder="Email" type="email" name="email" class="form-control">
                         <small class="help-block"></small>
                     </div>
+                     <label>Provinsi</label>
+                     <?php ?>
+                     <select name="provinsi" required="required" id="provinsi" class="form-control select2 form-group" style="width:100% !important">
+                         <option value="" disabled selected>Pilih Provinsi</option>
+                         <?php foreach ($provinsi as $d) : ?>
+                             <option value="<?=$d->id_provinsi?>"><?=$d->nama_provinsi?></option>
+                         <?php endforeach; ?>
+                     </select>
+                     <small class="help-block" style="color: #dc3545"><?=form_error('provinsi')?></small>
+                     
+                    <!--  <input type="hidden" name="id" value="<?=$jenis->id;?>"> -->
+                    
+                     <?php ?>
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
                         <select name="jenis_kelamin" class="form-control select2">

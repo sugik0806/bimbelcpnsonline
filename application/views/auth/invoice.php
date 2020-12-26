@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						        <li class="breadcrumb-item">3. Selesai</li>
 						      </ol>
 						    </nav>
-						    <h5 class="alert bg-info text-center">Invoice juga kami kirim via Email ! <b><?php echo $email;?></b>, Periksa Pada Kotak Masuk Atau SPAM</h5>
+						    <h5 class="alert bg-info text-center">Invoice juga kami kirim via Email! <b><?php echo $email;?></b>, Periksa Pada Kotak Masuk Atau SPAM</h5>
 						   <?php endif;?>
 
 						<div class="col-md-12">

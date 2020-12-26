@@ -373,4 +373,13 @@ class Master_model extends CI_Model {
         $this->db->from('dosen')->where('nip', $nip);
         return $this->db->get()->row();
     }
+
+    public function getProvinsi()
+    {
+        $this->db->select('*');
+        $this->db->from('m_provinsi a');
+        $this->db->order_by('a.nama_provinsi');
+        return $this->db->get()->result();
+    }
+
 }
