@@ -343,7 +343,12 @@
             </div>
         <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>  
             <div class="col-sm-12">
+              <div class="col-sm-6">
                 <canvas style="background: #ffffff" id="cart2"></canvas>
+              </div>
+              <div class="col-sm-6">
+                <canvas style="background: #ffffff" id="cart4"></canvas>
+              </div>
             </div>
         <?php endif ?>    
     </div>
@@ -374,6 +379,39 @@
                 borderColor: "#8e5ea2",
                 fill: false,
                 data:[<?php foreach($info_box_skb as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
+            }]
+            },
+        });
+    </script>
+    <script type="text/javascript">
+        var ctx = document.getElementById("cart4").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: [<?php foreach($user_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
+            datasets: [{
+                label: 'Ranking Nasional SKD',
+                borderColor: "#8e5ea2",
+                fill: false,
+                data:[<?php foreach($user_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
+                 backgroundColor: [
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(103, 12, 15, 0.2)',
+                'rgba(93, 133, 155, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(103, 12, 15, 0.2)',
+                'rgba(93, 133, 155, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(103, 12, 15, 0.2)',
+                'rgba(93, 133, 155, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(103, 12, 15, 0.2)',
+                'rgba(93, 133, 155, 0.2)',
+                ]
             }]
             },
         });

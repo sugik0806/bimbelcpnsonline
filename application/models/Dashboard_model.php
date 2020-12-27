@@ -110,4 +110,17 @@ class Dashboard_model extends CI_Model {
 
     }
 
+    public function getDashboardPesertaRanking()
+    {
+
+        $this->db->select("mahasiswa.nama, ROUND(Avg(h_ujian.nilai)) as nilai_rata, m_provinsi.nama_provinsi");
+        $this->db->from('mahasiswa');
+        $this->db->join('m_provinsi', 'm_provinsi.id_provinsi = mahasiswa.id_provinsi');
+        $this->db->join('h_ujian', 'h_ujian.mahasiswa_id = mahasiswa.id_mahasiswa');
+        $this->db->group_By("mahasiswa.nama");
+        $this->db->order_By("nilai_rata", "desc");
+        return $this->db->get()->result();
+
+    }
+
 }

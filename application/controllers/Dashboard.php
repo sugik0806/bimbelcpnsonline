@@ -72,6 +72,13 @@ class Dashboard extends CI_Controller {
 		return $info_box_geo;
 	}
 
+	public function user_box_ran()
+	{
+		$box['box'] = $this->dashboard->getDashboardPesertaRanking();
+		$user_box_ran = json_decode(json_encode($box['box']), FALSE);
+		return $user_box_ran;
+	}
+
 	
 
 	public function index()
@@ -170,6 +177,7 @@ class Dashboard extends CI_Controller {
 		}else{
 			$data['info_box_skd'] = $this->user_box_skd();
 			$data['info_box_skb'] = $this->user_box_skb();
+			$data['user_box_ran'] = $this->user_box_ran();
 			$join = [
 				'kelas b' 	=> 'a.kelas_id = b.id_kelas',
 				'jurusan c'	=> 'b.jurusan_id = c.id_jurusan',
