@@ -386,7 +386,7 @@
     <script type="text/javascript">
         var ctx = document.getElementById("cart4").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'horizontalBar',
             data: {
             labels: [<?php foreach($user_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
             datasets: [{

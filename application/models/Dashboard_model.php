@@ -119,6 +119,7 @@ class Dashboard_model extends CI_Model {
         $this->db->join('h_ujian', 'h_ujian.mahasiswa_id = mahasiswa.id_mahasiswa');
         $this->db->group_By("mahasiswa.nama");
         $this->db->order_By("nilai_rata", "desc");
+        $this->db->limit(10);
         return $this->db->get()->result();
 
     }
