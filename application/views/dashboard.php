@@ -379,7 +379,7 @@
             data: {
             labels: [<?php foreach($info_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
             datasets: [{
-                label: 'Ranking Nasional '+matkul,
+                label: '10 Besar Ranking Nasional '+matkul,
                 borderColor: "#8e5ea2",
                 fill: false,
                 data:[<?php foreach($info_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
