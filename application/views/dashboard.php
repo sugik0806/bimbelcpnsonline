@@ -337,63 +337,52 @@
     
 <div class="col-sm-12">
     <div class="row">
-        <?php if( $mahasiswa->id_matkul == 1 ) : ?>
-            <div class="col-sm-12">
-                <canvas style="background: #ffffff" id="cart3"></canvas>
-            </div>
-        <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>  
-            <div class="col-sm-12">
-              <div class="col-sm-6">
-                <canvas style="background: #ffffff" id="cart2"></canvas>
-              </div>
-              <div class="col-sm-6">
-                <canvas style="background: #ffffff" id="cart4"></canvas>
-              </div>
-            </div>
-        <?php endif ?>    
+      
+        <div class="col-sm-12">
+          <div class="col-sm-6">
+            <canvas style="background: #ffffff" id="cart2"></canvas>
+          </div>
+          <div class="col-sm-6">
+            <canvas style="background: #ffffff" id="cart3"></canvas>
+          </div>
+        </div>
+
     </div>
     <!-- Diagram -->
     <script type="text/javascript">
+
+      <?php if( $mahasiswa->id_matkul == 1 ) : ?>
+        var matkul = 'SKB';
+      <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>
+        var matkul = 'SKD';
+      <?php endif; ?> 
+
         var ctx = document.getElementById("cart2").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-            labels: [<?php foreach($info_box_skd as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
+            labels: [<?php foreach($info_box_ujian as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
             datasets: [{
-                label: 'Hasil Tryout SKD',
+                label: 'Hasil Tryout '+matkul,
                 borderColor: "#3e95cd",
                 fill: false,
-                data:[<?php foreach($info_box_skd as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
+                data:[<?php foreach($info_box_ujian as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
             }]
             },
         });
-    </script>
+    </script> 
+
     <script type="text/javascript">
         var ctx = document.getElementById("cart3").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-            labels: [<?php foreach($info_box_skb as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
-            datasets: [{
-                label: 'Hasil Tryout SKB',
-                borderColor: "#8e5ea2",
-                fill: false,
-                data:[<?php foreach($info_box_skb as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
-            }]
-            },
-        });
-    </script>
-    <script type="text/javascript">
-        var ctx = document.getElementById("cart4").getContext('2d');
-        var myChart = new Chart(ctx, {
             type: 'horizontalBar',
             data: {
-            labels: [<?php foreach($user_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
+            labels: [<?php foreach($info_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
             datasets: [{
-                label: 'Ranking Nasional SKD',
+                label: 'Ranking Nasional '+matkul,
                 borderColor: "#8e5ea2",
                 fill: false,
-                data:[<?php foreach($user_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
+                data:[<?php foreach($info_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
                  backgroundColor: [
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
@@ -416,8 +405,8 @@
             },
         });
     </script>
-
-                <!-- End-Diagram -->
+    
+    <!-- End-Diagram -->
 
 
 </div>

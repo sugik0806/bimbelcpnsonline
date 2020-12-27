@@ -51,19 +51,13 @@ class Dashboard extends CI_Controller {
 		return $info_box;
 	}
 
-	public function user_box_skd()
+	public function user_box_ujian()
 	{
-		$box['box'] = $this->dashboard->getDashboardPesertaSKD($this->mhs->id_mahasiswa);
-		$info_box_skd = json_decode(json_encode($box['box']), FALSE);
-		return $info_box_skd;
+		$box['box'] = $this->dashboard->getDashboardPesertaUjian($this->mhs->id_mahasiswa, $this->mhs->id_matkul);
+		$info_box_ujian = json_decode(json_encode($box['box']), FALSE);
+		return $info_box_ujian;
 	}
 
-	public function user_box_skb()
-	{
-		$box['box'] = $this->dashboard->getDashboardPesertaSKB($this->mhs->id_mahasiswa);
-		$info_box_skb = json_decode(json_encode($box['box']), FALSE);
-		return $info_box_skb;
-	}
 
 	public function user_box_geo()
 	{
@@ -74,9 +68,9 @@ class Dashboard extends CI_Controller {
 
 	public function user_box_ran()
 	{
-		$box['box'] = $this->dashboard->getDashboardPesertaRanking();
-		$user_box_ran = json_decode(json_encode($box['box']), FALSE);
-		return $user_box_ran;
+		$box['box'] = $this->dashboard->getDashboardPesertaRanking($this->mhs->id_matkul);
+		$info_box_ran = json_decode(json_encode($box['box']), FALSE);
+		return $info_box_ran;
 	}
 
 	
@@ -175,9 +169,8 @@ class Dashboard extends CI_Controller {
 				            }
 			        }
 		}else{
-			$data['info_box_skd'] = $this->user_box_skd();
-			$data['info_box_skb'] = $this->user_box_skb();
-			$data['user_box_ran'] = $this->user_box_ran();
+			$data['info_box_ujian'] = $this->user_box_ujian();
+			$data['info_box_ran'] = $this->user_box_ran();
 			$join = [
 				'kelas b' 	=> 'a.kelas_id = b.id_kelas',
 				'jurusan c'	=> 'b.jurusan_id = c.id_jurusan',
