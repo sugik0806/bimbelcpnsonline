@@ -103,16 +103,15 @@ $(document).ready(function() {
              if(data.substring(0, 2)=='62'){
                  var hp = data;
              }
+             else if(data.substring(0, 3)=='+62'){
+                 var hp = data;
+             }
              // cek apakah no hp karakter 1 adalah 0
              else if(data.substring(0, 1)=='0'){
                  var temp = data.replace(data.substring(0, 1), "");
                  var hp = '62'+temp;
 
              }
-         //}
-console.info(hp);
-          //          var str = "Hello world!";
-          // var res = $data.substring(0, 3);
 
           return `<div class="text-center">
                   <a target="_blank" class="btn btn-xs btn-success" href="http://wa.me/${hp}">
