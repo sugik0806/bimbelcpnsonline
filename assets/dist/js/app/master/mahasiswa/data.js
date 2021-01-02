@@ -50,7 +50,7 @@ $(document).ready(function() {
         orderable: false,
         searchable: false
       },
-      { data: "nim" },
+      { data: "whatsapp" },
       { data: "nama" },
       { data: "email" },
       { data: "nama_kelas" },
@@ -90,6 +90,36 @@ $(document).ready(function() {
           return `<div class="text-center">
 									<input name="checked[]" class="check" value="${data}" type="checkbox">
 								</div>`;
+        }
+      },
+      {
+        targets: 1,
+        data: "whatsapp",
+        render: function(data, type, row, meta) {
+
+
+         //if(!preg_match('/[^+0-9]/',trim($data))){
+             // cek apakah no hp karakter 1-3 adalah +62
+             if(data.substring(0, 2)=='62'){
+                 var hp = data;
+             }
+             // cek apakah no hp karakter 1 adalah 0
+             else if(data.substring(0, 1)=='0'){
+                 var temp = data.replace(data.substring(0, 1), "");
+                 var hp = '62'+temp;
+
+             }
+         //}
+console.info(hp);
+          //          var str = "Hello world!";
+          // var res = $data.substring(0, 3);
+
+          return `<div class="text-center">
+                  <a target="_blank" class="btn btn-xs btn-success" href="http://wa.me/${hp}">
+                    Kirim <i class="fa fa-whatsapp"></i>
+                  </a>
+                  <p>${hp}</p>
+                  </div>`;
         }
       }
     ],

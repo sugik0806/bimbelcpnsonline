@@ -86,7 +86,7 @@ class Master_model extends CI_Model {
 
     public function getDataMahasiswa()
     {
-        $this->datatables->select('a.id_mahasiswa, a.nama, a.nim, a.email, b.nama_kelas, c.nama_jurusan');
+        $this->datatables->select('a.id_mahasiswa, a.nama, a.whatsapp, a.email, b.nama_kelas, c.nama_jurusan');
         $this->datatables->select('(SELECT COUNT(id) FROM users WHERE username = a.nim) AS ada');
         $this->datatables->from('mahasiswa a');
         $this->datatables->join('kelas b', 'a.kelas_id=b.id_kelas');

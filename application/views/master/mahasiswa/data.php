@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>NP</th>
+                        <th>Whatsapp</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Kelas</th>
@@ -35,7 +35,7 @@
                 <tfoot>
                     <tr>
                         <th>No.</th>
-                        <th>NP</th>
+                        <th>Whatsapp</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Kelas</th>
