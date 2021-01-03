@@ -14,6 +14,15 @@
             <div class="pull-right">
                 <button onclick="bulk_delete()" class="btn btn-sm btn-flat btn-danger" type="button"><i class="fa fa-trash"></i> Delete</button>
             </div>
+            <div class="col-md-2 pull-right">
+                <select id="filter_by" name="filter_by" class="select2">
+                    <option value="">-- Pilih --</option>
+                    <option value="1">Peserta Aktif</option>
+                    <option value="2">Peserta Baru</option>
+                </select>
+            </div>
+            
+           
         </div>
         <?= form_open('mahasiswa/delete', array('id' => 'bulk')); ?>
         <div class="table-responsive">

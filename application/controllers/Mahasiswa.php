@@ -35,9 +35,10 @@ class Mahasiswa extends CI_Controller
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function data()
+	public function data($id=null)
 	{
-		$this->output_json($this->master->getDataMahasiswa(), false);
+		$url_bukti = 'null';
+		$this->output_json($this->master->getDataMahasiswa($id), false);
 	}
 
 	public function add()

@@ -84,13 +84,24 @@ class Master_model extends CI_Model {
      * Data Mahasiswa
      */
 
-    public function getDataMahasiswa()
+    public function getDataMahasiswa($id)
     {
+
+        if ($id == 1) {
+           $where = "url_bukti is NOT NULL";
+        }else if ($id == 2) {
+           $where = "url_bukti is NULL";
+        }
+
         $this->datatables->select('a.id_mahasiswa, a.nama, a.whatsapp, a.email, a.token, c.nama_jurusan');
         $this->datatables->select('(SELECT COUNT(id) FROM users WHERE username = a.nim) AS ada');
         $this->datatables->from('mahasiswa a');
         $this->datatables->join('kelas b', 'a.kelas_id=b.id_kelas');
         $this->datatables->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
+        if ($id) {
+           $this->db->where($where);
+        }
+        
         $this->db->order_by('a.id_mahasiswa', 'desc');
         return $this->datatables->generate();
     }

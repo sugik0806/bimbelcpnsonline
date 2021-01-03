@@ -1,5 +1,21 @@
 var table;
 
+  $(document).ready(function(){
+    $('#filter_by').on('change', function(){
+      let id = $(this).val();
+      let src = base_url + "mahasiswa/data";
+      let url;
+
+      if(id !== 'all'){
+        let src2 = src + '/' + id;
+        url = $(this).prop('checked') === true ? src : src2;
+      }else{
+        url = src;
+      }
+      table.ajax.url(url).load();
+    });
+  });
+
 $(document).ready(function() {
   ajaxcsrf();
 
