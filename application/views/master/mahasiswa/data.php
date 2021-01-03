@@ -24,7 +24,7 @@
                         <th>Whatsapp</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Kelas</th>
+                        <th>Token</th>
                         <th>Paket</th>
                         <th width="100" class="text-center">Aksi</th>
                         <th width="100" class="text-center">
@@ -38,7 +38,7 @@
                         <th>Whatsapp</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Kelas</th>
+                        <th>Token</th>
                         <th>Paket</th>
                         <th width="100" class="text-center">Aksi</th>
                         <th width="100" class="text-center">

@@ -53,7 +53,7 @@ $(document).ready(function() {
       { data: "whatsapp" },
       { data: "nama" },
       { data: "email" },
-      { data: "nama_kelas" },
+      { data: "token" },
       { data: "nama_jurusan" }
     ],
     columnDefs: [
@@ -118,6 +118,19 @@ $(document).ready(function() {
                     Kirim <i class="fa fa-whatsapp"></i>
                   </a>
                   <p>${hp}</p>
+                  </div>`;
+        }
+      },
+      {
+        targets: 4,
+        data: "token",
+        render: function(data, type, row, meta) {
+
+          return `<div class="text-center">
+                  <a target="_blank" class="btn btn-xs btn-info" href="${base_url}invoice/konfirmasi/${data}">
+                    Lihat Bukti <i class="fa fa-book"></i>
+                  </a>
+                  <p>${data}</p>
                   </div>`;
         }
       }
