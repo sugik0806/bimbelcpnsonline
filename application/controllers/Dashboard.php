@@ -15,8 +15,11 @@ class Dashboard extends CI_Controller {
 		$this->mhs 	= $this->ujian->getIdMahasiswa($this->user->username);
 	}
 
+	
+
 	public function admin_box()
 	{
+		$join = ['users u' 	=> 'u.email = m.email'];
 		$box = [
 			[
 				'box' 		=> 'light-blue',
@@ -26,23 +29,30 @@ class Dashboard extends CI_Controller {
 				'url'		=> 'jurusan'
 			],
 			[
-				'box' 		=> 'olive',
-				'total' 	=> $this->dashboard->total('kelas'),
-				'title'		=> 'Kelas',
-				'icon'		=> 'building-o',
-				'url'		=> 'kelas'
-			],
-			[
 				'box' 		=> 'yellow-active',
 				'total' 	=> $this->dashboard->total('dosen'),
 				'title'		=> 'Pembimbing',
 				'icon'		=> 'user-secret',
 				'url'		=> 'dosen'
 			],
+			// [
+			// 	'box' 		=> 'olive',
+			// 	'total' 	=> $this->dashboard->total('kelas'),
+			// 	'title'		=> 'Kelas',
+			// 	'icon'		=> 'building-o',
+			// 	'url'		=> 'kelas'
+			// ],
+			[
+				'box' 		=> 'olive',
+				'total' 	=> $this->dashboard->totalJoin('mahasiswa m', $join),
+				'title'		=> 'Peserta Aktif',
+				'icon'		=> 'group',
+				'url'		=> 'mahasiswa'
+			],
 			[
 				'box' 		=> 'red',
-				'total' 	=> $this->dashboard->total('mahasiswa'),
-				'title'		=> 'Peserta',
+				'total' 	=> $this->dashboard->totalPesertaBaru('mahasiswa'),
+				'title'		=> 'Peserta Baru',
 				'icon'		=> 'user',
 				'url'		=> 'mahasiswa'
 			],

@@ -9,6 +9,30 @@ class Dashboard_model extends CI_Model {
         return $query;
     }
 
+    public function totalPesertaBaru($table)
+    {   
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where('url_bukti', null);
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+
+    public function totalJoin($table, $join)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+
+        if($join !== null){
+            foreach($join as $table => $field){
+                $this->db->join($table, $field);
+            }
+        }
+
+        $query = $this->db->get()->num_rows();
+        return $query;
+    }
+
     public function get_where($table, $pk, $id, $join = null, $order = null)
     {
         $this->db->select('*');
