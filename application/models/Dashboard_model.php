@@ -52,6 +52,7 @@ class Dashboard_model extends CI_Model {
         $this->db->select("p.nama_provinsi, COUNT(p.nama_provinsi) as total");
         $this->db->from('mahasiswa m');
         $this->db->join('m_provinsi p', 'p.id_provinsi = m.id_provinsi');
+        $this->db->join('users u', 'u.email = m.email');
         $this->db->group_By("p.nama_provinsi");
         $this->db->order_By("p.nama_provinsi");
         return $this->db->get()->result();
