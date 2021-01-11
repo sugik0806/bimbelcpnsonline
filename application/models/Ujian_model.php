@@ -105,7 +105,7 @@ class Ujian_model extends CI_Model {
         $this->db->from('m_ujian a');
         $this->db->join('dosen b', 'a.dosen_id=b.id_dosen');
         $this->db->join('matkul c', 'a.matkul_id=c.id_matkul');
-        $this->db->order_by('nama_ujian');
+        $this->db->order_by('id_ujian', 'asc');
         return $this->db->get()->result();
     }
 
