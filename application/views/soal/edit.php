@@ -5,6 +5,29 @@ p    {color: black;}
 div  {background-color: lightblue;}
 </style> -->
 
+<style>
+.zoom {
+  
+  /*
+  padding: 50px;
+  background-color: green;
+  transition: transform .2s; 
+  */
+  /*margin: 0 auto;*/
+  z-index: 1;
+}
+
+.zoom:hover {
+  transform: scale(3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transition: transform .2s; 
+  z-index: 1;
+  padding-left: 100px;
+  width: 300px;
+  height: 300px;
+}
+</style>
+
+
 <div class="row">
     <div class="col-sm-12">    
         <?=form_open_multipart('soal/save', array('id'=>'formsoal'), array('method'=>'edit', 'id_soal'=>$soal->id_soal));?>
@@ -110,9 +133,11 @@ div  {background-color: lightblue;}
                                     <div class="form-group col-sm-3">
                                         <input type="file" name="file_soal" class="form-control">
                                         <small class="help-block" style="color: #dc3545"><?=form_error('file_soal')?></small>
+                                        <div class="zoom">
                                         <?php if(!empty($soal->file)) : ?>
                                             <?=tampil_media('uploads/bank_soal/'.$soal->file);?>
                                         <?php endif;?>
+                                        </div>
                                     </div>
                                     <div class="form-group col-sm-9">
                                         <textarea name="soal" id="soal" class="form-control froala-editor"><?=$soal->soal?></textarea><br>
