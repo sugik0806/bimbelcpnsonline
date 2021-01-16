@@ -5,27 +5,6 @@ p    {color: black;}
 div  {background-color: lightblue;}
 </style> -->
 
-<style>
-.zoom {
-  
-  /*
-  padding: 50px;
-  background-color: green;
-  transition: transform .2s; 
-  */
-  /*margin: 0 auto;*/
-  z-index: 1;
-}
-
-.zoom:hover {
-  transform: scale(3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  transition: transform .2s; 
-  z-index: 1;
-  padding-left: 100px;
-  width: 300px;
-  height: 300px;
-}
-</style>
 
 
 <div class="row">
@@ -130,10 +109,35 @@ div  {background-color: lightblue;}
                             <div class="col-sm-12">
                                 <label for="soal" class="control-label text-center">Soal</label>
                                 <div class="row">
+
+                                    <center>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                          <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <!-- <h4 class="modal-title" id="myModalLabel">Cara Membuat Pop UP Gambar dengan Bootstrap</h4> -->
+                                              </div>
+                                              <div class="modal-body">
+                                                <center>    
+                                                    <?php if(!empty($soal->file)) : ?>
+                                                        <?=tampil_media('uploads/bank_soal/'.$soal->file);?>
+                                                    <?php endif;?>
+                                                </center>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>   
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </center>
+
                                     <div class="form-group col-sm-3">
                                         <input type="file" name="file_soal" class="form-control">
                                         <small class="help-block" style="color: #dc3545"><?=form_error('file_soal')?></small>
-                                        <div class="zoom">
+                                        <div data-toggle="modal" data-target="#myModal">
                                         <?php if(!empty($soal->file)) : ?>
                                             <?=tampil_media('uploads/bank_soal/'.$soal->file);?>
                                         <?php endif;?>
