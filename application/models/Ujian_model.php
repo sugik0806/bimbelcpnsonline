@@ -67,7 +67,7 @@ class Ujian_model extends CI_Model {
         $this->db->join('kelas_dosen c', "a.dosen_id = c.dosen_id");
         $this->db->join('kelas d', 'c.kelas_id = d.id_kelas');
         $this->db->join('dosen e', 'e.id_dosen = c.dosen_id');
-        $this->db->join('h_ujian h', 'h.ujian_id = a.id_ujian', 'left');
+        $this->db->join('h_ujian h', 'h.ujian_id = a.id_ujian', 'right');
         $this->db->where('d.id_kelas', $kelas);
         $this->db->where('b.id_matkul', $id_matkul);
         $this->db->where('a.terbit', true);
