@@ -56,7 +56,7 @@
             <div class="col-sm-6">
                 <div class="box box-solid">
                     <?php if (!$url) : ?>
-                        <div class="box-body pb-0">
+                        <!-- dengan timer <div class="box-body pb-0">
                             <div class="callout callout-info">
                                 <p>
                                     Waktu boleh mengerjakan Tryout adalah saat tombol "MULAI" berwarna hijau.
@@ -87,7 +87,13 @@
                                 Silahkan hubungi pembimbing anda untuk bisa mengikuti tryout pengganti.
                             </div>
                             <?php endif;?>
-                        </div>
+                        </div> aktifkan juga yang di jsnya -->
+
+                       <!--  tanpa timer -->
+                        <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-success btn-lg mb-4">
+                            <i class="fa fa-pencil"></i> Mulai
+                        </button>
+
                     <?php else : ?>
                          <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-info btn-lg mb-4">
                             <i class="fa fa-pencil"></i> Mulai Peninjauan

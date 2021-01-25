@@ -31,8 +31,8 @@ $(document).ready(function () {
         }
     });
 
-    var time = $('.countdown');
-    if (time.length) {
-        countdown(time.data('time'));
-    }
+    // var time = $('.countdown');
+    // if (time.length) {
+    //     countdown(time.data('time'));
+    // } jika rentang tanggal kepanjangan jadi error
 });

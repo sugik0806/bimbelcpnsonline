@@ -110,8 +110,12 @@
                                         <a class="btn btn-info" href="<?=base_url('ujian/token/'.$ls->id_ujian.'/review')?>">
                                             <i class="fa fa-check"></i> Tinjauan
                                         </a>
-                                <?php else : ?>
+                                <?php elseif ( $lsh->status == 'Y' && ($ls->id_ujian == $lsh->id_ujian)) : ?>
                                     <a class="btn btn-warning" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
+                                        <i class="fa fa-book"></i> Tryout Berlangsung
+                                    </a>           
+                                <?php else : ?>
+                                    <a class="btn btn-success" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
                                         <i class="fa fa-pencil"></i> Ikut Tryout
                                     </a>
                                 <?php endif; ?>
