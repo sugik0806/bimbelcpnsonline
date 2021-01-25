@@ -61,13 +61,13 @@ class Ujian_model extends CI_Model {
 
     public function getListUjianboxHasil($id, $kelas, $id_matkul)
     {
-        $this->db->select("a.id_ujian, h.twk, h.tiu, h.tkp, h.nilai, CONCAT( a.waktu, ' Menit') as menit, h.status"); 
+        $this->db->select("a.id_ujian, h.twk, h.tiu, h.tkp, h.nilai, h.status, CONCAT( a.waktu, ' Menit') as menit"); 
         $this->db->from('m_ujian a'); 
         $this->db->join('matkul b', 'a.matkul_id = b.id_matkul');
         $this->db->join('kelas_dosen c', "a.dosen_id = c.dosen_id");
         $this->db->join('kelas d', 'c.kelas_id = d.id_kelas');
         $this->db->join('dosen e', 'e.id_dosen = c.dosen_id');
-        $this->db->join('h_ujian h', 'h.ujian_id = a.id_ujian');
+        $this->db->join('h_ujian h', 'h.ujian_id = a.id_ujian', 'left');
         $this->db->where('d.id_kelas', $kelas);
         $this->db->where('b.id_matkul', $id_matkul);
         $this->db->where('a.terbit', true);
