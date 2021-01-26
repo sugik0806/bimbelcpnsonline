@@ -18,14 +18,14 @@
                         <th>Nama</th>
                         <td><?=$mhs->nama?></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>Pembimbing</th>
                         <td><?=$ujian->nama_dosen?></td>
                     </tr>
                     <tr>
                         <th>Kelas/Paket</th>
                         <td><?=$mhs->nama_kelas?> / <?=$mhs->nama_jurusan?></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>Nama Tryout</th>
                         <td><?=$ujian->nama_ujian?></td>
@@ -38,13 +38,13 @@
                         <th>Waktu</th>
                         <td><?=$ujian->waktu?> Menit</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th>Terlambat</th>
                         <td>
                             <?=strftime('%d %B %Y', strtotime($ujian->terlambat))?> 
                             <?=date('H:i:s', strtotime($ujian->terlambat))?>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th style="vertical-align:middle">Token</th>
                         <td>
@@ -90,14 +90,19 @@
                         </div> aktifkan juga yang di jsnya -->
 
                        <!--  tanpa timer -->
-                        <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-success btn-lg mb-4">
-                            <i class="fa fa-pencil"></i> Mulai
-                        </button>
+                       <center>
+                           <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-success btn-lg mb-4">
+                               <i class="fa fa-pencil"></i> Mulai
+                           </button>
+                       </center>
+                        
 
                     <?php else : ?>
-                         <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-info btn-lg mb-4">
-                            <i class="fa fa-pencil"></i> Mulai Peninjauan
-                        </button>
+                        <center>
+                             <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-info btn-lg mb-4">
+                                <i class="fa fa-pencil"></i> Mulai Peninjauan
+                            </button>
+                        </center>
                     <?php endif ; ?>
                 </div>
             </div>
