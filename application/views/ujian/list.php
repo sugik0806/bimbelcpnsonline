@@ -102,12 +102,13 @@
                               <?php endif; ?>
 
                               <?php if( $ls->sedangujian > 0 && ($ls->id_ujian == $lsh->id_ujian)) : ?>
-                                
-                                  <a class="btn btn-warning" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
-                                          <i class="fa fa-book"></i> Tryout Berlangsung
+                                <span class="info-box-text">
+                                  <a href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
+                                          <i class="fa fa-check-square-o"></i> Tryout Berlangsung
                                       </a>
-                              
+                                </span>
                               <?php endif; ?>
+                              
                           <?php endforeach; ?>
 
                           <span class="progress-description text-right">
@@ -118,6 +119,12 @@
                                         <a class="btn btn-info" href="<?=base_url('ujian/token/'.$ls->id_ujian.'/review')?>">
                                             <i class="fa fa-check"></i> Tinjauan
                                         </a>
+                                <?php elseif( $ls->sedangujian > 0 ) : ?>
+                                
+                                  <a class="btn btn-warning" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
+                                          <i class="fa fa-check-square-o"></i> Lanjutkan Tryout
+                                      </a>
+                                  
                                 <?php else : ?>
                                     <a class="btn btn-success" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">
                                         <i class="fa fa-pencil"></i> Ikut Tryout
