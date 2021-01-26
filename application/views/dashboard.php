@@ -266,9 +266,39 @@
                            </a>
                            </div>
                        </div>
+
+                       <div class="col-lg-6 col-xs-6">
+                           <div class="small-box bg-green">
+                           <div class="inner">
+                               <h4>Tryout</h4>
+                               <p>List Tryout</p>
+                           </div>
+                           <div class="icon">
+                               <i class="fa fa-pencil"></i>
+                           </div>
+                           <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
+                               Upgrade Untuk Ikut Tryout <i class="fa fa-arrow-circle-right"></i>
+                           </a>
+                           </div>
+                       </div>
+
                 <?php elseif( $mahasiswa->id_jurusan == 2 ) : ?>
                         <!-- hanya Tryout -->
                         <!-- <a href="<?= base_url('ujian/list') ?>" class="btn btn-sm btn-flat bg-purple"><i class="fa fa-book"></i> Masuk Tryout</a> -->
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-red">
+                            <div class="inner">
+                                <h4>Unduh</h4>
+                                <p>Materi</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-download"></i>
+                            </div>
+                            <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi" target="_blank"  class="small-box-footer">
+                                Upgrade Untuk Download Materi <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                            </div>
+                        </div>
 
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
