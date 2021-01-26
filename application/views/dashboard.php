@@ -443,6 +443,12 @@
 
 <?php endif; ?>
 
+<div class="col-md-12" style="margin-top: 15px">
+  <center>
+    <a class="btn btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG">Gabung Grup Telegram</a>
+  </center>
+</div>
+
 
 <script type="text/javascript">
    

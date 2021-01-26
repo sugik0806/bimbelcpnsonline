@@ -364,6 +364,7 @@ public function getJumlahPertanyaan($id, $mhs, $id_soal)
         $this->$db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
         $this->$db->join('h_ujian d', 'a.id_mahasiswa=d.mahasiswa_id');
         $this->$db->where(['d.ujian_id' => $id]);
+        $this->db->order_by('d.nilai', 'desc');
         return $this->$db->$get();
     }
 
