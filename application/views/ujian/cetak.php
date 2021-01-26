@@ -4,7 +4,7 @@ class MYPDF extends TCPDF {
     
     public function Header() {
         $image_file = K_PATH_IMAGES.'logo_example.jpg';
-        $this->Image($image_file, 10, 10, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 20, 5, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         $this->SetFont('helvetica', 'B', 18);
         $this->SetY(13);
         $this->Cell(0, 15, 'Hasil Tryout', 0, false, 'C', 0, '', 0, false, 'M', 'M');
@@ -13,7 +13,8 @@ class MYPDF extends TCPDF {
     public function Footer() {
         $this->SetY(-15);
         $this->SetFont('helvetica', 'I', 8);
-        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
+        $this->Cell(20, 5, 'bimbelcpnsonline.id', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 5, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
     }
 }
 
@@ -63,6 +64,7 @@ $pdf->AddPage();
 // create some HTML content
 
 $skd = <<<EOD
+<hr>
 <p>
 Ringkasan Tryout
 </p>
@@ -101,7 +103,7 @@ Ringkasan Tryout
     </tr>
 </table>
 <h2>Hasil Ujian</h2>
-<table>
+<table border="1" style="border-collapse:collapse">
     <tr>
         <th>Jawab Benar</th>
         <th>TWK</th>
