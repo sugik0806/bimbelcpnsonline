@@ -92,7 +92,7 @@
                        <!--  tanpa timer -->
                        <center>
                            <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-success btn-lg mb-4">
-                               <i class="fa fa-pencil"></i> Mulai
+                               <i class="fa fa-pencil"></i> Mulai Tryout
                            </button>
                        </center>
                         

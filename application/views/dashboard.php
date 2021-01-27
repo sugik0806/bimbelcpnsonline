@@ -267,7 +267,7 @@
                                <i class="fa fa-download"></i>
                            </div>
                            <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                               <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
+                               <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
                            </a>
                            </div>
                        </div>
@@ -282,7 +282,7 @@
                                <i class="fa fa-pencil"></i>
                            </div>
                            <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
-                              <h4>Upgrade Untuk Ikut Tryout <i class="fa fa-arrow-circle-right"></i></h4>
+                              <h4>Upgrade Untuk Ikut Tryout <i class="fa fa-money fa-lg"></i></h4>
                            </a>
                            </div>
                        </div>
@@ -300,7 +300,7 @@
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi" target="_blank"  class="small-box-footer">
-                                <h4>Upgrade Untuk Download Materi <i class="fa fa-arrow-circle-right"></i></h4>
+                                <h4>Upgrade Untuk Download Materi <i class="fa fa-money fa-lg"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -315,7 +315,7 @@
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -334,7 +334,7 @@
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -349,7 +349,7 @@
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -458,7 +458,7 @@
           </div>
         </div>
         <div class="box-body">
-         <h5>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG">Gabung Grup Telegram</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</h5>
+         <h5>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG"><i class="fa fa-telegram fa-lg"></i> Gabung Grup Telegram</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</h5>
          <h5>2. Unduh materi kami siapkan di <a href="#panel">Panel Unduh Materi</a>, setelah download bacalah dan pelajari dengan teliti serta pahami bentuk, pola penyelesaian soal.</h5>
          <h5>3. Jika Anda sudah Percaya Diri silahkan mengikuti <a href="#panel">Tryout CAT SKD</a>, untuk melatih dan mengukur kemampuan Anda dalam menjawab soal TWK, TIU dan TKP. kami sudah menyediakan 10 Paket soal SKD (100 soal per paket, total 1000 soal) untuk Anda kerjakan.</h5>
          <h5>4. Ikuti 2 Paket Pemantapan sebagai pengukur kemampuan kamu dalam mengerjakan test (Paket Pemantapan bisa dikerjakan Jika 10 paket soal sudah selesai dikerjakan)</h5>
