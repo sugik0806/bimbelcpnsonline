@@ -243,7 +243,7 @@
     <div class="col-sm-12">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Pemberitahuan</h3>
+                <!-- <h3 class="box-title">Pemberitahuan</h3> -->
             </div>
             <div class="box-body text-center">
                 <!-- <p>Klik masuk Tryout untuk mengikuti Tryout</p>

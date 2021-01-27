@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <th>Rata-rata Nilai</th>
-                        <td><?=$nilai->avg_nilai?></td>
+                        <td><?=round($nilai->avg_nilai)?></td>
                     </tr>
                 </table>
             </div>
