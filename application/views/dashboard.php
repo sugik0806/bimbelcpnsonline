@@ -188,7 +188,7 @@
 <?php else : ?>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-6">
        <!--  <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Informasi Akun</h3>
@@ -240,11 +240,16 @@
             </table>
         </div> -->
     </div>
-    <div class="col-sm-12">
+    <div id="panel" class="col-md-12">
         <div class="box box-info">
-            <div class="box-header with-border">
-                <!-- <h3 class="box-title">Pemberitahuan</h3> -->
-            </div>
+          <div class="box-header with-border">
+              <h4> Panel Unduh & Tryout </h4>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+              </div>
+          </div>
+           
             <div class="box-body text-center">
                 <!-- <p>Klik masuk Tryout untuk mengikuti Tryout</p>
                 <center> -->
@@ -255,14 +260,14 @@
                        <div class="col-lg-6 col-xs-6">
                            <div class="small-box bg-red">
                            <div class="inner">
-                               <h4>Unduh</h4>
+                               <h3>Unduh</h3>
                                <p>Materi</p>
                            </div>
                            <div class="icon">
                                <i class="fa fa-download"></i>
                            </div>
                            <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                               Masuk <i class="fa fa-arrow-circle-right"></i>
+                               <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
                            </a>
                            </div>
                        </div>
@@ -270,14 +275,14 @@
                        <div class="col-lg-6 col-xs-6">
                            <div class="small-box bg-green">
                            <div class="inner">
-                               <h4>Tryout</h4>
+                               <h3>Tryout</h3>
                                <p>List Tryout</p>
                            </div>
                            <div class="icon">
                                <i class="fa fa-pencil"></i>
                            </div>
                            <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
-                               Upgrade Untuk Ikut Tryout <i class="fa fa-arrow-circle-right"></i>
+                              <h4>Upgrade Untuk Ikut Tryout <i class="fa fa-arrow-circle-right"></i></h4>
                            </a>
                            </div>
                        </div>
@@ -288,14 +293,14 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-red">
                             <div class="inner">
-                                <h4>Unduh</h4>
+                                <h3>Unduh</h3>
                                 <p>Materi</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi" target="_blank"  class="small-box-footer">
-                                Upgrade Untuk Download Materi <i class="fa fa-arrow-circle-right"></i>
+                                <h4>Upgrade Untuk Download Materi <i class="fa fa-arrow-circle-right"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -303,14 +308,14 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                             <div class="inner">
-                                <h4>Tryout</h4>
+                                <h3>Tryout</h3>
                                 <p>List Tryout</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                Masuk <i class="fa fa-arrow-circle-right"></i>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -322,14 +327,14 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-red">
                             <div class="inner">
-                                <h4>Unduh</h4>
+                                <h3>Unduh</h3>
                                 <p>Materi</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                                Masuk <i class="fa fa-arrow-circle-right"></i>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -337,14 +342,14 @@
                         <div class="col-lg-6 col-xs-6">
                             <div class="small-box bg-green">
                             <div class="inner">
-                                <h4>Tryout</h4>
+                                <h3>Tryout</h3>
                                 <p>List Tryout</p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                Masuk <i class="fa fa-arrow-circle-right"></i>
+                                <h4>Masuk <i class="fa fa-arrow-circle-right"></i></h4>
                             </a>
                             </div>
                         </div>
@@ -363,91 +368,110 @@
         </div>
     </div>
 
-</div>
-    
-<div class="col-sm-12">
-    <div class="row">
-      
-        <div class="col-sm-12">
-          <div class="col-sm-6">
-            <canvas style="background: #ffffff" id="cart2"></canvas>
+    <div class="col-md-12">
+            <div class="box box-info">
+              <div class="box-header with-border">
+              <h4> Grafik Hasil Tryout & Ranking Nasional </h4>
+              <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+              </div>
           </div>
-          <div class="col-sm-6">
-            <canvas style="background: #ffffff" id="cart3"></canvas>
+         <div class="box-body">
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <canvas style="background: #ffffff" id="cart2"></canvas>
+              </div>
+              <div class="col-md-6">
+                <canvas style="background: #ffffff" id="cart3"></canvas>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- Diagram -->
+        <script type="text/javascript">
 
+          <?php if( $mahasiswa->id_matkul == 1 ) : ?>
+            var matkul = 'SKB';
+          <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>
+            var matkul = 'SKD';
+          <?php endif; ?> 
+
+            var ctx = document.getElementById("cart2").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                labels: [<?php foreach($info_box_ujian as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
+                datasets: [{
+                    label: 'Hasil Tryout '+matkul,
+                    borderColor: "#3e95cd",
+                    fill: false,
+                    data:[<?php foreach($info_box_ujian as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
+                }]
+                },
+            });
+        </script> 
+
+        <script type="text/javascript">
+            var ctx = document.getElementById("cart3").getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                labels: [<?php foreach($info_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
+                datasets: [{
+                    label: '10 Besar Ranking Nasional '+matkul,
+                    borderColor: "#8e5ea2",
+                    fill: false,
+                    data:[<?php foreach($info_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
+                     backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    ]
+                }]
+                },
+            });
+        </script>
+        <!-- End-Diagram -->
     </div>
-    <!-- Diagram -->
-    <script type="text/javascript">
 
-      <?php if( $mahasiswa->id_matkul == 1 ) : ?>
-        var matkul = 'SKB';
-      <?php elseif( $mahasiswa->id_matkul == 2 ) : ?>
-        var matkul = 'SKD';
-      <?php endif; ?> 
-
-        var ctx = document.getElementById("cart2").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-            labels: [<?php foreach($info_box_ujian as $info) : ?>"<?=$info->title;?>", <?php endforeach; ?>],
-            datasets: [{
-                label: 'Hasil Tryout '+matkul,
-                borderColor: "#3e95cd",
-                fill: false,
-                data:[<?php foreach($info_box_ujian as $info) : ?><?=$info->total;?>,<?php endforeach; ?>]
-            }]
-            },
-        });
-    </script> 
-
-    <script type="text/javascript">
-        var ctx = document.getElementById("cart3").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-            labels: [<?php foreach($info_box_ran as $info) : ?>"<?=$info->nama;?>", <?php endforeach; ?>],
-            datasets: [{
-                label: '10 Besar Ranking Nasional '+matkul,
-                borderColor: "#8e5ea2",
-                fill: false,
-                data:[<?php foreach($info_box_ran as $info) : ?><?=$info->nilai_rata;?>,<?php endforeach; ?>],
-                 backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(103, 12, 15, 0.2)',
-                'rgba(93, 133, 155, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(103, 12, 15, 0.2)',
-                'rgba(93, 133, 155, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(103, 12, 15, 0.2)',
-                'rgba(93, 133, 155, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(103, 12, 15, 0.2)',
-                'rgba(93, 133, 155, 0.2)',
-                ]
-            }]
-            },
-        });
-    </script>
-    
-    <!-- End-Diagram -->
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h4> Tahapan belajar yang BENAR di bimbelCPNSonline.id : </h4>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="box-body">
+         <h5>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG">Gabung Grup Telegram</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</h5>
+         <h5>2. Unduh materi kami siapkan di <a href="#panel">Panel Unduh Materi</a>, setelah download bacalah dan pelajari dengan teliti serta pahami bentuk, pola penyelesaian soal.</h5>
+         <h5>3. Jika Anda sudah Percaya Diri silahkan mengikuti <a href="#panel">Tryout CAT SKD</a>, untuk melatih dan mengukur kemampuan Anda dalam menjawab soal TWK, TIU dan TKP. kami sudah menyediakan 10 Paket soal SKD (100 soal per paket, total 1000 soal) untuk Anda kerjakan.</h5>
+         <h5>4. Ikuti 2 Paket Pemantapan sebagai pengukur kemampuan kamu dalam mengerjakan test (Paket Pemantapan bisa dikerjakan Jika 10 paket soal sudah selesai dikerjakan)</h5>
+       </div>
+       
+     </div> 
+    </div>
 
 
 </div>
+    
 
 <?php endif; ?>
-
-<div class="col-md-12" style="margin-top: 15px">
-  <center>
-    <a class="btn btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG">Gabung Grup Telegram</a>
-  </center>
-</div>
 
 
 <script type="text/javascript">
