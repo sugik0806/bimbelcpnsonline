@@ -466,7 +466,7 @@
          <?php endif; ?>
          <h5>2. Unduh materi kami siapkan di <a href="#panel">Panel Unduh Materi</a>, setelah download bacalah dan pelajari dengan teliti serta pahami bentuk, pola penyelesaian soal.</h5>
          <h5>3. Jika Anda sudah Percaya Diri silahkan mengikuti <a href="#panel">Tryout CAT SKD</a>, untuk melatih dan mengukur kemampuan Anda dalam menjawab soal TWK, TIU dan TKP. kami sudah menyediakan 10 Paket soal SKD (100 soal per paket, total 1000 soal) untuk Anda kerjakan.</h5>
-         <h5>4. Ikuti 2 Paket Pemantapan sebagai pengukur kemampuan kamu dalam mengerjakan test (Paket Pemantapan bisa dikerjakan Jika 10 paket soal sudah selesai dikerjakan)</h5>
+         <h5>4. Ikuti 2 Paket Pemantapan sebagai pengukur kemampuan kamu dalam mengerjakan test (Paket Pemantapan bisa dikerjakan Jika 10 paket soal sudah selesai dikerjakan, total 200 soal)</h5>
        </div>
        
      </div> 
