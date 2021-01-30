@@ -855,8 +855,9 @@ if (!empty($soal_urut_ok)) {
 
 		$user = $this->ion_auth->user()->row();
 
-		//$per = $this->ujian->getPertanyaanAll(2);
-		//$path = 'uploads/bank_soal/';
+		// $perHead = $this->ujian->getPertanyaanHead(0);
+		// $per = $this->ujian->getPertanyaanAll(0);
+		// $path = 'uploads/bank_soal/';
 
 		// foreach ($per as $key) {
 		// 	$v = explode(",", $key->list_jawaban);
@@ -907,8 +908,9 @@ if (!empty($soal_urut_ok)) {
 			'user' 		=> $user,
 			'judul'		=> 'Jawab Pertanyaan',
 			'subjudul'	=> 'Jawab Pertanyaan Peserta',
-			//'mhs' 		=> $this->ujian->getIdMahasiswa($user->username),
-			//'list' => $per
+			// 'mhs' 		=> $this->ujian->getIdMahasiswa($user->username),
+			// 'listHead' => $perHead,
+			// 'list' => $per
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('ujian/jawabpertanyaan');

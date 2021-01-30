@@ -45,6 +45,10 @@ class Ujian_model extends CI_Model {
 
     public function getListUjianbox($id, $kelas, $id_matkul)
     {
+        //$query1 = $this->db->query("SELECT COUNT(id) FROM h_ujian WHERE mahasiswa_id={$id} AND status='N'");
+        $query1 = $this->db->query("SELECT * FROM h_ujian WHERE mahasiswa_id={$id} AND status='N'")->num_rows();
+
+
         $this->db->select("a.id_ujian, e.nama_dosen, d.nama_kelas, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, CONCAT( a.waktu, ' Menit') as menit, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N') AS ada, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'Y') AS sedangujian");
         $this->db->from('m_ujian a'); 
         $this->db->join('matkul b', 'a.matkul_id = b.id_matkul');
@@ -55,6 +59,9 @@ class Ujian_model extends CI_Model {
         $this->db->where('b.id_matkul', $id_matkul);
         $this->db->where('a.terbit', true);
         $this->db->order_by('a.id_ujian', 'asc');
+        if ($query1 < 10) {
+             $this->db->limit(10);
+        }
         return $this->db->get()->result();
 
     }
@@ -181,6 +188,30 @@ class Ujian_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    //    public function getPertanyaanHead($id)
+    // {   
+    //     $this->db->select('ts.soal, ts.id_soal');
+    //     //soal, file, file_a, file_b, file_c ,file_d, file_e, p.id_soal, h.list_soal, h.list_jawaban, mu.nama_ujian, m.nama, p.created_date, p.answer_date, p.pertanyaan, p.jawaban, p.id_soal, p.id_test, p.id_mahasiswa
+
+    //     //(SELECT soal FROM tb_soal ts WHERE ts.id_soal =  p.id_soal ) as soal,
+    //     $this->db->from('pertanyaan_detail p');
+    //     $this->db->join('tb_soal ts', 'p.id_soal=ts.id_soal');
+    //     $this->db->where('pertanyaan !=', "");
+    //     $this->db->distinct();
+    //     if ($id == 2) {
+    //        // print_r($id);
+    //         $this->db->where('p.jawaban =', null);
+    //     }else if ($id == 1){
+    //         $this->db->where('p.jawaban !=', null);
+    //     }elseif ($id == 0) {
+    //         # code...
+    //     }
+        
+    //     //$this->db->where('id_test', $id);
+    //     //$this->db->where('id_mahasiswa', $mhs);
+    //     return $this->db->get()->result();
+    // }
+
        public function getPertanyaanAll($id)
     {   
         $this->db->select('*, p.jawaban as jawaban_pertanyaan , (SELECT jawaban FROM tb_soal ts WHERE ts.id_soal =  p.id_soal ) as jawaban_benar');
@@ -198,6 +229,8 @@ class Ujian_model extends CI_Model {
             $this->db->where('p.jawaban =', null);
         }else if ($id == 1){
             $this->db->where('p.jawaban !=', null);
+        }elseif ($id == 0) {
+            # code...
         }
         
         //$this->db->where('id_test', $id);
