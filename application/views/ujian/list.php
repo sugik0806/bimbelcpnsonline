@@ -137,7 +137,7 @@
                      <?php endforeach; ?>
                  </div>
                  <div class="col-md-12">
-                   <b><p class="col-md-12"># Paket Pemantapan Akan Tampil Jika Kamu Sudah Menyelesaikan 10 Paket Soal</p></b>
+                   <b><p class="col-md-12"># Paket Pemantapan Akan Tampil Jika Kamu Sudah Menyelesaikan 10 Paket Soal dan Pendaftaran CPNS sudah dibuka.</p></b>
                  </div>
             </div>
            
