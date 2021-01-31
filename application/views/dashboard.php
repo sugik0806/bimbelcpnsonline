@@ -282,7 +282,7 @@
                                <i class="fa fa-pencil"></i>
                            </div>
                            <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
-                              <h4>Upgrade Untuk Ikut Tryout <i class="fa fa-money fa-lg"></i></h4>
+                              <h5>Upgrade Untuk Ikut Tryout <i class="fa fa-money fa-lg"></i></h5>
                            </a>
                            </div>
                        </div>
@@ -300,7 +300,7 @@
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi" target="_blank"  class="small-box-footer">
-                                <h4>Upgrade Untuk Download Materi <i class="fa fa-money fa-lg"></i></h4>
+                                <h5>Upgrade Untuk Unduh Materi <i class="fa fa-money fa-lg"></i></h5>
                             </a>
                             </div>
                         </div>
