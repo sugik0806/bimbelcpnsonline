@@ -8,8 +8,11 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <button type="button" onclick="reload_ajax()" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-refresh"></i> Reload</button>
+            </div>
+            <div class="col-sm-6">
+                <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a>
             </div>
         </div>
     </div>

@@ -71,9 +71,9 @@ $skd = <<<EOD
     <thead>
         <tr align="center">
             <th width="5%">No.</th>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Harga</th>
+            <th width="35%">Nama</th>
+            <th width="30%">Kelas</th>
+            <th width="30%">Harga</th>
         </tr>        
     </thead>
     <tbody>
@@ -85,9 +85,9 @@ foreach($laporan as $row) {
 $skd .= <<<EOD
     <tr align="center">
         <td align="center" width="5%">{$no}</td>
-        <td>{$row->nama}</td>
-        <td>{$row->nama_kelas}</td>
-        <td>{$row->net}</td>
+        <td width="35%">{$row->nama}</td>
+        <td width="30%">{$row->nama_kelas}</td>
+        <td width="30%">{$row->net}</td>
     </tr>
 EOD;
 $no++;

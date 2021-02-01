@@ -9,7 +9,7 @@ class Laporan_model extends CI_Model {
         $this->datatables->from('mahasiswa m');
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
-
+        $this->db->where_not_in('m.id_mahasiswa', 1);
 
         return $this->datatables->generate();
     }
@@ -20,6 +20,7 @@ class Laporan_model extends CI_Model {
         $this->db->from('mahasiswa m');
         $this->db->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->db->join('users u', 'u.email = m.email');
+        $this->db->where_not_in('m.id_mahasiswa', 1);
 
 
         return $this->db->get()->result();

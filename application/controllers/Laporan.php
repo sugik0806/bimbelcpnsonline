@@ -67,7 +67,7 @@ class Laporan extends CI_Controller {
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function cetak($id)
+	public function cetak()
 	{
 		$this->load->library('Pdf');
 
