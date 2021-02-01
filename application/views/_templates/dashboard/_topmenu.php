@@ -23,7 +23,9 @@
                     <li class="user-header">
                         <img src="<?=base_url()?>assets/dist/img/bmerahp.png" class="img-circle" alt="User Image">
                         <p>
-                            <?=$user->first_name?>
+                            <?=$mhs->nama?></br>
+                            <!-- <?=$mhs->nama_jurusan?></br> -->
+                            <?=$mhs->nama_kelas?></br>
                             <small>Terdaftar sejak <?=date('M, Y', $user->created_on)?></small>
                         </p>
                     </li>

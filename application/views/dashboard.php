@@ -185,6 +185,64 @@
     </div>
 </div>
 
+<script type="text/javascript">
+   
+    var events = <?php echo json_encode($data) ?>;
+    
+    var date = new  Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+           
+    $('#calendar').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek,agendaDay'
+      },
+      editable: true,
+      // timeFormat: {
+      //       agenda: 'H(:mm)' //h:mm{ - h:mm}'
+      //   },
+      // time formats
+      // titleFormat: {
+      //     month: 'MMMM yyyy',
+      //     week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
+      //     day: 'dddd, MMM d, yyyy'
+      // },
+      // columnFormat: {
+      //     month: 'ddd',
+      //     week: 'ddd M/d',
+      //     day: 'dddd M/d'
+      // },
+      axisFormat: 'H(:mm)', //,'h(:mm)tt',
+
+      // locale
+        eventDrop: function(event, delta) {
+            alert(event.title + ' was moved ' + delta + ' days\n' + '(should probably update your database)');
+            console.info(event.id, delta + ' days\n');
+        },
+        buttonText: {
+            today: 'Hari Ini',
+            month: 'Bulan',
+            week : 'Minggu',
+            day  : 'Hari'
+        },
+        eventClick: function(calEvent, jsEvent, view) {     
+            window.location = "ujian/edit/" + calEvent.id;
+             //base_url('dokumen')
+            console.info(calEvent.id);
+        },
+        // loading: function(bool) {
+        //     if (bool)
+        //         $('#loading').show();
+        //     else
+        //         $('#loading').hide();
+        // },
+      events    : events
+    })
+</script>
+
 <?php else : ?>
 
 <div class="row">
@@ -347,6 +405,37 @@
                             </a>
                             </div>
                         </div>
+                <?php elseif( $mahasiswa->id_jurusan == 4 ) : ?>
+
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-red" onclick="return keUpgradeMateri();">
+                            <div class="inner">
+                                <h3>Unduh</h3>
+                                <p>Materi</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-download"></i>
+                            </div>
+                            <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi" target="_blank"  class="small-box-footer">
+                                <h5>Upgrade Untuk Unduh Materi <i class="fa fa-money fa-lg"></i></h5>
+                            </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-xs-6">
+                            <div class="small-box bg-green" onclick="return keTryout();">
+                            <div class="inner">
+                                <h3>Tryout</h3>
+                                <p>List Tryout</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
+                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                            </a>
+                            </div>
+                        </div>        
                 <?php endif; ?>
 
                 </center>
@@ -464,65 +553,3 @@
     
 
 <?php endif; ?>
-
-
-<script type="text/javascript">
-   
-    var events = <?php echo json_encode($data) ?>;
-    console.info(<?php echo json_encode($data) ?>);
-    
-    var date = new  Date()
-    var d    = date.getDate(),
-        m    = date.getMonth(),
-        y    = date.getFullYear()
-
-    console.info(d,m,y);    
-           
-    $('#calendar').fullCalendar({
-      header    : {
-        left  : 'prev,next today',
-        center: 'title',
-        right : 'month,agendaWeek,agendaDay'
-      },
-      editable: true,
-      // timeFormat: {
-      //       agenda: 'H(:mm)' //h:mm{ - h:mm}'
-      //   },
-      // time formats
-      // titleFormat: {
-      //     month: 'MMMM yyyy',
-      //     week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
-      //     day: 'dddd, MMM d, yyyy'
-      // },
-      // columnFormat: {
-      //     month: 'ddd',
-      //     week: 'ddd M/d',
-      //     day: 'dddd M/d'
-      // },
-      axisFormat: 'H(:mm)', //,'h(:mm)tt',
-
-      // locale
-        eventDrop: function(event, delta) {
-            alert(event.title + ' was moved ' + delta + ' days\n' + '(should probably update your database)');
-            console.info(event.id, delta + ' days\n');
-        },
-        buttonText: {
-            today: 'Hari Ini',
-            month: 'Bulan',
-            week : 'Minggu',
-            day  : 'Hari'
-        },
-        eventClick: function(calEvent, jsEvent, view) {     
-            window.location = "ujian/edit/" + calEvent.id;
-             //base_url('dokumen')
-            console.info(calEvent.id);
-        },
-        // loading: function(bool) {
-        //     if (bool)
-        //         $('#loading').show();
-        //     else
-        //         $('#loading').hide();
-        // },
-      events    : events
-    })
-</script>
