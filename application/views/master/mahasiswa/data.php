@@ -17,7 +17,7 @@
             <div class="col-md-2 pull-right">
                 <select id="filter_by" name="filter_by" class="select2">
                     <option value="">-- Pilih --</option>
-                    <option value="1">Peserta Aktif</option>
+                    <option value="1">Peserta Bayar</option>
                     <option value="2">Peserta Baru</option>
                 </select>
             </div>
