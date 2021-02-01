@@ -71,14 +71,13 @@ class Laporan extends CI_Controller {
 	{
 		$this->load->library('Pdf');
 
-		$mhs 	= $this->ujian->getIdMahasiswa($this->user->username);
-		$hasil 	= $this->ujian->HslUjian($id, $mhs->id_mahasiswa)->row();
-		$ujian 	= $this->ujian->getUjianById($id);
+		
+		$hasil 	= $this->laporan->getPendapatanReport();
+		
 		
 		$data = [
-			'ujian' => $ujian,
-			'hasil' => $hasil,
-			'mhs'	=> $mhs
+			
+			'laporan' => $hasil
 		];
 		
 		$this->load->view('laporan/cetak', $data);
