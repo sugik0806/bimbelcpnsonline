@@ -126,6 +126,11 @@
 					<i class="fa fa-file"></i> <span>Hasil Tryout</span>
 				</a>
 			</li>
+			<li class="<?=$page==='Laporan'?"active":""?>">
+				<a href="<?=base_url('Laporan')?>" rel="noopener noreferrer">
+					<i class="fa fa-file"></i> <span>Laporan Pendapatan</span>
+				</a>
+			</li>
 			<?php endif; ?>
 			<?php if($this->ion_auth->is_admin()) : ?>
 			<li class="header">ADMINISTRATOR</li>

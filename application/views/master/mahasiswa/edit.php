@@ -84,6 +84,11 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="diskon">Diskon</label>
+                        <input value="<?=$mahasiswa->diskon?>" placeholder="Diskon" type="text" name="diskon" class="form-control">
+                        <small class="help-block"></small>
+                    </div>
                     <div class="form-group pull-right">
                         <button type="reset" class="btn btn-flat btn-default"><i class="fa fa-rotate-left"></i> Reset</button>
                         <button type="submit" id="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>

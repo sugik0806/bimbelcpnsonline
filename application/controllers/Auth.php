@@ -421,7 +421,8 @@ class Auth extends CI_Controller
 						'token' => $token,
 						'angka_unik' => random_string('numeric',3),
 						'tanggal_daftar' => date('Y-m-d'),
-						'id_provinsi' => $this->input->post('provinsi', true)
+						'id_provinsi' => $this->input->post('provinsi', true),
+						'diskon' => 0
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

@@ -127,6 +127,7 @@ class Mahasiswa extends CI_Controller
 				'kelas_id' 		=> $this->input->post('kelas', true),
 				'id_matkul' 	=> $this->input->post('matkul_id', true),
 				'id_provinsi'      => $this->input->post('provinsi', true),
+				'diskon'      => $this->input->post('diskon', true),
 			];
 			if ($method === 'add') {
 				$action = $this->master->create('mahasiswa', $input);

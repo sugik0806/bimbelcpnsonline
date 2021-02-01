@@ -23,9 +23,15 @@
                     <li class="user-header">
                         <img src="<?=base_url()?>assets/dist/img/bmerahp.png" class="img-circle" alt="User Image">
                         <p>
+                            
+                            <?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
+                            
                             <?=$mhs->nama?></br>
                             <!-- <?=$mhs->nama_jurusan?></br> -->
                             <?=$mhs->nama_kelas?></br>
+                            <?php else : ?>
+                                <?=$user->first_name?>
+                            <?php endif; ?>     
                             <small>Terdaftar sejak <?=date('M, Y', $user->created_on)?></small>
                         </p>
                     </li>

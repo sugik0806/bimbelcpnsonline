@@ -185,6 +185,9 @@ class Invoice extends CI_Controller {
                     }else if ($datamhs->kelas_id == 3) {
                         $paket = 'Paket Bimbel';
                         $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
+                    }else if ($datamhs->kelas_id == 4) {
+                        $paket = 'Paket Soal Mini';
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
                     }
 
                     $token = $datamhs->token;
