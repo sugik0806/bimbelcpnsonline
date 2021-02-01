@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<h2 class="alert alert-warning text-center">Pendaftaran Akun <b>Paket Bimbel Rp 350.000</b></h2>
 							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 4) : ?>
-							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Bimbel Rp 100.000</b></h2>
+							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Soal Mini Rp 100.000</b></h2>
 							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>	
 						<?php elseif( !$this->uri->segment(3)) : ?>
 							<h2>Pendaftaran Akun</h2>
