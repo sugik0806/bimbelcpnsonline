@@ -251,14 +251,11 @@
           </div>
            
             <div class="box-body text-center">
-                <!-- <p>Klik masuk Tryout untuk mengikuti Tryout</p>
-                <center> -->
                     
                 <?php if( $mahasiswa->id_jurusan == 1 ) : ?>
-                       <!-- hanya download materi -->
-                       <!-- <a href="<?= base_url('dokumen') ?>" class="btn btn-sm btn-flat bg-green"><i class="fa fa-download"></i> Unduh Materi</a> -->
+
                        <div class="col-lg-6 col-xs-6">
-                           <div class="small-box bg-red">
+                           <div class="small-box bg-red" onclick="return keMateri();">
                            <div class="inner">
                                <h3>Unduh</h3>
                                <p>Materi</p>
@@ -273,7 +270,7 @@
                        </div>
 
                        <div class="col-lg-6 col-xs-6">
-                           <div class="small-box bg-green">
+                           <div class="small-box bg-green" onclick="return keUpgradeTryout();">
                            <div class="inner">
                                <h3>Tryout</h3>
                                <p>List Tryout</p>
@@ -288,10 +285,9 @@
                        </div>
 
                 <?php elseif( $mahasiswa->id_jurusan == 2 ) : ?>
-                        <!-- hanya Tryout -->
-                        <!-- <a href="<?= base_url('ujian/list') ?>" class="btn btn-sm btn-flat bg-purple"><i class="fa fa-book"></i> Masuk Tryout</a> -->
+
                         <div class="col-lg-6 col-xs-6">
-                            <div class="small-box bg-red">
+                            <div class="small-box bg-red" onclick="return keUpgradeMateri();">
                             <div class="inner">
                                 <h3>Unduh</h3>
                                 <p>Materi</p>
@@ -306,7 +302,7 @@
                         </div>
 
                         <div class="col-lg-6 col-xs-6">
-                            <div class="small-box bg-green">
+                            <div class="small-box bg-green" onclick="return keTryout();">
                             <div class="inner">
                                 <h3>Tryout</h3>
                                 <p>List Tryout</p>
@@ -319,13 +315,11 @@
                             </a>
                             </div>
                         </div>
+
                 <?php elseif( $mahasiswa->id_jurusan == 3 ) : ?>
-                        <!-- <a href="<?= base_url('dokumen') ?>" class="btn btn-sm btn-flat bg-green"><i class="fa fa-download"></i> Unduh Materi</a>
-                        <a href="<?= base_url('ujian/list') ?>" class="btn btn-sm btn-flat bg-purple"><i class="fa fa-book"></i> Masuk Tryout</a> -->
-                        
 
                         <div class="col-lg-6 col-xs-6">
-                            <div class="small-box bg-red">
+                            <div class="small-box bg-red" onclick="return keMateri();">
                             <div class="inner">
                                 <h3>Unduh</h3>
                                 <p>Materi</p>
@@ -340,7 +334,7 @@
                         </div>
 
                         <div class="col-lg-6 col-xs-6">
-                            <div class="small-box bg-green">
+                            <div class="small-box bg-green" onclick="return keTryout();">
                             <div class="inner">
                                 <h3>Tryout</h3>
                                 <p>List Tryout</p>
@@ -354,15 +348,7 @@
                             </div>
                         </div>
                 <?php endif; ?>
-                <!-- print_r($data['mahasiswa']->id_jurusan); -->
-                
-                    
 
-                     
-
-                <!-- <a href="http://blogbugabagi.blogspot.com" target="_blank" rel="noopener noreferrer">
-                    <img src="<?= base_url('assets/dist/img/b.png') ?>" width="30%" alt="" srcset="">
-                </a> -->
                 </center>
             </div>
         </div>
@@ -540,5 +526,3 @@
       events    : events
     })
 </script>
-
-<!-- <script src="<?=base_url()?>assets/dist/js/app/dashboard.js"></script> -->

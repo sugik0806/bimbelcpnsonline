@@ -15,6 +15,25 @@ $('form').on('reset', function(){
 	inputs.closest('.form-group').removeClass('has-error has-success');
 });
 
+function keTryout() {
+     window.location.href = base_url+'ujian/list';
+}
+
+function keMateri() {
+     window.location.href = base_url+'dokumen';
+}
+
+function keUpgradeMateri() {
+     //window.location.href = base_url+'dokumen';
+     window.open(href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20download%20Materi",'_blank');
+}
+
+function keUpgradeTryout() {
+     //window.location.href = base_url+'dokumen';
+     window.open(href=href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout",'_blank');
+}
+
+
 
 $(document).ready(function(){
 
