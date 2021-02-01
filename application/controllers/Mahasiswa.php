@@ -13,6 +13,7 @@ class Mahasiswa extends CI_Controller
 			show_error('Hanya Administrator yang diberi hak untuk mengakses halaman ini, <a href="' . base_url('dashboard') . '">Kembali ke menu awal</a>', 403, 'Akses Terlarang');
 		}
 		$this->load->library(['datatables', 'form_validation']); // Load Library Ignited-Datatables
+		$this->load->helper('string');
 		$this->load->model('Master_model', 'master');
 		$this->form_validation->set_error_delimiters('', '');
 	}
@@ -90,12 +91,14 @@ class Mahasiswa extends CI_Controller
 		$this->form_validation->set_rules('nim', 'NIM', 'required');
 		$this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[3]|max_length[50]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email' . $u_email);
+		$this->form_validation->set_rules('whatsapp', 'Whatsapp', 'required');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
 		$this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
 		$this->form_validation->set_rules('kelas', 'Kelas', 'required');
 
 		$this->form_validation->set_message('required', 'Kolom {field} wajib diisi');
 		$this->form_validation->set_rules('matkul_id', 'Bimbingan', 'required');
+		$this->form_validation->set_rules('diskon', 'Diskon', 'required');
 	}
 
 	public function save()
@@ -115,10 +118,13 @@ class Mahasiswa extends CI_Controller
 					'kelas' => form_error('kelas'),
 					'matkul_id' => form_error('matkul_id'),
 					'provinsi' => form_error('provinsi'),
+					'whatsapp' => form_error('whatsapp'),
+					'diskon' => form_error('diskon'),
 				]
 			];
 			$this->output_json($data);
 		} else {
+			$token = strtoupper(random_string('alpha', 5));
 			$input = [
 				'nim' 			=> $this->input->post('nim', true),
 				'email' 		=> $this->input->post('email', true),
@@ -127,9 +133,14 @@ class Mahasiswa extends CI_Controller
 				'kelas_id' 		=> $this->input->post('kelas', true),
 				'id_matkul' 	=> $this->input->post('matkul_id', true),
 				'id_provinsi'      => $this->input->post('provinsi', true),
-				'diskon'      => $this->input->post('diskon', true),
+				'whatsapp'      => $this->input->post('whatsapp', true),
+				'diskon'      => $this->input->post('diskon', true)
+				
 			];
 			if ($method === 'add') {
+				$input['token'] = $token;
+				$input['tanggal_daftar'] = date('Y-m-d');
+				$input['angka_unik'] = random_string('numeric',3);
 				$action = $this->master->create('mahasiswa', $input);
 			} else if ($method === 'edit') {
 				$id = $this->input->post('id_mahasiswa', true);

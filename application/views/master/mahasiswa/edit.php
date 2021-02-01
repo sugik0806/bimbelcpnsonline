@@ -26,6 +26,11 @@
                         <input value="<?=$mahasiswa->email?>" placeholder="Email" type="email" name="email" class="form-control">
                         <small class="help-block"></small>
                     </div>
+                    <div class="form-group">
+                        <label for="email">whatsapp</label>
+                        <input value="<?=$mahasiswa->whatsapp?>" placeholder="whatsapp" type="number" name="whatsapp" class="form-control">
+                        <small class="help-block"></small>
+                    </div>
                      <label>Provinsi</label>
                      <?php ?>
                      <select name="provinsi" required="required" id="provinsi" class="form-control select2 form-group" style="width:100% !important">
@@ -86,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <label for="diskon">Diskon</label>
-                        <input value="<?=$mahasiswa->diskon?>" placeholder="Diskon" type="text" name="diskon" class="form-control">
+                        <input value="<?=$mahasiswa->diskon?>" placeholder="Diskon" type="number" name="diskon" class="form-control">
                         <small class="help-block"></small>
                     </div>
                     <div class="form-group pull-right">

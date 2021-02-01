@@ -13,7 +13,7 @@
                 <?=form_open('mahasiswa/save', array('id'=>'mahasiswa'), array('method'=>'add'))?>
                     <div class="form-group">
                         <label for="nim">NP</label>
-                        <input autofocus="autofocus" onfocus="this.select()" placeholder="NP" type="text" name="nim" class="form-control">
+                        <input autofocus="autofocus" onfocus="this.select()" placeholder="di isi email" type="text" name="nim" class="form-control">
                         <small class="help-block"></small>
                     </div>
                     <div class="form-group">
@@ -24,6 +24,11 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input placeholder="Email" type="email" name="email" class="form-control">
+                        <small class="help-block"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">whatsapp</label>
+                        <input placeholder="whatsapp" type="number" name="whatsapp" class="form-control">
                         <small class="help-block"></small>
                     </div>
                      <label>Provinsi</label>
@@ -71,6 +76,11 @@
                         <?php endforeach; ?>
                     </select>
                     <small class="help-block" style="color: #dc3545"><?=form_error('matkul_id')?></small>
+                    <div class="form-group">
+                        <label for="diskon">Diskon</label>
+                        <input value="0" placeholder="Diskon" type="number" name="diskon" class="form-control">
+                        <small class="help-block"></small>
+                    </div>
                     <div class="form-group pull-right">
                         <button type="reset" class="btn btn-flat btn-default"><i class="fa fa-rotate-left"></i> Reset</button>
                         <button type="submit" id="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>
