@@ -94,6 +94,9 @@
                            <button id="btncek" data-id="<?=$ujian->id_ujian?>" class="btn btn-success btn-lg mb-4">
                                <i class="fa fa-pencil"></i> Mulai Tryout
                            </button>
+
+                           <b><P class="text-danger">Setelah Klik Mulai Tryout Waktu Mengerjakan 90 Menit</P>
+                           <P class="text-danger">Akan Tertutup Otomatis Jika Waktu Habis</P></b>
                        </center>
                         
 
