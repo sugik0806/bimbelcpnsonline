@@ -12,7 +12,7 @@
 				<!-- Default to the left -->
 				<strong>Copyright &copy; 2020 <a href="https://bimbelcpnsonline.id" target="blank"><b>Bimbel CPNS Online</b></a> </strong> All rights reserved
 
-				<a target="_blank" href="<?= base_url() ?>uploads/panduan-peserta.pdf" class="btn btn-xs btn-primary pull-right">
+				<a target="_blank" href="<?= base_url() ?>uploads/panduan-peserta.pdf" class="btn btn-primary pull-right" style="margin-top: -8px">
                   <i class="fa fa-download"></i> Unduh Panduaan Peserta
                 </a>
 			</footer>
