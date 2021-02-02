@@ -140,7 +140,7 @@ class Mahasiswa extends CI_Controller
 			if ($method === 'add') {
 				$input['token'] = $token;
 				$input['tanggal_daftar'] = date('Y-m-d');
-				$input['angka_unik'] = random_string('numeric',3);
+				$input['angka_unik'] = 0;//random_string('numeric',3);
 				$action = $this->master->create('mahasiswa', $input);
 			} else if ($method === 'edit') {
 				$id = $this->input->post('id_mahasiswa', true);

@@ -64,7 +64,7 @@ $(document).ready(function() {
         render: function(data, type, row, meta) {
           return `
                     <div class="text-center">
-                        <a class="btn btn-xs bg-maroon" href="${base_url}laporan/cetak/${data}" >
+                        <a target="_blank" class="btn btn-xs bg-maroon" href="${base_url}laporan/cetak_detail/${data}" >
                             <i class="fa fa-search"></i> Lihat Detail
                         </a>
                     </div>

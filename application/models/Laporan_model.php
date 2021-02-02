@@ -26,6 +26,18 @@ class Laporan_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function getPendapatanReportbyID($id)
+    {
+        $this->db->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, m.tanggal_daftar, (k.harga - m.angka_unik - m.diskon) as net');
+        $this->db->from('mahasiswa m');
+        $this->db->join('kelas k', 'k.id_kelas = m.kelas_id');
+        $this->db->join('users u', 'u.email = m.email');
+        $this->db->where(['id_mahasiswa' => $id]);
+
+
+        return $this->db->get()->result();
+    }
+
 }
 
 
