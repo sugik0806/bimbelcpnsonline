@@ -126,4 +126,4 @@ $pdf->lastPage();
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('tes.pdf', 'I');
+$pdf->Output('cetak-detail.pdf', 'I');

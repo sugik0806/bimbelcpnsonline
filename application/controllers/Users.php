@@ -11,6 +11,9 @@ class Users extends CI_Controller {
 		$this->load->library(['datatables', 'form_validation']);// Load Library Ignited-Datatables
 		$this->load->model('Users_model', 'users');
 		$this->load->model('Master_model', 'master');
+		$this->load->model('Ujian_model', 'ujian');
+        $this->user = $this->ion_auth->user()->row();
+        $this->mhs  = $this->ujian->getIdMahasiswa($this->user->username);
 		$this->form_validation->set_error_delimiters('','');
 	}
 	
@@ -56,7 +59,8 @@ class Users extends CI_Controller {
 			'subjudul'	=> 'Edit Data User',
 			'users' 	=> $this->ion_auth->user($id)->row(),
 			'groups'	=> $this->ion_auth->groups()->result(),
-			'level'		=> $level[0]
+			'level'		=> $level[0],
+			'mhs'=> $this->mhs
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('users/edit');

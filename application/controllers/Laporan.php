@@ -27,22 +27,15 @@ class Laporan extends CI_Controller {
 
 	public function data()
 	{
-		if($this->ion_auth->is_admin()){
-			$this->output_json($this->laporan->getPendapatan(), false);
-		}
-	}
-
-	public function NilaiMhs($id)
-	{
-		$this->output_json($this->ujian->HslUjianById($id, true), false);
+		$this->output_json($this->laporan->getPendapatan(), false);
 	}
 
 	public function index()
 	{
 		$data = [
 			'user' => $this->user,
-			'judul'	=> 'Ujian',
-			'subjudul'=> 'Hasil Ujian',
+			'judul'	=> 'Laporan',
+			'subjudul'=> 'Laporan Pendapatan',
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('laporan/laporan_pendapatan');

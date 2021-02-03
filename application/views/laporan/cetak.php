@@ -112,4 +112,4 @@ $pdf->lastPage();
 //Close and output PDF document
 //$pdf->Output($laporan[0]->nama.'_'.$laporan[0]->nama_kelas.'.pdf', 'I');
 //Close and output PDF document
-$pdf->Output('tes.pdf', 'I');
+$pdf->Output('rekap-pendapatan.pdf', 'I');

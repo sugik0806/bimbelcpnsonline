@@ -13,6 +13,9 @@ class Dokumen extends CI_Controller {
 		$this->load->model('Master_model', 'master');
         $this->load->model('Dokumen_model', 'dokumen');
 		$this->form_validation->set_error_delimiters('','');
+        $this->load->model('Ujian_model', 'ujian');
+        $this->user = $this->ion_auth->user()->row();
+        $this->mhs  = $this->ujian->getIdMahasiswa($this->user->username);
 	}
 
     public function file_config()
@@ -41,7 +44,8 @@ class Dokumen extends CI_Controller {
 		$data = [
 			'user' => $user,
 			'judul'	=> 'Materi',
-			'subjudul'=> 'Bank Dokumen'
+			'subjudul'=> 'Bank Dokumen',
+            'mhs'=> $this->mhs
         ];
         
         $data['matkul'] = $this->master->getAllMatkul();
