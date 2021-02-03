@@ -63,7 +63,14 @@ $pdf->AddPage();
 
 // create some HTML content
 
+$sum = 0;
+foreach($laporan as $key=>$value)
+{
+   $sum+= $value->net;
+}
 
+$total = number_format($sum);
+//echo $sum;
 
 $skd = <<<EOD
 <br><br><br>
@@ -81,13 +88,14 @@ EOD;
 
 
 $no = 1;
-foreach($laporan as $row) {
+foreach($laporan as $key=>$row) {
+$net = number_format($row->net);
 $skd .= <<<EOD
     <tr align="center">
         <td align="center" width="5%">{$no}</td>
         <td width="35%">{$row->nama}</td>
         <td width="30%">{$row->nama_kelas}</td>
-        <td width="30%">{$row->net}</td>
+        <td width="30%">Rp. {$net}</td>
     </tr>
 EOD;
 $no++;
@@ -95,6 +103,14 @@ $no++;
 
 $skd .= <<<EOD
     </tbody>
+    <tfoot>
+    <tr align="center">
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td>Rp. {$total}</td>
+    </tr>
+  </tfoot>
 </table>
 EOD;
 

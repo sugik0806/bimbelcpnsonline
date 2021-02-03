@@ -81,10 +81,10 @@ $skd .= <<<EOD
             <th width="5%">No.</th>
             <th width="25%">Nama</th>
             <th width="15%">Paket</th>
-            <th width="10%">Harga</th>
+            <th width="15%">Harga</th>
             <th width="10%">Angka Unik</th>
-            <th width="10%">Diskon</th>
-            <th width="10%">Netto</th>
+            <th width="15%">Diskon</th>
+            <th width="15%">Netto</th>
         </tr>        
     </thead>
     <tbody>
@@ -92,15 +92,18 @@ EOD;
 
 $no = 1;
 foreach($hasil as $row) {
+$harga = number_format($row->harga);
+$net = number_format($row->net);
+$diskon = number_format($row->diskon);
 $skd .= <<<EOD
     <tr align="center">
         <td align="center" width="5%">{$no}</td>
         <td width="25%">{$row->nama}</td>
         <td width="15%">{$row->nama_kelas}</td>
-        <td width="10%">{$row->harga}</td>
+        <td width="15%">Rp. {$harga}</td>
         <td width="10%">{$row->angka_unik}</td>
-        <td width="10%">{$row->diskon}</td>
-        <td width="10%">{$row->net}</td>
+        <td width="15%">Rp. {$diskon}</td>
+        <td width="15%">Rp. {$net}</td>
     </tr>
 EOD;
 $no++;

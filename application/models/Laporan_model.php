@@ -5,7 +5,7 @@ class Laporan_model extends CI_Model {
     
       public function getPendapatan()
     {
-        $this->datatables->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, (k.harga - m.angka_unik - m.diskon) as net');
+        $this->datatables->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, (k.harga - m.angka_unik - m.diskon) as net, (SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total');
         $this->datatables->from('mahasiswa m');
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
@@ -13,6 +13,8 @@ class Laporan_model extends CI_Model {
 
         return $this->datatables->generate();
     }
+
+
 
     public function getPendapatanReport()
     {
