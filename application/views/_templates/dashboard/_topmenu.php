@@ -1,5 +1,5 @@
 <a href="<?=base_url('dashboard')?>" class="logo">
-    <span class="logo-mini"><b>BDP</b></span>
+    <span class="logo-mini"><b>BCO</b></span>
     <span class="logo-lg"><b>B</b>imbel <b>CPNS</b> <b>O</b>nline </span>
 </a>
 
