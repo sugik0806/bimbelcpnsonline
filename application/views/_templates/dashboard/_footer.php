@@ -4,7 +4,7 @@
 			<!-- /.content-wrapper -->
 
 			<!-- Main Footer -->
-			<footer class="main-footer" style="font-size:14px;">
+			<footer class="main-footer" style="font-size:12px;">
 				<!-- To the right -->
 				<!-- <div class="pull-right hidden-xs">
 					Redivice by <a target="_blank" href=""><b>Bimbel CPNS Online</b></a> | Computer Based Test v3
