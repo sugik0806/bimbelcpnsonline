@@ -322,7 +322,7 @@
                                <i class="fa fa-download"></i>
                            </div>
                            <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                               <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                               <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
                            </a>
                            </div>
                        </div>
@@ -369,7 +369,7 @@
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                                <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
                             </a>
                             </div>
                         </div>
@@ -386,7 +386,7 @@
                                 <i class="fa fa-download"></i>
                             </div>
                             <a href="<?= base_url('dokumen') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                                <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
                             </a>
                             </div>
                         </div>
@@ -401,7 +401,7 @@
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                                <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
                             </a>
                             </div>
                         </div>
@@ -432,7 +432,7 @@
                                 <i class="fa fa-pencil"></i>
                             </div>
                             <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
-                                <h4>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h4>
+                                <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
                             </a>
                             </div>
                         </div>        
