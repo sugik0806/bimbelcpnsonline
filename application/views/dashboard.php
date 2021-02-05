@@ -532,7 +532,7 @@
             </button>
           </div>
         </div>
-        <div class="box-body" style="font-size:12px;">
+        <div class="box-body" style="font-size:14px;">
 
         <?php if( $mahasiswa->id_jurusan == 3 ) : ?> 
             <p>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG"><i class="fa fa-telegram fa-lg"></i> Gabung Grup Telegram</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</p>
