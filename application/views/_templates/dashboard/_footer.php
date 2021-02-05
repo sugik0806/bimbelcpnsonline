@@ -15,7 +15,7 @@
 				<strong>&copy; 2020 <a href="https://bimbelcpnsonline.id" target="blank"><b>Bimbel CPNS Online</b></a> </strong>
 
 				<a target="_blank" href="<?= base_url() ?>uploads/panduan-peserta.pdf" class="btn btn-primary pull-right" style="margin-top: -8px">
-                  <i class="fa fa-download"></i> Panduaan
+                  <i class="fa fa-download"></i> Panduan
                 </a>
 			</footer>
 
