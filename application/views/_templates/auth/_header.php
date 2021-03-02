@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/plugins/iCheck/square/blue.css">
     <link rel="icon" href="<?=base_url()?>assets/dist/img/b.png" type="png">
     <style>
-    .blogbugabagi 
+    .login 
     {
         background-image:url(<?= base_url('assets/dist/img/lab-mac.jpg') ?>);
+        /*background: rgba(77, 228, 228, 0.3)*/ /* Green background with 30% opacity */
     }
     </style>
         <script src="<?=base_url()?>assets/bower_components/sweetalert2/sweetalert2.all.min.js"></script>
@@ -28,4 +29,4 @@
     <![endif]-->
     <script src="<?=base_url()?>assets/bower_components/jquery/jquery-3.3.1.min.js"></script>
 </head>
-<body class="hold-transition login-page blogbugabagi">
+<body class="hold-transition login-page login">

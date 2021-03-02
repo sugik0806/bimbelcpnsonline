@@ -132,9 +132,10 @@ class Mahasiswa extends CI_Controller
 				'jenis_kelamin' => $this->input->post('jenis_kelamin', true),
 				'kelas_id' 		=> $this->input->post('kelas', true),
 				'id_matkul' 	=> $this->input->post('matkul_id', true),
-				'id_provinsi'      => $this->input->post('provinsi', true),
+				'id_provinsi'   => $this->input->post('provinsi', true),
 				'whatsapp'      => $this->input->post('whatsapp', true),
-				'diskon'      => $this->input->post('diskon', true)
+				'diskon'        => $this->input->post('diskon', true),
+				'rekening'		=> '0143252019'
 				
 			];
 			if ($method === 'add') {
