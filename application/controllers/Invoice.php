@@ -66,7 +66,7 @@ class Invoice extends CI_Controller {
                         'jurusan' => $datapeserta->nama_jurusan,
                         'nama' => $datapeserta->nama,
                         'file' => $datapeserta->url_bukti,
-                        'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik),
+                        'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik  - $datapeserta->diskon),
                         'email' => $datapeserta->email
                     ];
 
@@ -178,16 +178,16 @@ class Invoice extends CI_Controller {
 
                     if ($datamhs->kelas_id == 1) {
                         $paket = 'Paket Materi';
-                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik - $datamhs->diskon);
                     }else if ($datamhs->kelas_id == 2) {
                         $paket = 'Paket Soal';
-                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik - $datamhs->diskon);
                     }else if ($datamhs->kelas_id == 3) {
                         $paket = 'Paket Bimbel';
-                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik - $datamhs->diskon);
                     }else if ($datamhs->kelas_id == 4) {
                         $paket = 'Paket Soal Mini';
-                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik);
+                        $bayar = number_format($datamhs->harga - $datamhs->angka_unik - $datamhs->diskon);
                     }
 
                     $token = $datamhs->token;

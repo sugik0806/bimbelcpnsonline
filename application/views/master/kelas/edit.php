@@ -8,7 +8,7 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-sm-offset-1 col-sm-10">
                 <div class="my-2">
                     <div class="form-horizontal form-inline">
                         <a href="<?=base_url('kelas')?>" class="btn btn-default btn-xs">
@@ -26,6 +26,8 @@
                             <th># No</th>
                             <th>Kelas</th>
                             <th>Paket</th>
+                            <th>Harga</th>
+                            <th>Diskon</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +53,18 @@
                                             <?php endforeach; ?>
                                         </select>
                                         <small class="help-block text-right"></small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input value="<?=$row->harga?>" placeholder="Harga" type="text" name="harga[<?=$i?>]" class="form-control">
+                                        <small class="help-block"></small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input value="<?=$row->diskon?>" placeholder="Diskon" type="text" name="diskon[<?=$i?>]" class="form-control">
+                                        <small class="help-block"></small>
                                     </div>
                                 </td>
                             </tr>

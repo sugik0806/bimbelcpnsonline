@@ -52,7 +52,9 @@ $(document).ready(function() {
         searchable: false
       },
       { data: "nama_kelas" },
-      { data: "nama_jurusan" },
+      { data: "nama_jurusan"},
+      { data: "harga"},
+      { data: "diskon"},
       {
         data: "bulk_select",
         orderable: false,

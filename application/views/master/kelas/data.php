@@ -23,6 +23,8 @@
 					<th>No.</th>
 					<th>Kelas</th>
 					<th>Paket</th>
+					<th>Harga</th>
+					<th>Diskon</th>
 					<th class="text-center">
 						<input type="checkbox" id="select_all">
 					</th>

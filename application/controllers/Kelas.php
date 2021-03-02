@@ -38,6 +38,7 @@ class Kelas extends CI_Controller
 	public function data()
 	{
 		$this->output_json($this->master->getDataKelas(), false);
+		//print_r($this->master->getDataKelas());
 	}
 
 	public function add()
@@ -81,27 +82,37 @@ class Kelas extends CI_Controller
 		for ($i = 1; $i <= $rows; $i++) {
 			$nama_kelas 	= 'nama_kelas[' . $i . ']';
 			$jurusan_id 	= 'jurusan_id[' . $i . ']';
+			$harga 			= 'harga[' . $i . ']';
+			$diskon 		= 'diskon[' . $i . ']';
 			$this->form_validation->set_rules($nama_kelas, 'Kelas', 'required');
 			$this->form_validation->set_rules($jurusan_id, 'Jurusan', 'required');
+			$this->form_validation->set_rules($harga, 'Harga', 'required');
+			$this->form_validation->set_rules($diskon, 'Diskon', 'required');
 			$this->form_validation->set_message('required', '{field} Wajib diisi');
 
 			if ($this->form_validation->run() === FALSE) {
 				$error[] = [
 					$nama_kelas 	=> form_error($nama_kelas),
 					$jurusan_id 	=> form_error($jurusan_id),
+					$harga 			=> form_error($harga),
+					$diskon 		=> form_error($diskon),
 				];
 				$status = FALSE;
 			} else {
 				if ($mode == 'add') {
 					$insert[] = [
 						'nama_kelas' 	=> $this->input->post($nama_kelas, true),
-						'jurusan_id' 	=> $this->input->post($jurusan_id, true)
+						'jurusan_id' 	=> $this->input->post($jurusan_id, true),
+						'harga' 		=> $this->input->post($harga, true),
+						'diskon' 		=> $this->input->post($diskon, true)
 					];
 				} else if ($mode == 'edit') {
 					$update[] = array(
 						'id_kelas'		=> $this->input->post('id_kelas[' . $i . ']', true),
 						'nama_kelas' 	=> $this->input->post($nama_kelas, true),
-						'jurusan_id' 	=> $this->input->post($jurusan_id, true)
+						'jurusan_id' 	=> $this->input->post($jurusan_id, true),
+						'harga' 		=> $this->input->post($harga, true),
+						'diskon' 		=> $this->input->post($diskon, true)
 					);
 				}
 				$status = TRUE;

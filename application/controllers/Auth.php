@@ -408,7 +408,8 @@ class Auth extends CI_Controller
 					];
 					$this->output_json($data);
 				} else {
-					
+					$kelas = $this->master->getKelasById($this->input->post('jurusan', true));
+					$diskon = $kelas[0]->diskon;
 					$token = strtoupper(random_string('alpha', 5));
 					$data = [
 						'nama' => $username,
@@ -422,7 +423,7 @@ class Auth extends CI_Controller
 						'angka_unik' => random_string('numeric',3),
 						'tanggal_daftar' => date('Y-m-d'),
 						'id_provinsi' => $this->input->post('provinsi', true),
-						'diskon' => 0
+						'diskon' => $diskon
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

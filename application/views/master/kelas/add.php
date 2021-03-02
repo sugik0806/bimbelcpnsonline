@@ -26,6 +26,8 @@
                             <th># No</th>
                             <th>Kelas</th>
                             <th>Paket</th>
+                            <th>Harga</th>
+                            <th>Diskon</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +50,18 @@
                                             <?php endforeach; ?>
                                         </select>
                                         <small class="help-block text-right"></small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input value="" placeholder="Harga" type="text" name="harga[<?=$i?>]" class="form-control">
+                                        <small class="help-block"></small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input value="" placeholder="Diskon" type="text" name="diskon[<?=$i?>]" class="form-control">
+                                        <small class="help-block"></small>
                                     </div>
                                 </td>
                             </tr>

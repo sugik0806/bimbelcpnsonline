@@ -44,7 +44,7 @@ class Master_model extends CI_Model {
 
     public function getDataKelas()
     {
-        $this->datatables->select('id_kelas, nama_kelas, id_jurusan, nama_jurusan');
+        $this->datatables->select('id_kelas, nama_kelas, id_jurusan, nama_jurusan, harga, diskon');
         $this->datatables->from('kelas');
         $this->datatables->join('jurusan', 'jurusan_id=id_jurusan');
         $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_kelas, nama_kelas, id_jurusan, nama_jurusan');        
