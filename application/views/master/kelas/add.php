@@ -8,7 +8,7 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6">
+            <div class="col-sm-offset-1 col-sm-10">
                 <div class="my-2">
                     <div class="form-horizontal form-inline">
                         <a href="<?=base_url('kelas')?>" class="btn btn-default btn-xs">
