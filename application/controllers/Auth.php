@@ -362,7 +362,11 @@ class Auth extends CI_Controller
 
 	public function registrasi()
 	{	
+		$kelas = $this->master->getKelasById($this->uri->segment(3));
+		$hargaDinamis = $kelas[0]->harga - $kelas[0]->diskon;
 		$this->data['provinsi'] = $this->master->getProvinsi();
+		$this->data['hargaDinamis'] = $hargaDinamis;
+		
 
 		$this->load->view('_templates/auth/_header.php');
 		//$this->load->view('auth/registrasi.php');
