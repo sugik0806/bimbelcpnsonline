@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 						<?= form_open("auth/cek_registrasi", array('id'=>'registrasi'));?>
-						<label for="name">Nama</label>
+						<label for="name">Nama *</label>
 						<p>
 							<input class="form-control" type="text" id="name" name="name" placeholder="Isikan Nama" value="<?=set_value('name')?>"/>
 						</p>
@@ -80,20 +80,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 			</p>
 	 			<p> <?php echo form_error('username'); ?> </p> -->
 	 			
-	 			<label for="email">Email</label>
+	 			<label for="email">Email *</label>
 	 			<p>
 	 				<input class="form-control" type="text" id="email" name="email" placeholder="contoh: email@email.com (email aktif)" value="<?php echo set_value('email'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('email'); ?> </p>
 
-	 			<label for="whatsapp">Whatsapp</label>
+	 			<label for="whatsapp">Whatsapp *</label>
 	 			<p>
 	 				<input class="form-control" type="number" id="whatsapp" name="whatsapp" placeholder="Isikan Nomor Whatsapp" value="<?php echo set_value('whatsapp'); ?>"/>
 	 			</p>
 	 			<p> <?php echo form_error('whatsapp'); ?> </p>
 	 			
 	 			
- 			    <label>Provinsi</label>
+ 			    <label>Provinsi *</label>
  			    <?php ?>
  			    <select name="provinsi" required="required" id="provinsi" class="form-control select2 form-group" style="width:100% !important">
  			        <option value="" disabled selected>Pilih Provinsi</option>
@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 			
 
 	 			<div class="form-group">
-	 				<label for="gender">Jenis Kelamin</label>
+	 				<label for="gender">Jenis Kelamin *</label>
 	 				<select id="gender" name="gender" class="form-control select2 form-group">
 	 					<option value="">-- Pilih --</option>
 	 					<option value="L">Laki-laki</option>
@@ -124,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 					<label hidden="true" for="jurusan">Paket</label>
 	 					<input class="form-control" type="hidden" id="jurusan" name="jurusan" value="<?php echo $this->uri->segment(3); ?>"/>
 	 				<?php elseif( !$this->uri->segment(3)) : ?>
-	 					<label for="jurusan">Paket</label>
+	 					<label for="jurusan">Paket *</label>
 	 					<select id="jurusan" name="jurusan" class="form-control select2">
 	 						<option value="">-- Pilih --</option>
 	 						<option value="1">Paket Materi</option>
@@ -136,6 +136,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	 				<small class="help-block"></small>
 	 			</div>
+
+	 			<?php if( $this->uri->segment(4)) : ?>
+	 				<p>
+	 					<input class="form-control" type="hidden" id="referal" name="referal" value="<?php echo $this->uri->segment(4); ?>"/>
+	 				</p>
+	 			<?php elseif( !$this->uri->segment(4)) : ?>
+	 				<label for="referal">Kode Referal Marketing (Jika Ada)</label>
+	 				<p>
+		 				<input class="form-control" type="text" id="referal" name="referal" placeholder="Isikan referal" value="<?=set_value('referal')?>"/>
+		 			</p>
+		 			<small class="help-block" style="color: #dc3545"><?=form_error('referal')?></small>
+	 				
+	 			<?php endif; ?>
+	 			
 
 	            <!-- <select name="jurusan" required="required" id="jurusan" class="select2 form-group" style="width:100% !important">
 	                <option value="" disabled selected>Pilih Paket</option>

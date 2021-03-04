@@ -428,7 +428,8 @@ class Auth extends CI_Controller
 						'tanggal_daftar' => date('Y-m-d'),
 						'id_provinsi' => $this->input->post('provinsi', true),
 						'diskon' => $diskon,
-						'rekening' => '9000025229858'
+						'rekening' => '9000025229858',
+						'referal' => $this->input->post('referal', true)
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

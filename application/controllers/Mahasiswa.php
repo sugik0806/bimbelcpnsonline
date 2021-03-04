@@ -135,7 +135,8 @@ class Mahasiswa extends CI_Controller
 				'id_provinsi'   => $this->input->post('provinsi', true),
 				'whatsapp'      => $this->input->post('whatsapp', true),
 				'diskon'        => $this->input->post('diskon', true),
-				'rekening'		=> '0143252019'
+				'rekening'		=> '0143252019',
+				'referal' 		=> $this->input->post('referal', true)
 				
 			];
 			if ($method === 'add') {

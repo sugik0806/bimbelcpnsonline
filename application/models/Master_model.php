@@ -60,6 +60,38 @@ class Master_model extends CI_Model {
     }
 
     /**
+    * Data Marketing
+    */
+
+    public function getDataMarketing()
+    {
+        $this->datatables->select('id_marketing, nama_marketing, referal');
+        $this->datatables->from('marketing');
+        $this->db->order_by('id_marketing');
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_marketing, nama_marketing, referal');
+        return $this->datatables->generate();
+    }
+
+    public function getMarketingById($id)
+    {
+        $this->db->where_in('id_marketing', $id);
+        $this->db->order_by('nama_marketing');
+        $query = $this->db->get('marketing')->result();
+        return $query;
+    }
+
+        public function getMarketing()
+    {
+        $this->db->select('id_marketing, nama_marketing');
+        $this->db->from('kelas');
+        $this->db->join('marketing', 'marketing_id=id_marketing');
+        $this->db->order_by('nama_marketing', 'ASC');
+        $this->db->group_by('id_marketing');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    /**
      * Data Jurusan
      */
 

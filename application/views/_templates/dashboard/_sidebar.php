@@ -20,7 +20,7 @@
 			<!-- Optionally, you can add icons to the links -->
 			<?php 
 			$page = $this->uri->segment(1);
-			$master = ["jurusan", "kelas", "matkul", "dosen", "mahasiswa"];
+			$master = ["jurusan", "kelas", "matkul", "dosen", "mahasiswa" ,"marketing"];
 			$relasi = ["kelasdosen", "jurusanmatkul"];
 			$users = ["users"];
 			?>
@@ -61,6 +61,12 @@
 						<a href="<?=base_url('mahasiswa')?>">
 							<i class="fa fa-circle-o"></i>
 							Master Peserta
+						</a>
+					</li>
+					<li class="<?=$page==='marketing'?"active":""?>">
+						<a href="<?=base_url('marketing')?>">
+							<i class="fa fa-circle-o"></i> 
+							Master Pemasaran
 						</a>
 					</li>
 				</ul>
