@@ -533,9 +533,11 @@
           </div>
         </div>
         <div class="box-body" style="font-size:14px;">
+          
+          <!-- https://t.me/joinchat/Is1JSH4mQxgDdlzG -->
 
         <?php if( $mahasiswa->id_jurusan == 3 ) : ?> 
-            <p>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG"><i class="fa fa-telegram fa-lg"></i> Gabung Grup Telegram</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</p>
+            <p>1. Bergabunglah di group telegram, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://chat.whatsapp.com/Cp2VzKEBZ7qBMlOXakGGCr"><i class="fa fa-telegram fa-lg"></i> Gabung Grup Whatsapp</a>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer</p>
          <?php else : ?>
             <p>1. Bergabunglah di group telegram, caranya klik button <button disabled class="btn btn-sm btn-flat btn-info" target="_blank" href="https://t.me/joinchat/Is1JSH4mQxgDdlzG"><i class="fa fa-telegram fa-lg"></i> Gabung Grup Telegram</button>, kemudian klik Join Group jika belum punya telegram silakan download dulu, telegram juga bisa diinstall di Komputer (<b>Grup Telegram Hanya Untuk Paket Bimbel</b>)</p> <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20Bimbel" target="_blank" class="small-box-footer"><h4>Upgrade Ke Paket Bimbel <i class="fa fa-money fa-lg"></i></h4></a>
          <?php endif; ?>
