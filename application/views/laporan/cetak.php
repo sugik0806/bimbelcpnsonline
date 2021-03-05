@@ -78,9 +78,10 @@ $skd = <<<EOD
     <thead>
         <tr align="center">
             <th width="5%">No.</th>
-            <th width="35%">Nama</th>
-            <th width="30%">Kelas</th>
-            <th width="30%">Pendapatan</th>
+            <th width="30%">Nama</th>
+            <th width="25%">Kelas</th>
+            <th width="20%">Rekening</th>
+            <th width="20%">Pendapatan</th>
         </tr>        
     </thead>
     <tbody>
@@ -93,9 +94,10 @@ $net = number_format($row->net);
 $skd .= <<<EOD
     <tr align="center">
         <td align="center" width="5%">{$no}</td>
-        <td width="35%">{$row->nama}</td>
-        <td width="30%">{$row->nama_kelas}</td>
-        <td width="30%">Rp. {$net}</td>
+        <td width="30%">{$row->nama}</td>
+        <td width="25%">{$row->nama_kelas}</td>
+        <td width="20%">{$row->rekening}</td>
+        <td width="20%">Rp. {$net}</td>
     </tr>
 EOD;
 $no++;
@@ -105,6 +107,7 @@ $skd .= <<<EOD
     </tbody>
     <tfoot>
     <tr align="center">
+      <td></td>
       <td></td>
       <td></td>
       <td>Total</td>

@@ -3,6 +3,25 @@ var table;
 $(document).ready(function() {
   ajaxcsrf();
 
+  $('.datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
+  $('#tgl_awal').on('change', function(){
+    let tipe = $(this).val();
+    let src = base_url + "laporan/data";
+    let url;
+
+    if(tipe !== 'all'){
+      let src2 = src + '/' + tipe;
+      url = $(this).prop('checked') === true ? src : src2;
+    }else{
+      url = src;
+    }
+    table.ajax.url(url).load();
+
+  });
+
   table = $("#pendapatan").DataTable({
     initComplete: function() {
       var api = this.api();
@@ -51,6 +70,7 @@ $(document).ready(function() {
       },
       { data: "nama" },
       { data: "nama_kelas" },
+      { data: "rekening" },
       { data: "net" },
       {
         orderable: false,
@@ -59,7 +79,7 @@ $(document).ready(function() {
     ],
     columnDefs: [
       {
-        targets: 4,
+        targets: 5,
         data: "id_mahasiswa",
         render: function(data, type, row, meta) {
           return `

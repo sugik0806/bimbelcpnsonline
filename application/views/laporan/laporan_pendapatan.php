@@ -8,10 +8,24 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <button type="button" onclick="reload_ajax()" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-refresh"></i> Reload</button>
+
+                 <label class="pull-right">Periode</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input name="tgl_awal" type="text" class="datetimepicker form-control" placeholder="Tanggal Awal">
+                    <small class="help-block"></small>
+                </div>
+            </div>    
+            <div class="col-md-3">    
+                <div class="form-group">
+                    <input name="tgl_akhir" type="text" class="datetimepicker form-control" placeholder="Tanggal Akhir">
+                    <small class="help-block"></small>
+                </div>
+            </div>
+            <div class="col-sm-3">
                 <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a>
             </div>
         </div>
@@ -23,6 +37,7 @@
                 <th>No.</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
+                <th>Rekening</th>
                 <th>Pendapatan</th>
                 <th class="text-center">
                     <i class="fa fa-search"></i>
@@ -34,6 +49,7 @@
                 <th>No.</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
+                <th>Rekening</th>
                 <th>Pendapatan</th>
                 <th class="text-center">
                     <i class="fa fa-search"></i>

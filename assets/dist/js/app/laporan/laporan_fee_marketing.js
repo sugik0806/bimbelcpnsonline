@@ -3,6 +3,10 @@ var table;
 $(document).ready(function() {
   ajaxcsrf();
 
+  $('.datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
   table = $("#pendapatan").DataTable({
     initComplete: function() {
       var api = this.api();
