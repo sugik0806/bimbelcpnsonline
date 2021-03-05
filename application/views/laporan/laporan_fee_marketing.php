@@ -12,7 +12,7 @@
                 <button type="button" onclick="reload_ajax()" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-refresh"></i> Reload</button>
             </div>
             <div class="col-sm-6">
-                <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a>
+                <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak_fee" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,11 @@
                 <th>No.</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
-                <th>Pendapatan</th>
+                <th>Harga</th>
+                <th>Angka Unik</th>
+                <th>Diskon</th>
+                <th>Fee</th>
+                <th>Penerima Fee</th>
                 <th class="text-center">
                     <i class="fa fa-search"></i>
                 </th>
@@ -34,7 +38,11 @@
                 <th>No.</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
-                <th>Pendapatan</th>
+                <th>Harga</th>
+                <th>Angka Unik</th>
+                <th>Diskon</th>
+                <th>Fee</th>
+                <th>Penerima Fee</th>
                 <th class="text-center">
                     <i class="fa fa-search"></i>
                 </th>
@@ -44,4 +52,4 @@
     </div>
 </div>
 
-<script src="<?=base_url()?>assets/dist/js/app/laporan/laporan_pendapatan.js"></script>
+<script src="<?=base_url()?>assets/dist/js/app/laporan/laporan_fee_marketing.js"></script>

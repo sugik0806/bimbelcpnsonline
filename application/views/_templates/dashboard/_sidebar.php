@@ -137,6 +137,11 @@
 					<i class="fa fa-file"></i> <span>Laporan Pendapatan</span>
 				</a>
 			</li>
+			<li class="<?=$page==='Laporan/fee_marketing'?"active":""?>">
+				<a href="<?=base_url('Laporan/fee_marketing')?>" rel="noopener noreferrer">
+					<i class="fa fa-file"></i> <span>Laporan Fee Marketing</span>
+				</a>
+			</li>
 			<?php endif; ?>
 			<?php if($this->ion_auth->is_admin()) : ?>
 			<li class="header">ADMINISTRATOR</li>

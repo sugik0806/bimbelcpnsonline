@@ -1,13 +1,13 @@
 <?php 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF {
-
+    
     public function Header() {
         $image_file = K_PATH_IMAGES.'logo_example.jpg';
         $this->Image($image_file, 20, 5, 15, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         $this->SetFont('helvetica', 'B', 18);
         $this->SetY(13);
-        $this->Cell(0, 15, 'Detail Pendapatan', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 15, 'Fee Pemasaran', 0, false, 'C', 0, '', 0, false, 'M', 'M');
     }
 
     public function Footer() {
@@ -24,7 +24,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Bimbel CPNS Online');
-$pdf->SetTitle('Pendapatan Detail');
+$pdf->SetTitle('Laporan Fee Pemasaran');
 
 // set default header data
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
@@ -36,8 +36,8 @@ $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 // set default monospaced font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+// set margins PDF_MARGIN_LEFT
+$pdf->SetMargins(12, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -61,52 +61,62 @@ $pdf->SetFont('helvetica', '', 10);
 // add a page
 $pdf->AddPage();
 
-// $mulai = strftime('%A, %d %B %Y', strtotime($hasil->tanggal_daftar));
-// $selesai = strftime('%A, %d %B %Y', strtotime($hasil->tanggal_daftar));
-
 // create some HTML content
 
-$skd = <<<EOD
-<hr>
-<p>
-Detail Pendapatan
-</p>
-EOD;
+$sum = 0;
+foreach($laporan as $key=>$value)
+{
+   $sum+= $value->harga;
+}
 
-$skd .= <<<EOD
+$total = number_format($sum);
+
+$sumFee = 0;
+foreach($laporan as $key=>$value)
+{
+   $sumFee+= $value->referal_fee;
+}
+
+$total_fee = number_format($sumFee);
+//echo $sum;
+
+$skd = <<<EOD
 <br><br><br>
 <table border="1" style="border-collapse:collapse">
     <thead>
         <tr align="center">
             <th width="5%">No.</th>
-            <th width="20%">Nama</th>
-            <th width="15%">Paket</th>
-            <th width="12%">Harga</th>
-            <th width="10%">Angka Unik</th>
+            <th width="15%">Nama</th>
+            <th width="15%">Kelas</th>
+            <th width="15%">Harga</th>
+            <th width="12%">Angka Unik</th>
             <th width="12%">Diskon</th>
             <th width="12%">Fee</th>
-            <th width="15%">Pendapatan</th>
+            <th width="17%">Penerima fee</th>
         </tr>        
     </thead>
     <tbody>
 EOD;
 
+
 $no = 1;
-foreach($hasil as $row) {
-$harga = number_format($row->harga);
-$net = number_format($row->net);
+foreach($laporan as $key=>$row) {
+$net = number_format($row->harga);
+$angka_unik = number_format($row->angka_unik);
 $diskon = number_format($row->diskon);
 $referal_fee = number_format($row->referal_fee);
+$penerima = $row->penerima_fee;
+
 $skd .= <<<EOD
     <tr align="center">
         <td align="center" width="5%">{$no}</td>
-        <td width="20%">{$row->nama}</td>
+        <td width="15%">{$row->nama}</td>
         <td width="15%">{$row->nama_kelas}</td>
-        <td width="12%">Rp. {$harga}</td>
-        <td width="10%">{$row->angka_unik}</td>
+        <td width="15%">Rp. {$net}</td>
+        <td width="12%">Rp. {$angka_unik}</td>
         <td width="12%">Rp. {$diskon}</td>
         <td width="12%">Rp. {$referal_fee}</td>
-        <td width="15%">Rp. {$net}</td>
+        <td width="17%">$penerima</td>
     </tr>
 EOD;
 $no++;
@@ -114,6 +124,17 @@ $no++;
 
 $skd .= <<<EOD
     </tbody>
+    <tfoot>
+    <tr align="center">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td>Rp. {$total_fee}</td>
+    </tr>
+  </tfoot>
 </table>
 EOD;
 
@@ -121,15 +142,14 @@ EOD;
 
 
 
+$html = $skd;
 // output the HTML content
-
-$pdf->writeHTML($skd, true, 0, true, 0);
-
-
-
+$pdf->writeHTML($html, true, 0, true, 0);
 // reset pointer to the last page
 $pdf->lastPage();
 // ---------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('cetak-detail.pdf', 'I');
+//$pdf->Output($laporan[0]->nama.'_'.$laporan[0]->nama_kelas.'.pdf', 'I');
+//Close and output PDF document
+$pdf->Output('rekap-pendapatan.pdf', 'I');

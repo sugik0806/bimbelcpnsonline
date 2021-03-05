@@ -412,8 +412,19 @@ class Auth extends CI_Controller
 					];
 					$this->output_json($data);
 				} else {
+					$refvalue = $this->input->post('referal', true);
+
+					$angka_unik = random_string('numeric',3);
 					$kelas = $this->master->getKelasById($this->input->post('jurusan', true));
 					$diskon = $kelas[0]->diskon;
+					$netto = $kelas[0]->harga - $angka_unik -$diskon;
+					if ($refvalue == "") {
+						$referalFee = 0;
+					}else{
+						$referal = $this->master->getMarketingByRef($refvalue);
+						$referalFee = $netto  * $referal[0]->fee / 100;
+					}
+					
 					$token = strtoupper(random_string('alpha', 5));
 					$data = [
 						'nama' => $username,
@@ -424,12 +435,13 @@ class Auth extends CI_Controller
 						'id_matkul' => 2, //skd
 						'whatsapp' => $this->input->post('whatsapp', true),
 						'token' => $token,
-						'angka_unik' => random_string('numeric',3),
+						'angka_unik' => $angka_unik,
 						'tanggal_daftar' => date('Y-m-d'),
 						'id_provinsi' => $this->input->post('provinsi', true),
 						'diskon' => $diskon,
 						'rekening' => '9000025229858',
-						'referal' => $this->input->post('referal', true)
+						'referal' => $this->input->post('referal', true),
+						'referal_fee' => $referalFee
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);

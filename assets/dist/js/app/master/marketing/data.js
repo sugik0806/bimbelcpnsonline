@@ -57,6 +57,9 @@ $(document).ready(function() {
         data: "referal"
       },
       {
+        data: "fee"
+      },
+      {
         data: "bulk_select",
         orderable: false,
         searchable: false

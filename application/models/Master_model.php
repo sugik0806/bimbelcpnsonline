@@ -65,10 +65,10 @@ class Master_model extends CI_Model {
 
     public function getDataMarketing()
     {
-        $this->datatables->select('id_marketing, nama_marketing, referal');
+        $this->datatables->select('id_marketing, nama_marketing, referal, fee');
         $this->datatables->from('marketing');
         $this->db->order_by('id_marketing');
-        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_marketing, nama_marketing, referal');
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_marketing, nama_marketing, referal, fee');
         return $this->datatables->generate();
     }
 
@@ -77,6 +77,14 @@ class Master_model extends CI_Model {
         $this->db->where_in('id_marketing', $id);
         $this->db->order_by('nama_marketing');
         $query = $this->db->get('marketing')->result();
+        return $query;
+    }
+
+    public function getMarketingByRef($ref)
+    {
+        $this->db->where_in('referal', $ref);
+        $this->db->order_by('nama_marketing');
+        $query = $this->db->get('v_referal')->result();
         return $query;
     }
 

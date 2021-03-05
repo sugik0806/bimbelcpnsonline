@@ -73,6 +73,12 @@ function generate(n) {
                         <small class="help-block text-right"></small>
                     </div>
                 </td>
+                <td>
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" name="fee[${i}]" class="input-sm form-control">
+                        <small class="help-block text-right"></small>
+                    </div>
+                </td>
             </tr>
             `;
         $('#inputs').append(inputs);

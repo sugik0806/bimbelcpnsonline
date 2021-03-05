@@ -38,7 +38,9 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>Paket</td>
+                                <td>Nama Pemasar</td>
+                                <td>Referal</td>
+                                <td>Fee</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +54,8 @@
                                     <tr>
                                         <td><?= $no++; ?></td>
                                         <td><?= $marketing; ?></td>
+                                        <td><?= $referal; ?></td>
+                                        <td><?= $fee; ?></td>
                                     </tr>
                             <?php
                                     endforeach;

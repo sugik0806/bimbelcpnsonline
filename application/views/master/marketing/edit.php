@@ -26,6 +26,7 @@
                             <th># No</th>
                             <th>Nama Pemasar</th>
                             <th>Referal</th>
+                            <th>Fee %</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,10 +42,17 @@
                                     <small class="help-block text-right"></small>
                                 </div>
                             </td>
-                             <td>
+                            <td>
                                 <div class="form-group">
                                     <?=form_hidden('referal['.$no.']', $j->referal)?>
                                     <input autofocus="autofocus" onfocus="this.select()" autocomplete="off" value="<?=$j->referal?>" type="text" name="referal[<?=$no?>]" class="input-sm form-control">
+                                    <small class="help-block text-right"></small>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <?=form_hidden('fee['.$no.']', $j->fee)?>
+                                    <input autofocus="autofocus" onfocus="this.select()" autocomplete="off" value="<?=$j->fee?>" type="text" name="fee[<?=$no?>]" class="input-sm form-control">
                                     <small class="help-block text-right"></small>
                                 </div>
                             </td>

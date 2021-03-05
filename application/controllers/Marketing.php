@@ -84,27 +84,32 @@ class Marketing extends CI_Controller
 		for ($i = 1; $i <= $rows; $i++) {
 			$nama_marketing = 'nama_marketing[' . $i . ']';
 			$referal = 'referal[' . $i . ']';
+			$fee = 'fee[' . $i . ']';
 			$this->form_validation->set_rules($nama_marketing, 'Marketing', 'required');
 			$this->form_validation->set_rules($referal, 'Referal', 'required');
+			$this->form_validation->set_rules($fee, 'Fee', 'required');
 			$this->form_validation->set_message('required', '{field} Wajib diisi');
 
 			if ($this->form_validation->run() === FALSE) {
 				$error[] = [
 					$nama_marketing => form_error($nama_marketing),
-					$referal => form_error($referal)
+					$referal => form_error($referal),
+					$fee => form_error($fee)
 				];
 				$status = FALSE;
 			} else {
 				if ($mode == 'add') {
 					$insert[] = [
 						'nama_marketing' => $this->input->post($nama_marketing, true),
-						'referal' => $this->input->post($referal, true)
+						'referal' => $this->input->post($referal, true),
+						'fee' => $this->input->post($fee, true)
 					];
 				} else if ($mode == 'edit') {
 					$update[] = array(
 						'id_marketing'	=> $this->input->post('id_marketing[' . $i . ']', true),
 						'nama_marketing' 	=> $this->input->post($nama_marketing, true),
-						'referal' => $this->input->post($referal, true)
+						'referal' => $this->input->post($referal, true),
+						'fee' => $this->input->post($fee, true)
 					);
 				}
 				$status = TRUE;

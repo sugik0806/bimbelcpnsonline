@@ -8,7 +8,7 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-6 col-lg-offset-4 col-lg-4">        
+            <div class="col-sm-offset-2 col-sm-8">        
                 <div class="my-4">
                     <div class="form-horizontal form-inline">
                         <a href="<?=base_url('marketing')?>" class="btn btn-default btn-xs">
@@ -26,6 +26,7 @@
                             <th># No</th>
                             <th>Nama Pemasar</th>
                             <th>Referal</th>
+                            <th>Fee %</th>
                         </tr>
                     </thead>
                     <tbody id="inputs">

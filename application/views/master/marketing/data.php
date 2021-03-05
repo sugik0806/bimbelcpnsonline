@@ -23,6 +23,7 @@
                     <th>No.</th>
                     <th>Nama Pemasar</th>
                     <th>Referal</th>
+                    <th>Fee %</th>
 					<th class="text-center">
 						<input type="checkbox" id="select_all">
 					</th>

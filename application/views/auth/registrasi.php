@@ -142,11 +142,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 					<input class="form-control" type="hidden" id="referal" name="referal" value="<?php echo $this->uri->segment(4); ?>"/>
 	 				</p>
 	 			<?php elseif( !$this->uri->segment(4)) : ?>
-	 				<label for="referal">Kode Referal Marketing (Jika Ada)</label>
+	 				<label for="referal">Kode Referal Marketing / Email Sponsor Anda (Jika Ada)</label>
 	 				<p>
 		 				<input class="form-control" type="text" id="referal" name="referal" placeholder="Isikan referal" value="<?=set_value('referal')?>"/>
 		 			</p>
 		 			<small class="help-block" style="color: #dc3545"><?=form_error('referal')?></small>
+
+		 			<p><b>Note: Kode Referal Marketing</b> adalah kode yang dimiliki marketing untuk mengklaim fee jika anda mendaftar atas rekomendasi dari marketing</p>
+		 			<p><b>Note: Email Sponsor</b> adalah Email dari peserta bimbelcpnsonline.id yang merekomendasi anda untuk mendaftar bimbelcpnsonline.id, hal ini  dipergunakan yang bersangkutan untuk klaim fee rekomendasi</p>
 	 				
 	 			<?php endif; ?>
 	 			
@@ -170,10 +173,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            	<?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
 	            </div>
 
-	            <div class="col-md-12 pull-right text-right" style="padding-top: 10px; padding-bottom: 20px">
-	            	<h5>Jika sudah punya akun silakan klik
-	            		<b><a href="<?=base_url()?>" class="text-center"><?= lang('login_submit_btn');?></a></b>
-	            	</h5>
+	            <div class="col-md-12" style="padding-top: 10px; padding-bottom: 20px">
+	            	<div class="col-md-6 pull-left text-left">
+	            		
+	            	</div>
+	            	<div class="col-md-6 pull-right text-right">
+	            		<h5>Jika sudah punya akun silakan klik
+	            			<b><a href="<?=base_url()?>" class="text-center"><?= lang('login_submit_btn');?></a></b>
+	            		</h5>
+	            	</div>
+	            	
 	            </div>
 
 	            <?= form_close(); ?>

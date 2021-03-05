@@ -30,6 +30,11 @@ class Laporan extends CI_Controller {
 		$this->output_json($this->laporan->getPendapatan(), false);
 	}
 
+	public function fee()
+	{
+		$this->output_json($this->laporan->getFee(), false);
+	}
+
 	public function index()
 	{
 		$data = [
@@ -39,6 +44,18 @@ class Laporan extends CI_Controller {
 		];
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('laporan/laporan_pendapatan');
+		$this->load->view('_templates/dashboard/_footer.php');
+	}
+
+		public function fee_marketing()
+	{
+		$data = [
+			'user' => $this->user,
+			'judul'	=> 'Laporan',
+			'subjudul'=> 'Laporan Fee Marketing',
+		];
+		$this->load->view('_templates/dashboard/_header.php', $data);
+		$this->load->view('laporan/laporan_fee_marketing');
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 	
@@ -58,6 +75,22 @@ class Laporan extends CI_Controller {
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('laporan/laporan_pendapatan');
 		$this->load->view('_templates/dashboard/_footer.php');
+	}
+
+	public function cetak_fee()
+	{
+		$this->load->library('Pdf');
+
+		
+		$hasil 	= $this->laporan->getFeeReport();
+		
+		
+		$data = [
+			
+			'laporan' => $hasil
+		];
+		
+		$this->load->view('laporan/cetak_fee', $data);
 	}
 
 	public function cetak()
