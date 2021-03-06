@@ -11,6 +11,7 @@ class Laporan extends CI_Controller {
 		}
 		
 		$this->load->library(['datatables']);// Load Library Ignited-Datatables
+		$this->load->helper('my');// Load Library Ignited-Datatables
 		$this->load->model('Master_model', 'master');
 		$this->load->model('Ujian_model', 'ujian');
 		$this->load->model('laporan_model', 'laporan');
@@ -27,7 +28,14 @@ class Laporan extends CI_Controller {
 
 	public function data()
 	{
-		$this->output_json($this->laporan->getPendapatan(), false);
+
+		  $tgl_awal = $_POST['tgl_awal'];
+    	  $tgl_akhir = $_POST['tgl_akhir'];
+    	  $rekening = $_POST['rekening'];
+    	  
+
+		//$tgl_awal = $this->input->post('tgl_awal', true);
+		$this->output_json($this->laporan->getPendapatan($tgl_awal, $tgl_akhir, $rekening), false);
 	}
 
 	public function fee()
@@ -93,17 +101,26 @@ class Laporan extends CI_Controller {
 		$this->load->view('laporan/cetak_fee', $data);
 	}
 
-	public function cetak()
+	public function cetak($tgl_awal, $tgl_akhir, $rekening)
 	{
 		$this->load->library('Pdf');
 
 		
-		$hasil 	= $this->laporan->getPendapatanReport();
+		$hasil 	= $this->laporan->getPendapatanReport($tgl_awal, $tgl_akhir, $rekening);
 		
+		if ($rekening != 0) {
+			$rekeningnya = "Rekening = " . $rekening;
+		}else{
+			$rekeningnya = "";
+		}
+		 
 		
 		$data = [
 			
-			'laporan' => $hasil
+			'laporan' => $hasil,
+			'tgl_awal' => $tgl_awal,
+			'tgl_akhir' => $tgl_akhir,
+			'rekening' => $rekeningnya
 		];
 		
 		$this->load->view('laporan/cetak', $data);

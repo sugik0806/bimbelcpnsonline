@@ -144,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 			<?php elseif( !$this->uri->segment(4)) : ?>
 	 				<label for="referal">Kode Referal Marketing / Email Sponsor Anda (Jika Ada)</label>
 	 				<p>
-		 				<input class="form-control" type="text" id="referal" name="referal" placeholder="Isikan referal" value="<?=set_value('referal')?>"/>
+		 				<input class="form-control" type="text" id="referal" name="referal" placeholder="Isikan Referal / Email Sponsor kamu tanpa spasi ya ..." value="<?=set_value('referal')?>"/>
 		 			</p>
 		 			<small class="help-block" style="color: #dc3545"><?=form_error('referal')?></small>
 

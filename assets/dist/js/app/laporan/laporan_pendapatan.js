@@ -7,21 +7,6 @@ $(document).ready(function() {
         format: 'YYYY-MM-DD'
     });
 
-  $('#tgl_awal').on('change', function(){
-    let tipe = $(this).val();
-    let src = base_url + "laporan/data";
-    let url;
-
-    if(tipe !== 'all'){
-      let src2 = src + '/' + tipe;
-      url = $(this).prop('checked') === true ? src : src2;
-    }else{
-      url = src;
-    }
-    table.ajax.url(url).load();
-
-  });
-
   table = $("#pendapatan").DataTable({
     initComplete: function() {
       var api = this.api();
@@ -59,8 +44,13 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
+      "data": function ( data ) {
+                data.tgl_awal = $('#tgl_awal').val();
+                data.tgl_akhir = $('#tgl_akhir').val();
+                data.rekening = $('#rekening').val();
+        },  
       url: base_url + "laporan/data",
-      type: "POST"
+      type: "POST",      
     },
     columns: [
       {
@@ -109,4 +99,42 @@ $(document).ready(function() {
 table
   .buttons()
   .container()
-  .appendTo("#pendapatan_wrapper .col-md-6:eq(0)");
+  .appendTo("#pendapatan_wrapper .col-md-6:eq(0)")
+  ;
+
+   $(document).ready(function() {
+      $('#pendapatan').DataTable();
+      function filterData () {
+        $('#pendapatan').DataTable().search(
+            $('.tgl_awal').val()
+          ).draw();
+    }
+    $('.tgl_awal').on('change', function () {
+          filterData();
+      });
+  });
+
+   function cetak() {
+    var e = document.getElementById("rekening");
+
+    var rekening = e.value;
+    console.info(rekening);
+
+    let tgl_awal = $('#tgl_awal').val();
+    let tgl_akhir = $('#tgl_akhir').val();
+    let src = base_url + "laporan/cetak";
+    let url;
+
+    // if(tgl_awal && tgl_akhir){
+    //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+    // }
+    if(tgl_awal && tgl_akhir){
+      window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + rekening);
+    }else{
+      document.getElementById("pesan").innerHTML = "Isi Tanggal !";
+    }
+
+    //window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+    //table.ajax.url(url).load();
+  }
+

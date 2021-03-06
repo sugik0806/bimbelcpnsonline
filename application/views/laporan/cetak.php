@@ -73,6 +73,8 @@ $total = number_format($sum);
 //echo $sum;
 
 $skd = <<<EOD
+<p align="center">Periode : $tgl_awal - $tgl_akhir </p>
+<p align="center">$rekening </p>
 <br><br><br>
 <table border="1" style="border-collapse:collapse">
     <thead>
