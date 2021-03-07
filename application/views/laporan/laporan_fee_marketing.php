@@ -8,11 +8,43 @@
     </div>
     <div class="box-body">
         <div class="row">
-            <div class="col-sm-6">
-                <button type="button" onclick="reload_ajax()" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-refresh"></i> Reload</button>
+            <div class="col-sm-3">
+                <button type="button" onclick="reload_ajax()" class="btn bg-purple btn-flat btn-sm">
+                    <i class="fa fa-refresh"></i> Reload</button>
+                    <label class="pull-right">Periode</label>
             </div>
-            <div class="col-sm-6">
-                <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak_fee" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <input id="tgl_awal" name="tgl_awal" type="text" class="datetimepicker form-control" placeholder="Tanggal Awal">
+                    <small class="help-block"></small>
+                </div>
+            </div>    
+            <div class="col-md-2">    
+                <div class="form-group">
+                    <input id="tgl_akhir" name="tgl_akhir" type="text" class="datetimepicker form-control" placeholder="Tanggal Akhir">
+                    <small class="help-block"></small>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group col-md-8">
+                    
+                    <!-- <select id="penerima_fee" name="penerima_fee" class="form-control select2 pull-left">
+                        <option value="0">- Penerima Fee -</option>
+                        <option value="arw04032021">arw04032021</option>
+                        <option value="90000252298">90000252298</option>
+                    </select> -->
+                    <?php ?>
+                        <select id="penerima_fee" class="form-control select2" style="width:100% !important">
+                            <option value="0">-- Pilih Penerima Fee --</option>
+                            <?php foreach ($referal as $m) :?>
+                                <option value="<?=$m->referal?>"><?=$m->nama_marketing?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    <?php ?>
+                    <small class="help-block"></small>
+                </div>
+                 <button class="btn btn-success btn-flat btn-sm pull-right" onclick="cetak()"><i class="fa fa-print"></i> Print</button>
+                <!-- <a type="button" target="_blank" href="<?=base_url()?>laporan/cetak_fee" class="btn btn-success btn-flat btn-sm pull-right"><i class="fa fa-print"></i> print</a> -->
             </div>
         </div>
     </div>

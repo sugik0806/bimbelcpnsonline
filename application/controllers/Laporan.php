@@ -40,7 +40,10 @@ class Laporan extends CI_Controller {
 
 	public function fee()
 	{
-		$this->output_json($this->laporan->getFee(), false);
+		  $tgl_awal = $_POST['tgl_awal'];
+		  $tgl_akhir = $_POST['tgl_akhir'];
+		  $penerima_fee = $_POST['penerima_fee'];
+		$this->output_json($this->laporan->getFee($tgl_awal, $tgl_akhir, $penerima_fee), false);
 	}
 
 	public function index()
@@ -61,7 +64,9 @@ class Laporan extends CI_Controller {
 			'user' => $this->user,
 			'judul'	=> 'Laporan',
 			'subjudul'=> 'Laporan Fee Marketing',
+			'referal' => $this->master->getAllMarketing()
 		];
+		
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('laporan/laporan_fee_marketing');
 		$this->load->view('_templates/dashboard/_footer.php');
@@ -85,17 +90,25 @@ class Laporan extends CI_Controller {
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function cetak_fee()
+	public function cetak_fee($tgl_awal, $tgl_akhir, $penerima_fee)
 	{
 		$this->load->library('Pdf');
 
+		$hasil 	= $this->laporan->getFeeReport($tgl_awal, $tgl_akhir, $penerima_fee);
 		
-		$hasil 	= $this->laporan->getFeeReport();
-		
+		if ($penerima_fee != '0') {
+			$referal 	= $this->master->getMarketingByRef($penerima_fee);
+			$penerima_nya = "Penerima Fee = " . $referal[0]->nama_marketing;
+		}else{
+			$penerima_nya = "";
+		}
 		
 		$data = [
 			
-			'laporan' => $hasil
+			'laporan' => $hasil,
+			'tgl_awal' => $tgl_awal,
+			'tgl_akhir' => $tgl_akhir,
+			'penerima_nya' => $penerima_nya
 		];
 		
 		$this->load->view('laporan/cetak_fee', $data);

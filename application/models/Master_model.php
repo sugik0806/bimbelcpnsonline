@@ -59,45 +59,6 @@ class Master_model extends CI_Model {
         return $query;
     }
 
-    /**
-    * Data Marketing
-    */
-
-    public function getDataMarketing()
-    {
-        $this->datatables->select('id_marketing, nama_marketing, referal, fee');
-        $this->datatables->from('marketing');
-        $this->db->order_by('id_marketing');
-        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_marketing, nama_marketing, referal, fee');
-        return $this->datatables->generate();
-    }
-
-    public function getMarketingById($id)
-    {
-        $this->db->where_in('id_marketing', $id);
-        $this->db->order_by('nama_marketing');
-        $query = $this->db->get('marketing')->result();
-        return $query;
-    }
-
-    public function getMarketingByRef($ref)
-    {
-        $this->db->where_in('referal', $ref);
-        $this->db->order_by('nama_marketing');
-        $query = $this->db->get('v_referal')->result();
-        return $query;
-    }
-
-        public function getMarketing()
-    {
-        $this->db->select('id_marketing, nama_marketing');
-        $this->db->from('kelas');
-        $this->db->join('marketing', 'marketing_id=id_marketing');
-        $this->db->order_by('nama_marketing', 'ASC');
-        $this->db->group_by('id_marketing');
-        $query = $this->db->get();
-        return $query->result();
-    }
 
     /**
      * Data Jurusan
@@ -431,6 +392,53 @@ class Master_model extends CI_Model {
         $this->db->from('m_provinsi a');
         $this->db->order_by('a.nama_provinsi');
         return $this->db->get()->result();
+    }
+
+
+    /**
+    * Data Marketing
+    */
+
+    public function getDataMarketing()
+    {
+        $this->datatables->select('id_marketing, nama_marketing, referal, fee');
+        $this->datatables->from('marketing');
+        $this->db->order_by('id_marketing');
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_marketing, nama_marketing, referal, fee');
+        return $this->datatables->generate();
+    }
+
+    public function getMarketingById($id)
+    {
+        $this->db->where_in('id_marketing', $id);
+        $this->db->order_by('nama_marketing');
+        $query = $this->db->get('marketing')->result();
+        return $query;
+    }
+
+    public function getMarketingByRef($ref)
+    {
+        $this->db->where_in('referal', $ref);
+        $this->db->order_by('nama_marketing');
+        $query = $this->db->get('v_referal')->result();
+        return $query;
+    }
+
+        public function getMarketing()
+    {
+        $this->db->select('id_marketing, nama_marketing');
+        $this->db->from('kelas');
+        $this->db->join('marketing', 'marketing_id=id_marketing');
+        $this->db->order_by('nama_marketing', 'ASC');
+        $this->db->group_by('id_marketing');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    //fee marketing
+    public function getAllMarketing()
+    {
+        return $this->db->get('v_referal')->result();
     }
 
 }

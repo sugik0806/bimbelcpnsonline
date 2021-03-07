@@ -44,6 +44,11 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     ajax: {
+      "data": function ( data ) {
+                data.tgl_awal = $('#tgl_awal').val();
+                data.tgl_akhir = $('#tgl_akhir').val();
+                data.penerima_fee = $('#penerima_fee').val();
+      },  
       url: base_url + "laporan/fee",
       type: "POST"
     },
@@ -98,3 +103,28 @@ table
   .buttons()
   .container()
   .appendTo("#pendapatan_wrapper .col-md-6:eq(0)");
+
+
+  function cetak() {
+    var e = document.getElementById("penerima_fee");
+
+    var penerima_fee = e.value;
+    console.info(penerima_fee);
+
+    let tgl_awal = $('#tgl_awal').val();
+    let tgl_akhir = $('#tgl_akhir').val();
+    let src = base_url + "laporan/cetak_fee";
+    let url;
+
+    // if(tgl_awal && tgl_akhir){
+    //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+    // }
+    if(tgl_awal && tgl_akhir){
+      window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + penerima_fee);
+    }else{
+      document.getElementById("pesan").innerHTML = "Isi Tanggal !";
+    }
+
+    //window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+    //table.ajax.url(url).load();
+  }
