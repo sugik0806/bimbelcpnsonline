@@ -107,24 +107,37 @@ table
 
   function cetak() {
     var e = document.getElementById("penerima_fee");
-
     var penerima_fee = e.value;
-    console.info(penerima_fee);
 
-    let tgl_awal = $('#tgl_awal').val();
-    let tgl_akhir = $('#tgl_akhir').val();
-    let src = base_url + "laporan/cetak_fee";
-    let url;
+    $.ajax({
+        url: base_url + 'laporan/encrypt',
+        type: 'POST',
+        data: {
+            tgl_awal: $('#tgl_awal').val(),
+            tgl_akhir : $('#tgl_akhir').val(),
+            penerima_fee : penerima_fee
+        },
+        cache: false,
+        success: function (data) {
 
-    // if(tgl_awal && tgl_akhir){
-    //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
-    // }
-    if(tgl_awal && tgl_akhir){
-      window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + penerima_fee);
-    }else{
-      document.getElementById("pesan").innerHTML = "Isi Tanggal !";
-    }
+          console.info(data.penerima_fee);
+          let tgl_awal = $('#tgl_awal').val();
+          let tgl_akhir = $('#tgl_akhir').val();
+          let src = base_url + "laporan/cetak_fee";
+          let url;
 
-    //window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
-    //table.ajax.url(url).load();
+          // if(tgl_awal && tgl_akhir){
+          //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+          // }
+
+
+          if(tgl_awal && tgl_akhir){
+            window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + data.penerima_fee);
+          }else{
+            document.getElementById("pesan").innerHTML = "Isi Tanggal !";
+          }
+            
+            
+        }
+    });
   }

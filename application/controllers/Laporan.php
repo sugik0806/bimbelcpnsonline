@@ -90,28 +90,55 @@ class Laporan extends CI_Controller {
 		$this->load->view('_templates/dashboard/_footer.php');
 	}
 
-	public function cetak_fee($tgl_awal, $tgl_akhir, $penerima_fee)
+	public function encrypt()
 	{
-		$this->load->library('Pdf');
-
-		$hasil 	= $this->laporan->getFeeReport($tgl_awal, $tgl_akhir, $penerima_fee);
-		
+		$penerima_fee = $_POST['penerima_fee'];
 		if ($penerima_fee != '0') {
-			$referal 	= $this->master->getMarketingByRef($penerima_fee);
-			$penerima_nya = "Penerima Fee = " . $referal[0]->nama_marketing;
+			$key = urlencode($this->encryption->encrypt($penerima_fee));
 		}else{
-			$penerima_nya = "";
+			$key = '0';
 		}
 		
-		$data = [
-			
-			'laporan' => $hasil,
-			'tgl_awal' => $tgl_awal,
-			'tgl_akhir' => $tgl_akhir,
-			'penerima_nya' => $penerima_nya
-		];
+		//$keydec = $this->encryption->decrypt(rawurldecode($key));
+		$this->output_json(['penerima_fee'=>$key]);
+	}
+
+	public function cetak_fee($tgl_awal, $tgl_akhir, $penerima_fee)
+	{	
+		if ($penerima_fee != '0') {
+			$penerima_fee_decrypt = $this->encryption->decrypt(rawurldecode($penerima_fee));
+		}else{
+			$penerima_fee_decrypt = '0';
+		}
 		
-		$this->load->view('laporan/cetak_fee', $data);
+		$this->load->library('Pdf');
+
+		// $tgl_awal = $_POST['tgl_awal'];
+		// $tgl_akhir = $_POST['tgl_akhir'];
+		// $penerima_fee = $_POST['penerima_fee'];
+
+		if ($penerima_fee_decrypt) {
+			$hasil 	= $this->laporan->getFeeReport($tgl_awal, $tgl_akhir, $penerima_fee_decrypt);
+					
+			if ($penerima_fee != '0') {
+				$referal 	= $this->master->getMarketingByRef($penerima_fee_decrypt);
+				$penerima_nya = "Penerima Fee = " . $referal[0]->nama_marketing;
+			}else{
+				$penerima_nya = "";
+			}
+			
+			$data = [
+				
+				'laporan' => $hasil,
+				'tgl_awal' => $tgl_awal,
+				'tgl_akhir' => $tgl_akhir,
+				'penerima_nya' => $penerima_nya
+			];
+			
+			$this->load->view('laporan/cetak_fee', $data);
+		}
+
+		
 	}
 
 	public function cetak($tgl_awal, $tgl_akhir, $rekening)
