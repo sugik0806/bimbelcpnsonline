@@ -99,25 +99,33 @@ class Laporan extends CI_Controller {
 			$key = '0';
 		}
 		
-		//$keydec = $this->encryption->decrypt(rawurldecode($key));
-		$this->output_json(['penerima_fee'=>$key]);
+		if ($key != '0') {
+			$keydec = $this->encryption->decrypt(rawurldecode($key));
+		}else{
+			$keydec = '0';
+		}
+		
+		$this->output_json(['penerima_fee'=>$key, 'penerima_fee_asli'=>$keydec]);
 	}
 
 	public function cetak_fee($tgl_awal, $tgl_akhir, $penerima_fee)
 	{	
+		//print($penerima_fee);
+		$this->load->library('Pdf');
+		
 		if ($penerima_fee != '0') {
 			$penerima_fee_decrypt = $this->encryption->decrypt(rawurldecode($penerima_fee));
 		}else{
 			$penerima_fee_decrypt = '0';
 		}
 		
-		$this->load->library('Pdf');
+		
 
 		// $tgl_awal = $_POST['tgl_awal'];
 		// $tgl_akhir = $_POST['tgl_akhir'];
 		// $penerima_fee = $_POST['penerima_fee'];
 
-		if ($penerima_fee_decrypt) {
+		//if ($penerima_fee_decrypt) {
 			$hasil 	= $this->laporan->getFeeReport($tgl_awal, $tgl_akhir, $penerima_fee_decrypt);
 					
 			if ($penerima_fee != '0') {
@@ -136,7 +144,7 @@ class Laporan extends CI_Controller {
 			];
 			
 			$this->load->view('laporan/cetak_fee', $data);
-		}
+		//}
 
 		
 	}
