@@ -5,7 +5,10 @@ $(document).ready(function() {
 
   $('.datetimepicker').datetimepicker({
         format: 'YYYY-MM-DD'
-    });
+  });
+
+   $("#tgl_awal").val( moment().format('YYYY-MM-01') );
+   $("#tgl_akhir").val( moment().format('YYYY-MM-DD') );
 
   table = $("#pendapatan").DataTable({
     initComplete: function() {

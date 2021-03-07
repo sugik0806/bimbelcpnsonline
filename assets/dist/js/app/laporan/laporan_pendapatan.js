@@ -7,6 +7,10 @@ $(document).ready(function() {
         format: 'YYYY-MM-DD'
     });
 
+   $("#tgl_awal").val( moment().format('YYYY-MM-01') );
+   $("#tgl_akhir").val( moment().format('YYYY-MM-DD') );
+
+
   table = $("#pendapatan").DataTable({
     initComplete: function() {
       var api = this.api();
@@ -108,7 +112,35 @@ table
   //          reload_ajax();
   // });  
 
+  $(document).ready(function(){
+    $("#rekening").change(function(){
+      alert("The text has been changed.");
+    });
+  });
 
+  $(document).ready(function(){
+
+    $( ".rekening" ).change(function() {
+    console.info('rekening');
+  });
+
+
+
+    $('#regkening').on('change', function(){
+      console.info('rekening');
+      let id = $(this).val();
+      let src = base_url + "soal/data";
+      let url;
+
+      if(id !== 'all'){
+        let src2 = src + '/' + id;
+        url = $(this).prop('checked') === true ? src : src2;
+      }else{
+        url = src;
+      }
+      table.ajax.url(url).load();
+    });
+  });
 
    function cetak() {
     var e = document.getElementById("rekening");
