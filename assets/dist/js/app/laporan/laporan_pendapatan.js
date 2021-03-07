@@ -58,6 +58,7 @@ $(document).ready(function() {
         orderable: false,
         searchable: false
       },
+      { data: "tanggal_daftar" },
       { data: "nama" },
       { data: "nama_kelas" },
       { data: "rekening" },
@@ -69,7 +70,7 @@ $(document).ready(function() {
     ],
     columnDefs: [
       {
-        targets: 5,
+        targets: 6,
         data: "id_mahasiswa",
         render: function(data, type, row, meta) {
           return `
@@ -102,17 +103,12 @@ table
   .appendTo("#pendapatan_wrapper .col-md-6:eq(0)")
   ;
 
-   $(document).ready(function() {
-      $('#pendapatan').DataTable();
-      function filterData () {
-        $('#pendapatan').DataTable().search(
-            $('.tgl_awal').val()
-          ).draw();
-    }
-    $('.tgl_awal').on('change', function () {
-          filterData();
-      });
-  });
+
+  // $('#tgl_akhir').on('change', function () {
+  //          reload_ajax();
+  // });  
+
+
 
    function cetak() {
     var e = document.getElementById("rekening");

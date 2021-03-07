@@ -50,6 +50,7 @@
         <thead>
             <tr>
                 <th>No.</th>
+                <th>Tanggal</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
                 <th>Rekening</th>
@@ -62,6 +63,7 @@
         <tfoot>
             <tr>
                 <th>No.</th>
+                <th>Tanggal</th>
                 <th>Nama</th>
                 <th>Nama Kelas</th>
                 <th>Rekening</th>
