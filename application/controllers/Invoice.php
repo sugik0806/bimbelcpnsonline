@@ -121,7 +121,8 @@ class Invoice extends CI_Controller {
                             //push array
                             $data = [
                                 'tabel' => 'mahasiswa',
-                                'url_bukti' =>  $this->upload->data('file_name')
+                                'url_bukti' => $this->upload->data('file_name'),
+                                'tanggal_konfirmasi' => date('Y-m-d')
                             ];
                             $where = [
                                 'token' => $token

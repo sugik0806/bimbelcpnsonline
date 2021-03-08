@@ -170,7 +170,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	            <div class="col-xs-6 pull-right">
 
-	            	<?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?>
+	            	<!-- <?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?> -->
+	            	<button id="submit" name="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
 	            </div>
 
 	            <div class="col-md-12" style="padding-top: 10px; padding-bottom: 20px">

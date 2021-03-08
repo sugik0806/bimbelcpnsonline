@@ -162,8 +162,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					    		  </div>
 					    		</li>
 						    	<h5 class="text-danger" style="text-align:center">Pastikan Anda Sudah Transfer Sebelum Klik Konfirmasi Pembayaran.</h5>  
-						        <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-primary'));?>
-						        </li>
+						        <!-- <li class="grey"><?= form_submit('submit', lang('deactivate_validation_confirm_label'), array('id'=>'submit','class'=>'btn btn-primary'));?>
+						        </li> -->
+						        <button id="submit" name="submit" class="btn btn-primary btn-block btn-flat">Konfirmasi Pembayaran</button></br>
 
 						    <?php endif;?>
 

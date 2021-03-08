@@ -1,5 +1,18 @@
 var table;
 
+$(document).ready(function(){
+  $("#tgl_awal").change(function(){
+    reload_ajax();
+  }); 
+  $("#tgl_akhir").change(function(){
+    reload_ajax();
+  }); 
+
+  $("#penerima_fee").change(function(){
+    reload_ajax();
+  });
+});
+
 $(document).ready(function() {
   ajaxcsrf();
 

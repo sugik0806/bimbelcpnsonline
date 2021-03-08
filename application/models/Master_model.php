@@ -27,6 +27,7 @@ class Master_model extends CI_Model {
      public function updateData($data, $where)
     {
         $this->db->set('url_bukti', $data{'url_bukti'});
+        $this->db->set('tanggal_konfirmasi', $data{'tanggal_konfirmasi'});
         $this->db->where('token', $where{'token'});
         $this->db->update($data{'tabel'}); 
         // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2

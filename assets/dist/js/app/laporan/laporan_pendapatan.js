@@ -1,5 +1,18 @@
 var table;
 
+  $(document).ready(function(){
+    $("#tgl_awal").change(function(){
+      reload_ajax();
+    }); 
+    $("#tgl_akhir").change(function(){
+      reload_ajax();
+    }); 
+
+    $("#rekening").change(function(){
+      reload_ajax();
+    });
+  });
+
 $(document).ready(function() {
   ajaxcsrf();
 
@@ -107,62 +120,27 @@ table
   .appendTo("#pendapatan_wrapper .col-md-6:eq(0)")
   ;
 
+ function cetak() {
+  var e = document.getElementById("rekening");
 
-  // $('#tgl_akhir').on('change', function () {
-  //          reload_ajax();
-  // });  
+  var rekening = e.value;
+  console.info(rekening);
 
-  $(document).ready(function(){
-    $("#rekening").change(function(){
-      alert("The text has been changed.");
-    });
-  });
+  let tgl_awal = $('#tgl_awal').val();
+  let tgl_akhir = $('#tgl_akhir').val();
+  let src = base_url + "laporan/cetak";
+  let url;
 
-  $(document).ready(function(){
-
-    $( ".rekening" ).change(function() {
-    console.info('rekening');
-  });
-
-
-
-    $('#regkening').on('change', function(){
-      console.info('rekening');
-      let id = $(this).val();
-      let src = base_url + "soal/data";
-      let url;
-
-      if(id !== 'all'){
-        let src2 = src + '/' + id;
-        url = $(this).prop('checked') === true ? src : src2;
-      }else{
-        url = src;
-      }
-      table.ajax.url(url).load();
-    });
-  });
-
-   function cetak() {
-    var e = document.getElementById("rekening");
-
-    var rekening = e.value;
-    console.info(rekening);
-
-    let tgl_awal = $('#tgl_awal').val();
-    let tgl_akhir = $('#tgl_akhir').val();
-    let src = base_url + "laporan/cetak";
-    let url;
-
-    // if(tgl_awal && tgl_akhir){
-    //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
-    // }
-    if(tgl_awal && tgl_akhir){
-      window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + rekening);
-    }else{
-      document.getElementById("pesan").innerHTML = "Isi Tanggal !";
-    }
-
-    //window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
-    //table.ajax.url(url).load();
+  // if(tgl_awal && tgl_akhir){
+  //   window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+  // }
+  if(tgl_awal && tgl_akhir){
+    window.open(src + '/' + tgl_awal + '/' + tgl_akhir + '/' + rekening);
+  }else{
+    document.getElementById("pesan").innerHTML = "Isi Tanggal !";
   }
+
+  //window.open(src + '/' + tgl_awal + '/' + tgl_akhir);
+  //table.ajax.url(url).load();
+}
 

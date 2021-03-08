@@ -83,7 +83,7 @@ $(document).ready(function () {
         e.stopImmediatePropagation();
 
         var btn = $('#submit');
-        btn.attr('disabled', 'disabled').text('Wait...');
+        btn.attr('disabled', 'disabled').text('Silakan Tunggu...');
 
         $.ajax({
             url: $(this).attr('action'),
@@ -91,7 +91,7 @@ $(document).ready(function () {
             type: 'POST',
             success: function (data) {
                 
-                btn.removeAttr('disabled').text('Simpan');
+                //btn.removeAttr('disabled').text('Simpan');
                 if (data.status == true) {
                     Swal({
                         "title": "Sukses",

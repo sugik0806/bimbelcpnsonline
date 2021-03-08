@@ -16,20 +16,19 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <input id="tgl_awal" name="tgl_awal" type="text" class="datetimepicker form-control" placeholder="Tanggal Awal">
+                    <input id="tgl_awal" name="tgl_awal" type="text" class="datetimepicker" placeholder="Tanggal Awal">
                     <small class="help-block"></small>
                 </div>
             </div>    
             <div class="col-md-3">    
                 <div class="form-group">
-                    <input id="tgl_akhir" name="tgl_akhir" type="text" class="datetimepicker form-control" placeholder="Tanggal Akhir">
+                    <input id="tgl_akhir" name="tgl_akhir" type="text" class="datetimepicker" placeholder="Tanggal Akhir">
                     <small class="help-block"></small>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group col-md-8">
-                    
-                    <select id="rekening" name="rekening" class="form-control select2 pull-left">
+                    <select id="rekening" name="rekening" class="select2 pull-left">
                         <option value="0">-- Rekening --</option>
                         <option value="0143252019">0143252019</option>
                         <option value="90000252298">90000252298</option>

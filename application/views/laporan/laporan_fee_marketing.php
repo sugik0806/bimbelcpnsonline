@@ -34,7 +34,7 @@
                         <option value="90000252298">90000252298</option>
                     </select> -->
                     <?php ?>
-                        <select id="penerima_fee" class="form-control select2" style="width:100% !important">
+                        <select id="penerima_fee" class="select2" style="width:100% !important">
                             <option value="0">-- Pilih Penerima Fee --</option>
                             <?php foreach ($referal as $m) :?>
                                 <option value="<?=$m->referal?>"><?=$m->nama_marketing?></option>

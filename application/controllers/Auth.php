@@ -441,7 +441,7 @@ class Auth extends CI_Controller
 						'diskon' => $diskon,
 						'rekening' => '9000025229858',
 						'referal' => $this->input->post('referal', true),
-						'referal_fee' => $referalFee
+						'referal_fee' => round($referalFee)
 			        ];
 
 			        $this->regis->create('mahasiswa', $data);
