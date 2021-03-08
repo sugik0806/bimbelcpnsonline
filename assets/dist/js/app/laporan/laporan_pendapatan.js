@@ -75,7 +75,7 @@ $(document).ready(function() {
         orderable: false,
         searchable: false
       },
-      { data: "tanggal_daftar" },
+      { data: "tanggal_konfirmasi" },
       { data: "nama" },
       { data: "nama_kelas" },
       { data: "rekening" },

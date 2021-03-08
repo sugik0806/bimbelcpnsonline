@@ -43,7 +43,7 @@
         </div>
         <!-- <?=form_close();?> -->
     </div>
-    <p id="pesan">lengkapi filter</p>
+
     <div class="table-responsive px-4 pb-3" style="border: 0">
         <table id="pendapatan" class="w-100 table table-striped table-bordered table-hover">
         <thead>

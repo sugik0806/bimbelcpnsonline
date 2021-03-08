@@ -1,6 +1,13 @@
 var table;
 
 $(document).ready(function(){
+  $('.datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+  });
+
+   $("#tgl_awal").val( moment().format('YYYY-MM-01') );
+   $("#tgl_akhir").val( moment().format('YYYY-MM-DD') );
+
   $("#tgl_awal").change(function(){
     reload_ajax();
   }); 
@@ -15,13 +22,6 @@ $(document).ready(function(){
 
 $(document).ready(function() {
   ajaxcsrf();
-
-  $('.datetimepicker').datetimepicker({
-        format: 'YYYY-MM-DD'
-  });
-
-   $("#tgl_awal").val( moment().format('YYYY-MM-01') );
-   $("#tgl_akhir").val( moment().format('YYYY-MM-DD') );
 
   table = $("#pendapatan").DataTable({
     initComplete: function() {
@@ -154,6 +154,53 @@ table
           }
             
             
+        }
+    });
+  }
+
+
+  function loadModal() {
+    var e = document.getElementById("penerima_fee");
+    var penerima_fee = e.value;
+
+    $.ajax({
+        url: base_url + 'laporan/fee',
+        type: 'POST',
+        data: {
+            tgl_awal: $('#tgl_awal').val(),
+            tgl_akhir : $('#tgl_akhir').val(),
+            penerima_fee : penerima_fee
+        },
+        cache: false,
+        success: function (data) {
+
+
+          var datalength = 5;
+          var count = data.length;
+          
+          var html="";
+          html += '<table class="table table-bordered" >';
+          for(var count=0; count < datalength; count++){
+              html += '<tr>';
+              html += '<td>'+data.id_mahasiswa+'</td>'; 
+              html += '<td>'+data.fee+'</td>';  
+              html += '<td>'+data.penerima_fee+'</td>';  
+              html += '</tr>';
+          }
+          html += '</table>';    
+
+
+          // var html="";
+          // html += '<table class="w-100 table table-striped table-bordered table-hover" >';
+          // for (var i = 0; i < data.length; i++) {
+          //     html += '<tr>';
+          //     html += '<td>'+data[i].id_mahasiswa+'</td>'; 
+          //     html += '<td>'+data[i].fee+'</td>';  
+          //     html += '<td>'+data[i].penerima_fee+'</td>';  
+          //     html += '</tr>';
+          // }
+          // html += '</table>';     
+          $('#test').html(html);
         }
     });
   }
