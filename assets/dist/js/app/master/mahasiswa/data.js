@@ -84,7 +84,7 @@ $(document).ready(function() {
           let btn;
           if (data.ada > 0) {
             btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-xs btn-success btn-aktif">
-                <i class="fa fa-circle"></i>
+                <i class="fa fa-check"></i>
               </button>`;
           } else {
             btn = `<button data-id="${data.id_mahasiswa}" type="button" class="btn btn-xs btn-primary btn-aktif">
