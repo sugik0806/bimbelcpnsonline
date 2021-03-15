@@ -9,7 +9,7 @@ class Dokumen_model extends CI_Model {
         $this->datatables->from('m_dokumen d');
         $this->datatables->join('matkul b', 'b.id_matkul=d.id_matkul');
         $this->datatables->join('jenis j', 'j.id=d.id_jenis');
-        $this->db->order_by('d.id_dokumen', 'desc');
+        $this->db->order_by('d.id_dokumen', 'asc');
 
         // SELECT * FROM `m_dokumen` `d` JOIN `matkul` `b` ON `b`.`id_matkul`=`d`.`id_dokumen` JOIN `jenis` `j` ON `j`.`id`=`d`.`id_dokumen` ORDER BY `d`.`id_dokumen` DESC, `nip` ASC LIMIT 10
         // if ($id!==null && $dosen===null) {
