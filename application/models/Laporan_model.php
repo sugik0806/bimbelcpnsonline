@@ -98,6 +98,30 @@ class Laporan_model extends CI_Model {
     }
 
 
+    /**
+    * Data pengeluaran
+    */
+
+    public function getDataPengeluaran($tgl_awal, $tgl_akhir)
+    {
+        $this->datatables->select('id_pengeluaran, nama_pengeluaran, nominal');
+        $this->datatables->from('pengeluaran');
+        $this->db->order_by('id_pengeluaran');
+        $this->db->where('tanggal_pengeluaran >=', $tgl_awal);
+        $this->db->where('tanggal_pengeluaran <=', $tgl_akhir);
+        $this->datatables->add_column('bulk_select', '<div class="text-center"><input type="checkbox" class="check" name="checked[]" value="$1"/></div>', 'id_pengeluaran, nama_pengeluaran, nominal');
+        return $this->datatables->generate();
+    }
+
+    public function getPengeluaranById($id)
+    {
+        $this->db->where_in('id_pengeluaran', $id);
+        $this->db->order_by('nama_pengeluaran');
+        $query = $this->db->get('pengeluaran')->result();
+        return $query;
+    }
+
+
 }
 
 
