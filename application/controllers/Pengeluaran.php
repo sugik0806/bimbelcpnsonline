@@ -14,7 +14,7 @@ class Pengeluaran extends CI_Controller
 		parent::__construct();
 		if (!$this->ion_auth->logged_in()) {
 			redirect('auth');
-		} else if (!$this->ion_auth->is_admin()) {
+		} else if (!$this->ion_auth->is_admin() AND !$this->ion_auth->in_group('dosen')) {
 			show_error('Hanya Administrator yang diberi hak untuk mengakses halaman ini, <a href="' . base_url('dashboard') . '">Kembali ke menu awal</a>', 403, 'Akses Terlarang');
 		}
 		$this->load->library(['datatables', 'form_validation']); // Load Library Ignited-Datatables
