@@ -454,10 +454,10 @@
           </div>
          <div class="box-body">
             <div class="col-md-12">
-              <div class="col-md-6">
+              <div class="col-md-8">
                 <canvas style="background: #ffffff" id="cart2"></canvas>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <canvas style="background: #ffffff" id="cart3"></canvas>
               </div>
             </div>
