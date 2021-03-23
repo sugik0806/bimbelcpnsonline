@@ -122,7 +122,7 @@ class Master_model extends CI_Model {
 
     public function getMahasiswaById($id)
     {
-        $this->db->select('*');
+        $this->db->select('*, mahasiswa.diskon');
         $this->db->from('mahasiswa');
         $this->db->join('kelas', 'kelas_id=id_kelas');
         $this->db->join('jurusan', 'jurusan_id=id_jurusan');
