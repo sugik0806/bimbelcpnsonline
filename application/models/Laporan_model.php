@@ -9,7 +9,7 @@ class Laporan_model extends CI_Model {
         $this->datatables->from('mahasiswa m');
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
-        $this->db->where_not_in('m.id_mahasiswa', 1);
+        $this->datatables->where('m.id_mahasiswa !=', 1);
         $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
         $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
         if ($rekening != 0) {
@@ -67,7 +67,7 @@ class Laporan_model extends CI_Model {
         $this->datatables->from('mahasiswa m');
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
-        $this->db->where_not_in('m.id_mahasiswa', 1);
+        $this->datatables->where('m.id_mahasiswa !=', 1);
         $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
         $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
         if ($penerima_fee != '0') {
