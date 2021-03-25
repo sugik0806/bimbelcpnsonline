@@ -106,14 +106,15 @@ class Dokumen extends CI_Controller {
 	}
 
 	public function data()
-	{
+	{  
+        $kelas_id = $this->mhs->kelas_id;
         if ($this->ion_auth->in_group('mahasiswa')) {
           $akses = 0;
         }else{
           $akses = 1;
         }
 
-        $doc = $this->dokumen->getDataDokumen($akses);
+        $doc = $this->dokumen->getDataDokumen($akses, $kelas_id);
 		$this->output_json($doc, false);
         //print_r($doc);
     }

@@ -10,10 +10,10 @@ class Laporan_model extends CI_Model {
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
         $this->db->where_not_in('m.id_mahasiswa', 1);
-        $this->db->where('m.tanggal_konfirmasi >=', $tgl_awal);
-        $this->db->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
+        $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
         if ($rekening != 0) {
-            $this->db->where('m.rekening', $rekening);
+            $this->datatables->where('m.rekening', $rekening);
         }
         
         $this->db->order_by('m.id_mahasiswa', 'asc');
@@ -68,10 +68,10 @@ class Laporan_model extends CI_Model {
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
         $this->db->where_not_in('m.id_mahasiswa', 1);
-        $this->db->where('m.tanggal_konfirmasi >=', $tgl_awal);
-        $this->db->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
+        $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
         if ($penerima_fee != '0') {
-            $this->db->where('m.referal', $penerima_fee);
+            $this->datatables->where('m.referal', $penerima_fee);
         }
         $this->db->order_by('m.id_mahasiswa', 'asc');
 
