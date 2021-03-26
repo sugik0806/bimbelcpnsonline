@@ -101,7 +101,7 @@ class Master_model extends CI_Model {
         $this->datatables->join('kelas b', 'a.kelas_id=b.id_kelas');
         $this->datatables->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
         if ($id) {
-           $this->db->where($where);
+           $this->datatables->where($where);
         }
         
         $this->db->order_by('a.id_mahasiswa', 'desc');
