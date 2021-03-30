@@ -16,7 +16,7 @@
 		</div>
 		
 		<ul class="sidebar-menu" data-widget="tree">
-			<li class="header">MAIN MENU</li>
+			<li class="header">MENU UTAMA</li>
 			<!-- Optionally, you can add icons to the links -->
 			<?php 
 			$page = $this->uri->segment(1);
@@ -65,7 +65,7 @@
             }
             ?>
 
-            <li class="header">REPORTS</li>
+            <li class="header">LAPORAN</li>
 
 			<?php
             // data report
@@ -93,7 +93,7 @@
             }
             ?>
 
-            <li class="header">ADMINISTRATOR</li>
+            <li class="header">PENGATURAN</li>
 
 			<?php
             // data report
