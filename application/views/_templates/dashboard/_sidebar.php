@@ -23,144 +23,107 @@
 			$master = ["jurusan", "kelas", "matkul", "dosen", "mahasiswa" ,"marketing"];
 			$relasi = ["kelasdosen", "jurusanmatkul"];
 			$users = ["users"];
-			?>
-			<li class="<?= $page === 'dashboard' ? "active" : "" ?>"><a href="<?=base_url('dashboard')?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-			<?php if($this->ion_auth->is_admin()) : ?>
-			<li class="treeview <?= in_array($page, $master)  ? "active menu-open" : ""  ?>">
-				<a href="#"><i class="fa fa-folder"></i> <span>Data Master</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li class="<?=$page==='jurusan'?"active":""?>">
-						<a href="<?=base_url('jurusan')?>">
-							<i class="fa fa-circle-o"></i> 
-							Master Paket
-						</a>
-					</li>
-					<li class="<?=$page==='kelas'?"active":""?>">
-						<a href="<?=base_url('kelas')?>">
-							<i class="fa fa-circle-o"></i>
-							Master Kelas
-						</a>
-					</li>
-					<li class="<?=$page==='matkul'?"active":""?>">
-						<a href="<?=base_url('matkul')?>">
-							<i class="fa fa-circle-o"></i>
-							Master Mata Bimbingan
-						</a>
-					</li>
-					<li class="<?=$page==='dosen'?"active":""?>">
-						<a href="<?=base_url('dosen')?>">
-							<i class="fa fa-circle-o"></i>
-							Master Pembimbing
-						</a>
-					</li>
-					<li class="<?=$page==='mahasiswa'?"active":""?>">
-						<a href="<?=base_url('mahasiswa')?>">
-							<i class="fa fa-circle-o"></i>
-							Master Peserta
-						</a>
-					</li>
-					<li class="<?=$page==='marketing'?"active":""?>">
-						<a href="<?=base_url('marketing')?>">
-							<i class="fa fa-circle-o"></i> 
-							Master Pemasaran
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li class="treeview <?= in_array($page, $relasi)  ? "active menu-open" : ""  ?>">
-				<a href="#"><i class="fa fa-link"></i> <span>Relasi</span>
-					<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-					</span>
-				</a>
-				<ul class="treeview-menu">
-					<li class="<?=$page==='kelasdosen'?"active":""?>">
-						<a href="<?=base_url('kelasdosen')?>">
-							<i class="fa fa-circle-o"></i>
-							Kelas - Pembimbing
-						</a>
-					</li>
-					<li class="<?=$page==='jurusanmatkul'?"active":""?>">
-						<a href="<?=base_url('jurusanmatkul')?>">
-							<i class="fa fa-circle-o"></i>
-							Paket - Mata Bimbingan
-						</a>
-					</li>
-				</ul>
-			</li>
-			<?php endif; ?>
-			<?php if( $this->ion_auth->is_admin() || $this->ion_auth->in_group('dosen') ) : ?>
-			<li class="<?=$page==='soal'?"active":""?>">
-				<a href="<?=base_url('soal')?>" rel="noopener noreferrer">
-					<i class="fa fa-file-text-o"></i> <span>Bank Soal</span>
-				</a>
-			</li>
-			<li class="<?=$page==='dokumen'?"active":""?>">
-				<a href="<?=base_url('dokumen')?>" rel="noopener noreferrer">
-					<i class="fa fa-book"></i> <span>Dokumen</span>
-				</a>
-			</li>
 
-			<?php endif; ?>
-			<?php if( $this->ion_auth->in_group('dosen') ) : ?>
-			<li class="<?=$page==='ujian'?"active":""?>">
-				<a href="<?=base_url('ujian/master')?>" rel="noopener noreferrer">
-					<i class="fa fa-chrome"></i> <span>Master Tryout</span>
-				</a>
-			</li>
-			<li class="<?=$page==='pertanyaan'?"active":""?>">
-				<a href="<?=base_url('ujian/jawabpertanyaan')?>" rel="noopener noreferrer">
-					<i class="fa fa-book"></i> <span>Pertanyaan</span>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
-			<!-- <li class="<?=$page==='ujian'?"active":""?>">
-				<a href="<?=base_url('ujian/list')?>" rel="noopener noreferrer">
-					<i class="fa fa-chrome"></i> <span>Tryout</span>
-				</a>
-			</li> -->
-			<?php endif; ?>
-			<?php if( !$this->ion_auth->in_group('mahasiswa') ) : ?>
-			<li class="header">REPORTS</li>
-			<li class="<?=$page==='hasilujian'?"active":""?>">
-				<a href="<?=base_url('hasilujian')?>" rel="noopener noreferrer">
-					<i class="fa fa-file"></i> <span>Hasil Tryout</span>
-				</a>
-			</li>
-			<li class="<?=$page==='Laporan'?"active":""?>">
-				<a href="<?=base_url('Laporan')?>" rel="noopener noreferrer">
-					<i class="fa fa-file"></i> <span>Laporan Pendapatan</span>
-				</a>
-			</li>
-			<li class="<?=$page==='Laporan/fee_marketing'?"active":""?>">
-				<a href="<?=base_url('Laporan/fee_marketing')?>" rel="noopener noreferrer">
-					<i class="fa fa-file"></i> <span>Laporan Fee Marketing</span>
-				</a>
-			</li>
-			<li class="<?=$page==='Pengeluaran'?"active":""?>">
-				<a href="<?=base_url('Pengeluaran')?>" rel="noopener noreferrer">
-					<i class="fa fa-file"></i> <span>Pengeluaran</span>
-				</a>
-			</li>
-			<?php endif; ?>
-			<?php if($this->ion_auth->is_admin()) : ?>
-			<li class="header">ADMINISTRATOR</li>
-			<li class="<?=$page==='users'?"active":""?>">
-				<a href="<?=base_url('users')?>" rel="noopener noreferrer">
-					<i class="fa fa-users"></i> <span>Manajemen Pengguna</span>
-				</a>
-			</li>
-			<li class="<?=$page==='settings'?"active":""?>">
-				<a href="<?=base_url('settings')?>" rel="noopener noreferrer">
-					<i class="fa fa-cog"></i> <span>Pengaturan</span>
-				</a>
-			</li>
-			<?php endif; ?>
+				if ($this->ion_auth->in_group('admin')) {
+					$group = 'admin';
+				}else if($this->ion_auth->in_group('dosen')){
+					$group = 'dosen';
+				}else if($this->ion_auth->in_group('mahasiswa')){
+					$group = 'mahasiswa';
+				}
+			?>
+
+			<li class="<?= $page === 'dashboard' ? "active" : "" ?>"><a href="<?=base_url('dashboard')?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+
+			<?php
+            // data main menu
+           
+           // $this->master->getMenu();
+
+            $main_menu = $this->db->get_where('menus', array('induk' => 0, 'tipe' => 'main','group' => $group , 'aktif' => 1));
+            foreach ($main_menu->result() as $main) {
+                // Query untuk mencari data sub menu
+                $sub_menu = $this->db->get_where('menus', array('induk' => $main->id, 'tipe' => 'main','group' => $group, 'aktif' => 1));
+                // periksa apakah ada sub menu
+                if ($sub_menu->num_rows() > 0) {
+                    // main menu dengan sub menu
+                    echo "<li class='treeview'>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu .
+                            '<span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>');
+                    // sub menu nya disini
+                    echo "<ul class='treeview-menu'>";
+                    foreach ($sub_menu->result() as $sub) {
+                        echo "<li>" . anchor($sub->url, '<i class="' . $sub->icon . '"></i>' . $sub->menu) . "</li>";
+                    }
+                    echo"</ul></li>";
+                } else {
+                    // main menu tanpa sub menu
+                    echo "<li>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu) . "</li>";
+
+                }
+            }
+            ?>
+
+            <li class="header">REPORTS</li>
+
+			<?php
+            // data report
+            $main_menu = $this->db->get_where('menus', array('induk' => 0, 'tipe' => 'report','group' => $group, 'aktif' => 1));
+            foreach ($main_menu->result() as $main) {
+                // Query untuk mencari data sub menu
+                $sub_menu = $this->db->get_where('menus', array('induk' => $main->id, 'tipe' => 'report','group' => $group, 'aktif' => 1));
+                // periksa apakah ada sub menu
+                if ($sub_menu->num_rows() > 0) {
+                    // main menu dengan sub menu
+                    echo "<li class='treeview'>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu .
+                            '<span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>');
+                    // sub menu nya disini
+                    echo "<ul class='treeview-menu'>";
+                    foreach ($sub_menu->result() as $sub) {
+                        echo "<li>" . anchor($sub->url, '<i class="' . $sub->icon . '"></i>' . $sub->menu) . "</li>";
+                    }
+                    echo"</ul></li>";
+                } else {
+                    // main menu tanpa sub menu
+                    echo "<li>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu) . "</li>";
+                }
+            }
+            ?>
+
+            <li class="header">ADMINISTRATOR</li>
+
+			<?php
+            // data report
+            $main_menu = $this->db->get_where('menus', array('induk' => 0, 'tipe' => 'admin', 'group' => $group, 'aktif' => 1));
+            foreach ($main_menu->result() as $main) {
+                // Query untuk mencari data sub menu
+                $sub_menu = $this->db->get_where('menus', array('induk' => $main->id, 'tipe' => 'admin', 'group' => $group, 'aktif' => 1));
+                // periksa apakah ada sub menu
+                if ($sub_menu->num_rows() > 0) {
+                    // main menu dengan sub menu
+                    echo "<li class='treeview'>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu .
+                            '<span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>');
+                    // sub menu nya disini
+                    echo "<ul class='treeview-menu'>";
+                    foreach ($sub_menu->result() as $sub) {
+                        echo "<li>" . anchor($sub->url, '<i class="' . $sub->icon . '"></i>' . $sub->menu) . "</li>";
+                    }
+                    echo"</ul></li>";
+                } else {
+                    // main menu tanpa sub menu
+                    echo "<li>" . anchor($main->url, '<i class="' . $main->icon . '"></i>' . $main->menu) . "</li>";
+                }
+            }
+            ?>
+
+			<!-- aaaaaaaaaaaa -->
+
+			
 		</ul>
 
 	</section>
