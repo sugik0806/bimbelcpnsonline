@@ -350,7 +350,8 @@ class Ujian extends CI_Controller {
 				'nilai_bobot'	=> 0,
 				'tgl_mulai'		=> $time_mulai,
 				'tgl_selesai'	=> $waktu_selesai,
-				'status'		=> 'Y'
+				'status'		=> 'Y',
+				'aktif'			=> 1
 			];
 			$this->master->create('h_ujian', $input);
 

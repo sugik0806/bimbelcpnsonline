@@ -130,6 +130,16 @@ class Master_model extends CI_Model {
         return $this->db->get()->row();
     }
 
+        public function getMahasiswaByIdKelas($id)
+    {
+        $this->db->select('*');
+        $this->db->from('mahasiswa');
+        $this->db->join('kelas', 'kelas_id=id_kelas');
+        $this->db->join('jurusan', 'jurusan_id=id_jurusan');
+        $this->db->where(['kelas_id' => $id]);
+        return $this->db->get()->result();
+    }
+
     public function getMahasiswaByEmail($email)
     {
         $this->db->select('*');

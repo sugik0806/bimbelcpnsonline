@@ -11,6 +11,7 @@ class Settings extends CI_Controller {
             show_error('Hanya Admin yang boleh mengakses halaman ini', 403, 'Akses dilarang');
 		}
 		$this->load->model('Settings_model', 'settings');
+		$this->load->model('Master_model', 'master');
 	}
 	
 	public function output_json($data, $encode = true)
@@ -34,9 +35,33 @@ class Settings extends CI_Controller {
 	
 	public function truncate()
 	{	
-		$tables = ['h_ujian'];
-		//$tables = ['h_ujian', 'm_ujian', 'tb_soal', 'kelas_dosen', 'dosen', 'mahasiswa', 'kelas', 'jurusan_matkul', 'matkul', 'jurusan'];
+		$tables = ['h_ujian', 'm_ujian', 'tb_soal', 'kelas_dosen', 'dosen', 'mahasiswa', 'kelas', 'jurusan_matkul', 'matkul', 'jurusan'];
 		$this->settings->truncate($tables);
+
+		$this->output_json(['status'=>true]);
+	}
+
+	public function kosongkanUjian()
+	{		
+			$idmhsIn = array();
+			$idmhs = $this->master->getMahasiswaByIdKelas(3);//array
+			foreach($idmhs as $i => $mhs) {
+			    $idmhsIn[] = $mhs->id_mahasiswa;
+			}
+
+			//print_r($idmhsIn);
+
+			$tgl1 = date('y-m-d');
+			$tgl_selesaimin7 = date('y-m-d', strtotime('-7 days', strtotime($tgl1))); //operasi penjumlahan tanggal sebanyak 7 hari
+
+			$input['aktif'] = 0;
+			$action = $this->settings->update('h_ujian', $input, 'tgl_selesai', $tgl_selesaimin7, $idmhsIn);
+			
+			if ($action) {
+				$this->output_json(['status' => true]);
+			} else {
+				$this->output_json(['status' => false]);
+			}
 
 		$this->output_json(['status'=>true]);
 	}

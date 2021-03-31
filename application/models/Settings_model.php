@@ -31,4 +31,23 @@ class Settings_model extends CI_Model {
 
         return;
     }
+
+
+    //     public function update($table, $data, $pk, $tgl_selesaimin7 = null, $batch = false)
+    // {
+    //     if($batch === false){
+    //         $insert = $this->db->update($table, $data, array($pk => $tgl_selesaimin7));
+    //     }else{
+    //         $insert = $this->db->update_batch($table, $data, $pk);
+    //     }
+    //     return $insert;
+    // }
+
+    public function update($table, $data, $pk, $tgl_selesaimin7, $idmhsIn = null, $batch = false)
+    {
+        $this->db->where('tgl_selesai <', $tgl_selesaimin7);
+        $this->db->where_in('mahasiswa_id', $idmhsIn);
+        $this->db->update($table,$data);
+
+    }     
 }
