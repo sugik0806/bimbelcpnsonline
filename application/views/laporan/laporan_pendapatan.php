@@ -16,13 +16,13 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <input id="tgl_awal" name="tgl_awal" type="text" class="datetimepicker" placeholder="Tanggal Awal">
+                    <input id="tgl_awal" name="tgl_awal" type="text" class="datetimepicker form-control" placeholder="Tanggal Awal">
                     <small class="help-block"></small>
                 </div>
             </div>    
             <div class="col-md-3">    
                 <div class="form-group">
-                    <input id="tgl_akhir" name="tgl_akhir" type="text" class="datetimepicker" placeholder="Tanggal Akhir">
+                    <input id="tgl_akhir" name="tgl_akhir" type="text" class="datetimepicker form-control" placeholder="Tanggal Akhir">
                     <small class="help-block"></small>
                 </div>
             </div>
