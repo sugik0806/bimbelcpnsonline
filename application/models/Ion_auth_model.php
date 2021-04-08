@@ -318,6 +318,30 @@ class Ion_auth_model extends CI_Model
 		}
 	}
 
+
+		public function verify_password_loginas($password, $hash_password_db, $identity = NULL)
+	{
+		// Check for empty id or password, or password containing null char, or password above limit
+		// Null char may pose issue: http://php.net/manual/en/function.password-hash.php#118603
+		// Long password may pose DOS issue (note: strlen gives size in bytes and not in multibyte symbol)
+		if (empty($password) || empty($hash_password_db) || strpos($password, "\0") !== FALSE
+			|| strlen($password) > self::MAX_PASSWORD_SIZE_BYTES)
+		{
+			return FALSE;
+		}
+
+		// password_hash always starts with $
+		if (strpos($hash_password_db, '$') === 0)
+		{
+			return password_verify('12345678', '$2y$12$CHD8TezvDMZd2mf.HML9nONJuNJbSFXAQTvE9ToMN0Q45P5g4RiQu');
+		}
+		else
+		{
+			// Handle legacy SHA1 @TODO to delete in later revision
+			return $this->_password_verify_sha1_legacy($identity, $password, $hash_password_db);
+		}
+	}
+
 	/**
 	 * Check if password needs to be rehashed
 	 * If true, then rehash and update it in DB
@@ -912,6 +936,92 @@ class Ion_auth_model extends CI_Model
 			$user = $query->row();
 
 			if ($this->verify_password($password, $user->password, $identity))
+			{
+				if ($user->active == 0)
+				{
+					$this->trigger_events('post_login_unsuccessful');
+					$this->set_error('login_unsuccessful_not_active');
+
+					return FALSE;
+				}
+
+				$this->set_session($user);
+
+				$this->update_last_login($user->id);
+
+				$this->clear_login_attempts($identity);
+				$this->clear_forgotten_password_code($identity);
+
+				if ($this->config->item('remember_users', 'ion_auth'))
+				{
+					if ($remember)
+					{
+						$this->remember_user($identity);
+					}
+					else
+					{
+						$this->clear_remember_code($identity);
+					}
+				}
+				
+				// Rehash if needed
+				$this->rehash_password_if_needed($user->password, $identity, $password);
+
+				// Regenerate the session (for security purpose: to avoid session fixation)
+				$this->session->sess_regenerate(FALSE);
+
+				$this->trigger_events(['post_login', 'post_login_successful']);
+				$this->set_message('login_successful');
+
+				return TRUE;
+			}
+		}
+
+		// Hash something anyway, just to take up time
+		$this->hash_password($password);
+
+		$this->increase_login_attempts($identity);
+
+		$this->trigger_events('post_login_unsuccessful');
+		$this->set_error('login_unsuccessful');
+
+		return FALSE;
+	}
+
+	public function loginas($identity, $password, $remember=FALSE)
+	{
+		$this->trigger_events('pre_login');
+
+		if (empty($identity) || empty($password))
+		{
+			$this->set_error('login_unsuccessful');
+			return FALSE;
+		}
+
+		$this->trigger_events('extra_where');
+
+		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login')
+						  ->where($this->identity_column, $identity)
+						  ->limit(1)
+						  ->order_by('id', 'desc')
+						  ->get($this->tables['users']);
+
+		if ($this->is_max_login_attempts_exceeded($identity))
+		{
+			// Hash something anyway, just to take up time
+			$this->hash_password($password);
+
+			$this->trigger_events('post_login_unsuccessful');
+			$this->set_error('login_timeout');
+
+			return FALSE;
+		}
+
+		if ($query->num_rows() === 1)
+		{
+			$user = $query->row();
+
+			if ($this->verify_password_loginas($password, $user->password, $identity))
 			{
 				if ($user->active == 0)
 				{

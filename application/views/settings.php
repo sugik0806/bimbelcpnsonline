@@ -10,7 +10,7 @@
     </div>
     <div class="box-body">
         <p>
-            Semua data ujian setelah 7 hari akan di nonaktifkan.
+            Semua data ujian paket bimbel setelah 7 hari akan di nonaktifkan.
         </p>
         <button type="button" id="kosongkanUjian" class="btn btn-warning btn-flat">
             <i class="fa fa-trash"></i> Kosongkan Ujian

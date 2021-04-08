@@ -83,6 +83,49 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function cek_login_as()
+	{
+		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required|trim');
+		// $this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required|trim');
+
+		if ($this->form_validation->run() === TRUE)	{
+			$remember = (bool)$this->input->post('remember');
+
+		  // $tgl_awal = $_POST['tgl_awal'];
+    // 	  $tgl_akhir = $_POST['tgl_akhir'];
+    // 	  $rekening = $_POST['rekening'];
+			//print_r('dfgd');
+
+			if ($this->ion_auth->loginas($this->input->post('identity'), $this->input->post('password'), $remember)){
+				//$this->cek_akses();
+				if (!$this->ion_auth->logged_in()){
+					$status = false; // jika false, berarti login gagal
+					$url = 'auth'; // url untuk redirect
+				}else{
+					$status = true; // jika true maka login berhasil
+					$url = 'dashboard';
+					redirect('dashboard');
+				}
+			}else {
+				$data = [
+					'status' => false,
+					'failed' => 'Incorrect Login',
+				];
+				$this->output_json($data);
+			}
+		}else{
+			$invalid = [
+				'identity' => form_error('identity'),
+				//'password' => form_error('password')
+			];
+			$data = [
+				'status' 	=> false,
+				'invalid' 	=> $invalid
+			];
+			$this->output_json($data);
+		}
+	}
+
 	public function cek_akses()
 	{
 		if (!$this->ion_auth->logged_in()){

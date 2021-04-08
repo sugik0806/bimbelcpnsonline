@@ -108,6 +108,17 @@ class Master_model extends CI_Model {
         return $this->datatables->generate();
     }
 
+        public function getDataMahasiswaAllresult()
+    {
+
+        $this->db->select('*');
+        $this->db->from('mahasiswa a');
+        ///$this->db->join('kelas b', 'a.kelas_id=b.id_kelas');
+        //$this->db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
+       // $this->db->where('nim', $nim);
+        return $this->db->get()->result();
+    }
+
     public function getDataMahasiswaAll()
     {
         $this->db->select('

@@ -92,7 +92,8 @@ class Dashboard extends CI_Controller {
 			'user' 		=> $user,
 			'judul'		=> 'Dashboard',
 			'subjudul'	=> 'Data Aplikasi',
-			'mhs'	=> $this->mhs 
+			'mhs'	=> $this->mhs,
+			'loginas' => $this->master->getDataMahasiswaAllresult()
 		];
 
 		if ( $this->ion_auth->is_admin() ) {
