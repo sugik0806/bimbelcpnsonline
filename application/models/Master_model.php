@@ -113,8 +113,7 @@ class Master_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('mahasiswa a');
-        ///$this->db->join('kelas b', 'a.kelas_id=b.id_kelas');
-        //$this->db->join('jurusan c', 'b.jurusan_id=c.id_jurusan');
+        $this->db->join('users b', 'a.email=b.email');
        // $this->db->where('nim', $nim);
         return $this->db->get()->result();
     }
