@@ -539,7 +539,7 @@
         <?php if( $mahasiswa->id_jurusan == 3 ) : ?> 
           <!-- <p>1. Bergabunglah di group Whatsapp, caranya klik button <a class="btn btn-sm btn-flat btn-info" target="_blank" href="https://chat.whatsapp.com/Cp2VzKEBZ7qBMlOXakGGCr"><i class="fa fa-whatsapp fa-lg"></i> Gabung Grup Whatsapp</a>, kemudian klik Join Group jika belum punya Whatsapp silakan download dulu, Whatsapp juga bisa diinstall di Komputer</p>  -->
           
-            <p>1. Bergabunglah di group Whatsapp, caranya klik button <button class="btn btn-sm btn-flat btn-info disabled" target="_blank" href="https://chat.whatsapp.com/Cp2VzKEBZ7qBMlOXakGGCr"><i class="fa fa-whatsapp fa-lg"></i> Gabung Grup Whatsapp</button>, kemudian klik Join Group jika belum punya Whatsapp silakan download dulu, Whatsapp juga bisa diinstall di Komputer</p> 
+            <p>1. Bergabunglah di group Whatsapp, caranya klik button <button class="btn btn-sm btn-flat btn-info disabled" target="_blank" href="https://chat.whatsapp.com/H3gHDtZN9OpBAPIFE1DKA7"><i class="fa fa-whatsapp fa-lg"></i> Gabung Grup Whatsapp</button>, kemudian klik Join Group jika belum punya Whatsapp silakan download dulu, Whatsapp juga bisa diinstall di Komputer</p> 
             <p><b>Anda tidak bisa gabung jika bimbingan sedang berlangsung atau belum mulai, silakan hubungi <a href="https://wa.me/6282244795027?text=Saya%20mau%20ikut%20bimbingan%20meskipun%20ketinggalan,%20 Tolong undang ke grup bimbingan" target="_blank" class="small-box-footer"><b>Whatsapp Admin <i class="fa fa-whatsapp fa-lg"></i></b></a></b></p>
 
          <?php else : ?>
