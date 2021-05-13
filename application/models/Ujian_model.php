@@ -109,6 +109,7 @@ class Ujian_model extends CI_Model {
         $this->db->join('m_ujian c', 'b.id_ujian=c.id_ujian');
         $this->db->join('jenis d', 'd.id=b.tipe');
         $this->db->where('c.id_ujian', $id);
+        $this->db->order_by('a.nama_aspek', 'asc');
         $this->db->distinct();
         return $this->db->get()->result();
     }
@@ -118,6 +119,7 @@ class Ujian_model extends CI_Model {
         $this->db->select('a.nama_aspek, b.tipe');
         $this->db->from('m_aspek a');
         $this->db->join('jenis b', 'a.tipe=b.id');
+        $this->db->order_by('a.nama_aspek', 'asc');
         return $this->db->get()->result();
     }
 
