@@ -10,7 +10,7 @@
     <div class="box-body">
         <div class="row">
             <?=form_open('ujian/save', array('id'=>'formujian'), array('method'=>'edit','dosen_id'=>$dosen->id_dosen, 'id_ujian'=>$ujian->id_ujian))?>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="alert bg-purple">
                   <h4>Mata Bimbingan <i class="fa fa-book pull-right"></i></h4>
                   
@@ -33,7 +33,7 @@
                     <p><?=$dosen->nama_dosen?></p>
                 </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 
                 <div class="form-group">
                     <label for="nama_ujian">Nama Ujian</label>
@@ -85,6 +85,28 @@
                     <button id="submit" type="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>
                 </div>
                 <?=form_close()?>
+            </div>
+            <div class="col-sm-3">
+                <h4>Aspek Terpenuhi</h4>
+                <?php foreach($aspek as $info) : ?>
+                
+                    <div class="col-sm-12">
+                        <p><?=$info->nama_aspek;?></p>
+                        <!-- <h4><?=$info->tipe;?></h4> -->
+                    </div>
+                    
+                <?php endforeach; ?>
+            </div>
+            <div class="col-sm-3">
+                <h4>Master Aspek</h4>
+                <?php foreach($maspek as $info) : ?>
+                
+                    <div class="col-sm-12">
+                        <p><?=$info->nama_aspek;?></p>
+                        <!-- <h4><?=$info->tipe;?></h4> -->
+                    </div>
+                    
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

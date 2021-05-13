@@ -5,11 +5,12 @@ class Soal_model extends CI_Model {
     
     public function getDataSoal($id, $dosen)
     {
-        $this->datatables->select('j.tipe, a.id_soal, a.soal, FROM_UNIXTIME(a.created_on) as created_on, FROM_UNIXTIME(a.updated_on) as updated_on, b.nama_matkul, c.nama_dosen');
+        $this->datatables->select('j.tipe, a.id_soal, a.soal, as.nama_aspek, FROM_UNIXTIME(a.created_on) as created_on, FROM_UNIXTIME(a.updated_on) as updated_on, b.nama_matkul, c.nama_dosen');
         $this->datatables->from('tb_soal a');
         $this->datatables->join('matkul b', 'b.id_matkul=a.matkul_id');
         $this->datatables->join('dosen c', 'c.id_dosen=a.dosen_id');
         $this->datatables->join('jenis j', 'j.id=a.tipe');
+        $this->datatables->join('m_aspek as', 'as.id_aspek=a.id_aspek');
         $this->db->order_by('a.id_soal', 'desc');
         // if ($id!==null && $dosen===null) {
         //     //$this->datatables->where('j.tipe', $id);
@@ -46,11 +47,12 @@ class Soal_model extends CI_Model {
 
     public function getDataSoalByUjian($id_ujian, $id_tipe)
     {
-        $this->datatables->select('j.tipe, a.id_soal, a.soal, FROM_UNIXTIME(a.created_on) as created_on, FROM_UNIXTIME(a.updated_on) as updated_on, b.nama_matkul, c.nama_dosen');
+        $this->datatables->select('j.tipe, a.id_soal, a.soal, as.nama_aspek, FROM_UNIXTIME(a.created_on) as created_on, FROM_UNIXTIME(a.updated_on) as updated_on, b.nama_matkul, c.nama_dosen');
         $this->datatables->from('tb_soal a');
         $this->datatables->join('matkul b', 'b.id_matkul=a.matkul_id');
         $this->datatables->join('dosen c', 'c.id_dosen=a.dosen_id');
         $this->datatables->join('jenis j', 'j.id=a.tipe');
+        $this->datatables->join('m_aspek as', 'as.id_aspek=a.id_aspek');
         $this->db->order_by('a.id_soal', 'desc');
         if ($id_ujian!=='all') {
         $this->datatables->where('a.id_ujian', $id_ujian);

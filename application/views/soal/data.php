@@ -1,3 +1,68 @@
+<style type="text/css">
+    .big-box h2 {
+        text-align: center;
+        width: 100%;
+        font-size: 1.8em;
+        letter-spacing: 2px;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor:pointer;
+    }
+    .modal-dialog {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin:0;
+    }
+    .modal-content {
+        height: 100%;
+        border-radius: 0;
+        color:#333;
+        overflow:auto;
+    }
+    .modal-title {
+        font-size: 3em;
+        font-weight: 300;
+        margin: 0 0 10px 0;
+    }
+    .close {
+        color:black ! important;
+        opacity:1.0;
+    }
+</style>
+
+<!-- modal -->
+<div class="container-fluid">
+    <div class="row">        
+        <div class="col-md-12" >
+            
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog text-justify">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h3 class="modal-title" id="myModalLabel"><strong>Indikator Aspek</strong>
+                            </br>
+                            <!-- <small>Published Juni, 2015</small></h3> -->
+                        </div>
+                        <div class="modal-body">  
+                            <div class="col-md-6">
+                            	<select id="ujian_filter" class="form-control select2" style="width:100% !important">
+                            		<option value="all">Semua Ujian</option>
+                            		<?php foreach ($ujian as $m) :?>
+                            			<option value="<?=$m->id_ujian?>"><?=$m->nama_ujian?></option>
+                            		<?php endforeach; ?>
+                            	</select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"><?=$subjudul?></h3>
@@ -8,8 +73,8 @@
     </div>
     <div class="box-body">
 		<div class="row">
-        	<div class="col-sm-2">
-				<button type="button" onclick="bulk_delete()" class="btn btn-flat btn-sm bg-red"><i class="fa fa-trash"></i> Bulk Delete</button>
+        	<div class="col-sm-1">
+				<button type="button" onclick="bulk_delete()" class="btn btn-flat btn-sm bg-red"><i class="fa fa-trash"></i> Delete</button>
 			</div>
 
 			<div class="col-md-1">
@@ -79,8 +144,10 @@
 			</div>
 
 
-			<div class="col-sm-3 pull-right">
+			<div class="col-sm-4 pull-right">
 				<div class="pull-right">
+					<!-- <a href="<?=base_url('soal/aspek')?>" class="btn bg-yellow btn-flat btn-sm"><i class="fa fa-eye"></i> Aspek</a> -->
+					<a  onclick="loadModal()" class="btn btn-flat btn-sm btn-warning" data-toggle="modal" data-target="#modal1">Aspek</a>
 					<a href="<?=base_url('soal/add')?>" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-plus"></i> Buat Soal</a>
 					<a href="<?= base_url('soal/import') ?>" class="btn btn-sm btn-flat btn-success"><i class="fa fa-upload"></i> Import</a>
 					<button type="button" onclick="reload_ajax()" class="btn btn-flat btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
@@ -101,6 +168,7 @@
                 <th width="25">Tipe</th>
                 <th width="25">Mat Bim</th>
 				<th>Soal</th>
+				<th>Aspek</th>
 				<!-- <th width="25">Tanggal</th> -->
 				<th width="25" class="text-center">Aksi</th>
             </tr>        
@@ -115,6 +183,7 @@
                 <th width="25">tipe</th>
                 <th width="25">Mat Bim</th>
 				<th>Soal</th>
+				<th>Aspek</th>
 				<!-- <th width="25">Tanggal</th> -->
 				<th width="25" class="text-center">Aksi</th>
             </tr>

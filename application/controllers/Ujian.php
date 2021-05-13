@@ -95,6 +95,8 @@ class Ujian extends CI_Controller {
 			//'matkul'	=> $this->master->getMatkulDosen($user->username),
 			'dosen'		=> $this->ujian->getIdDosen($user->username),
 			'ujian'		=> $this->ujian->getUjianById($id),
+			'aspek'     => $this->ujian->getAspekByIdUjian($id),
+			'maspek'     => $this->ujian->getMAspek(),
 		];
 		$data['matkul'] = $this->master->getAllMatkul();
 

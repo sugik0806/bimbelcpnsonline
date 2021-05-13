@@ -58,6 +58,7 @@ $(document).ready(function() {
       { data: "tipe" },
       { data: "nama_matkul" },
       { data: "soal" },
+      { data: "nama_aspek" },
       // { data: "created_on" }
     ],
     columnDefs: [
@@ -71,7 +72,7 @@ $(document).ready(function() {
         }
       },
       {
-        targets: 5,
+        targets: 6,
         data: "id_soal",
         render: function(data, type, row, meta) {
           return `<div class="text-center">
@@ -85,7 +86,7 @@ $(document).ready(function() {
         }
       }
     ],
-    order: [[5, "desc"]],
+    order: [[6, "desc"]],
     rowId: function(a) {
       return a;
     },

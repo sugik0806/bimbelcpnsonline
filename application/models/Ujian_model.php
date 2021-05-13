@@ -100,6 +100,27 @@ class Ujian_model extends CI_Model {
         return $this->db->get()->row();
     }
 
+    public function getAspekByIdUjian($id)
+    {
+
+        $this->db->select('c.nama_ujian, a.nama_aspek, d.tipe');
+        $this->db->from('m_aspek a');
+        $this->db->join('tb_soal b', 'a.id_aspek=b.id_aspek');
+        $this->db->join('m_ujian c', 'b.id_ujian=c.id_ujian');
+        $this->db->join('jenis d', 'd.id=b.tipe');
+        $this->db->where('c.id_ujian', $id);
+        $this->db->distinct();
+        return $this->db->get()->result();
+    }
+
+    public function getMAspek()
+    {
+        $this->db->select('a.nama_aspek, b.tipe');
+        $this->db->from('m_aspek a');
+        $this->db->join('jenis b', 'a.tipe=b.id');
+        return $this->db->get()->result();
+    }
+
         public function getUjianByIdMatkul($id)
     {
         $this->db->select('*');
