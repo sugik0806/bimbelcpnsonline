@@ -88,6 +88,13 @@ class Ujian extends CI_Controller {
 		
 		$user = $this->ion_auth->user()->row();
 
+		$hasil_baru = $this->ujian->getAspekByIdUjian($id);
+        $id_aspek_array = array();
+        foreach ($hasil_baru as $value) {
+            array_push($id_aspek_array,$value->id_aspek);
+        }
+		       //print_r($array_baru);
+
         $data = [
 			'user' 		=> $user,
 			'judul'		=> 'Tryout',
@@ -96,7 +103,7 @@ class Ujian extends CI_Controller {
 			'dosen'		=> $this->ujian->getIdDosen($user->username),
 			'ujian'		=> $this->ujian->getUjianById($id),
 			'aspek'     => $this->ujian->getAspekByIdUjian($id),
-			'maspek'     => $this->ujian->getMAspek(),
+			'maspek'    => $this->ujian->getMAspek($id_aspek_array),
 		];
 		$data['matkul'] = $this->master->getAllMatkul();
 

@@ -103,7 +103,7 @@ class Ujian_model extends CI_Model {
     public function getAspekByIdUjian($id)
     {
 
-        $this->db->select('c.nama_ujian, a.nama_aspek, d.tipe');
+        $this->db->select('a.id_aspek, c.nama_ujian, a.nama_aspek, d.tipe');
         $this->db->from('m_aspek a');
         $this->db->join('tb_soal b', 'a.id_aspek=b.id_aspek');
         $this->db->join('m_ujian c', 'b.id_ujian=c.id_ujian');
@@ -114,11 +114,15 @@ class Ujian_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-    public function getMAspek()
+//$names = array('Frank', 'Todd', 'James');
+//$this->db->where_not_in('username', $names);
+
+    public function getMAspek($id_aspek_array)
     {
         $this->db->select('a.nama_aspek, b.tipe');
         $this->db->from('m_aspek a');
         $this->db->join('jenis b', 'a.tipe=b.id');
+        $this->db->where_not_in('a.id_aspek', $id_aspek_array);
         $this->db->order_by('a.nama_aspek', 'asc');
         return $this->db->get()->result();
     }
