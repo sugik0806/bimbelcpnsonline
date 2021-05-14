@@ -98,7 +98,7 @@
                 <?php endforeach; ?>
             </div>
             <div class="col-sm-3">
-                <h4>Master Aspek</h4>
+                <h4>Aspek Belum Terpenuhi</h4>
                 <?php foreach($maspek as $info) : ?>
                 
                     <div class="col-sm-12">
