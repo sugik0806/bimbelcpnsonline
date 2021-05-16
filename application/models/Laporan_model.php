@@ -51,13 +51,15 @@ class Laporan_model extends CI_Model {
         return $this->db->get()->result();
     }
 
-        public function getPengeluaran($tgl_awal, $tgl_akhir)
+        public function getPengeluaran($tgl_awal, $tgl_akhir, $rekening)
     {
         $this->db->select('*');
         $this->db->from('pengeluaran m');
         $this->db->where('m.tanggal_pengeluaran >=', $tgl_awal);
         $this->db->where('m.tanggal_pengeluaran <=', $tgl_akhir);
-        $this->db->where('m.mengurangi_pendapatan', 1);
+        if ($rekening != 0) {
+            $this->db->where('m.rekening', $rekening);
+        }
         $this->db->order_by('m.nama_pengeluaran', 'asc');
 
         return $this->db->get()->result();

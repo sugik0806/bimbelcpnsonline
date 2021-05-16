@@ -155,7 +155,6 @@ class Laporan extends CI_Controller {
 
 		
 		$hasil 	= $this->laporan->getPendapatanReport($tgl_awal, $tgl_akhir, $rekening);
-		$pengeluaran 	= $this->laporan->getPengeluaran($tgl_awal, $tgl_akhir);
 		
 		
 		if ($rekening != 0) {
@@ -164,6 +163,7 @@ class Laporan extends CI_Controller {
 			$rekeningnya = "";
 		}
 		 
+		$pengeluaran 	= $this->laporan->getPengeluaran($tgl_awal, $tgl_akhir, $rekening); 
 		
 		$data = [
 			

@@ -31,7 +31,7 @@
                     <select id="rekening" name="rekening" class="select2 pull-left">
                         <option value="0">-- Rekening --</option>
                         <option value="0143252019">0143252019</option>
-                        <option value="90000252298">90000252298</option>
+                        <option value="9000025229858">9000025229858</option>
                     </select>
                     <small class="help-block"></small>
                 </div>
