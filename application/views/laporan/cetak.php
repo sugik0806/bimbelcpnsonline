@@ -70,7 +70,18 @@ foreach($laporan as $key=>$value)
 }
 
 $total = number_format($sum);
+
+$sump = 0;
+foreach($pengeluaran as $key=>$value)
+{
+   $sump+= $value->nominal;
+}
+
+$totalpengeluaran = number_format($sump);
 //echo $sum;
+
+$tempgrandtotal = $sum - $sump;
+$grandtotal = number_format($tempgrandtotal);
 
 $skd = <<<EOD
 <p align="center">Periode : $tgl_awal - $tgl_akhir </p>
@@ -114,6 +125,20 @@ $skd .= <<<EOD
       <td></td>
       <td>Total</td>
       <td>Rp. {$total}</td>
+    </tr>
+    <tr align="center">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Pengeluaran</td>
+      <td>Rp. {$totalpengeluaran}</td>
+    </tr>
+    <tr align="center">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Grand Total</td>
+      <td>Rp. {$grandtotal}</td>
     </tr>
   </tfoot>
 </table>
