@@ -65,6 +65,7 @@ $(document).ready(function() {
                 data.tgl_awal = $('#tgl_awal').val();
                 data.tgl_akhir = $('#tgl_akhir').val();
                 data.rekening = $('#rekening').val();
+                data.status_transfer = $('#status_transfer').val();
         },  
       url: base_url + "laporan/data",
       type: "POST",      

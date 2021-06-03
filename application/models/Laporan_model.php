@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Laporan_model extends CI_Model {
     
-      public function getPendapatan($tgl_awal, $tgl_akhir, $rekening)
+      public function getPendapatan($tgl_awal, $tgl_akhir, $rekening, $statusTransfer)
     {
         $this->datatables->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, m.rekening,(k.harga - m.angka_unik - m.diskon - m.referal_fee) as net,m.tanggal_konfirmasi ,(SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total');
         $this->datatables->from('mahasiswa m');
@@ -14,6 +14,9 @@ class Laporan_model extends CI_Model {
         $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
         if ($rekening != 0) {
             $this->datatables->where('m.rekening', $rekening);
+        }
+        if ($statusTransfer != 'all') {
+            $this->datatables->where('m.status_transfer', $statusTransfer);
         }
         
         $this->db->order_by('m.id_mahasiswa', 'asc');

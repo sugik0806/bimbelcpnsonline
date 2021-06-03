@@ -32,10 +32,11 @@ class Laporan extends CI_Controller {
 		  $tgl_awal = $_POST['tgl_awal'];
     	  $tgl_akhir = $_POST['tgl_akhir'];
     	  $rekening = $_POST['rekening'];
+    	  $statusTransfer = $_POST['status_transfer'];
     	  
 
 		//$tgl_awal = $this->input->post('tgl_awal', true);
-		$this->output_json($this->laporan->getPendapatan($tgl_awal, $tgl_akhir, $rekening), false);
+		$this->output_json($this->laporan->getPendapatan($tgl_awal, $tgl_akhir, $rekening, $statusTransfer), false);
 	}
 
 	public function fee()
