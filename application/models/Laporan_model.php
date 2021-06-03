@@ -60,6 +60,7 @@ class Laporan_model extends CI_Model {
         $this->db->from('pengeluaran m');
         $this->db->where('m.tanggal_pengeluaran >=', $tgl_awal);
         $this->db->where('m.tanggal_pengeluaran <=', $tgl_akhir);
+        $this->db->where('m.status_pengurangan', 0);
         if ($rekening != 0) {
             $this->db->where('m.rekening', $rekening);
         }
