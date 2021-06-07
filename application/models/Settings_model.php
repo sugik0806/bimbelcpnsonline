@@ -46,7 +46,7 @@ class Settings_model extends CI_Model {
     public function update($table, $data, $pk, $tgl_selesaimin7, $idmhsIn = null, $batch = false)
     {
         $this->db->where('tgl_selesai <', $tgl_selesaimin7);
-        $this->db->where_in('mahasiswa_id', $idmhsIn);
+        //$this->db->where_in('mahasiswa_id', $idmhsIn); // hanya yang paket bimbel yang nonactive
         $this->db->update($table,$data);
 
     }     

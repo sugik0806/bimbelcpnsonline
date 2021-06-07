@@ -46,7 +46,7 @@ class Ujian_model extends CI_Model {
     public function getListUjianbox($id, $kelas, $id_matkul)
     {
         //$query1 = $this->db->query("SELECT COUNT(id) FROM h_ujian WHERE mahasiswa_id={$id} AND status='N'");
-        $query1 = $this->db->query("SELECT * FROM h_ujian WHERE mahasiswa_id={$id} AND status='N'")->num_rows();
+        $query1 = $this->db->query("SELECT * FROM h_ujian WHERE mahasiswa_id={$id} AND status='N' AND aktif=1")->num_rows();
 
 
         $this->db->select("a.id_ujian, e.nama_dosen, d.nama_kelas, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, CONCAT( a.waktu, ' Menit') as menit, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.aktif = 1) AS ada, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'Y' AND h.aktif = 1) AS sedangujian");
