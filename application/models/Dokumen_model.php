@@ -9,6 +9,7 @@ class Dokumen_model extends CI_Model {
         $this->datatables->from('m_dokumen d');
         $this->datatables->join('matkul b', 'b.id_matkul=d.id_matkul');
         $this->datatables->join('jenis j', 'j.id=d.id_jenis');
+        $this->datatables->where('d.aktif', 1);
         if ($kelas_id == 1 && $id == 0) {
             $this->datatables->where('d.id_kelas', 1);
         }
