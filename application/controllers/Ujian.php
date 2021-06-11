@@ -254,7 +254,8 @@ class Ujian extends CI_Controller {
 	}
 
 	public function reset()
-	{		
+	{	
+	    //print($this->mhs->id_mahasiswa);
 
 
 		$id_ujian = $this->input->post('id', true);
@@ -268,7 +269,8 @@ class Ujian extends CI_Controller {
 			];
 
 			$where = [
-				'ujian_id' => $id_ujian
+				'ujian_id' => $id_ujian,
+				'id_mahasiswa' => $this->mhs->id_mahasiswa
 			];
 
 			$action = $this->ujian->resetUjian($d_update, $where);

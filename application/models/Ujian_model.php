@@ -470,6 +470,7 @@ public function getJumlahPertanyaan($id, $mhs, $id_soal)
     {
         $this->db->set('aktif', $input{'aktif'});
         $this->db->where('ujian_id', $where{'ujian_id'});
+        $this->db->where('mahasiswa_id', $where{'id_mahasiswa'});
         $this->db->update('h_ujian'); 
         // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
     }
