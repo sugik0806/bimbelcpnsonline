@@ -65,6 +65,7 @@ class Dashboard_model extends CI_Model {
         $this->db->join('kelas d', 'm.kelas_id = d.id_kelas');
         $this->db->where('mu.matkul_id', $id_matkul);
         $this->db->where('m.id_mahasiswa', $id);
+        $this->db->where('h.aktif', 1);
         return $this->db->get()->result();
 
     }
@@ -91,6 +92,7 @@ class Dashboard_model extends CI_Model {
         $this->db->join('m_provinsi', 'm_provinsi.id_provinsi = mahasiswa.id_provinsi');
         $this->db->join('h_ujian', 'h_ujian.mahasiswa_id = mahasiswa.id_mahasiswa');
         $this->db->where('mahasiswa.id_matkul', $id);
+        $this->db->where('h_ujian.aktif', 1);
         $this->db->group_By("mahasiswa.nama");
         $this->db->order_By("nilai_rata", "desc");
         $this->db->limit(10);
