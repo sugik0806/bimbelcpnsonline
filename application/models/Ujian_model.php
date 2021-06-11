@@ -60,7 +60,7 @@ class Ujian_model extends CI_Model {
             CONCAT( a.waktu, ' Menit') as menit, 
             (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.aktif = 1) AS ada, 
             (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'Y' AND h.aktif = 1) AS sedangujian,
-            (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.tgl_selesai < '$tgl_selesaimin7') AS bisareset
+            (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.aktif = 1 AND h.tgl_selesai < '$tgl_selesaimin7') AS bisareset
             ");
 
         //$this->db->where('tgl_selesai <', $tgl_selesaimin7);
