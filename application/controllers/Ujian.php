@@ -230,7 +230,13 @@ class Ujian extends CI_Controller {
 
 		$user = $this->ion_auth->user()->row();
 
-		$list = $this->ujian->getListUjianbox($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $this->mhs->id_matkul);
+	
+        $tgl1 = date('Y-m-d H:i:s');
+        $tgl_selesaimin7 = date('Y-m-d H:i:s', strtotime('-7 days', strtotime($tgl1))); //operasi penjumlahan tanggal sebanyak 7 hari 
+        //$this->db->where('tgl_selesai <', $tgl_selesaimin7);
+
+
+		$list = $this->ujian->getListUjianbox($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $this->mhs->id_matkul, $tgl_selesaimin7);
 		$listHasil = $this->ujian->getListUjianboxHasil($this->mhs->id_mahasiswa, $this->mhs->kelas_id, $this->mhs->id_matkul);
 
 		
@@ -245,6 +251,43 @@ class Ujian extends CI_Controller {
 		$this->load->view('_templates/dashboard/_header.php', $data);
 		$this->load->view('ujian/list');
 		$this->load->view('_templates/dashboard/_footer.php');
+	}
+
+	public function reset()
+	{		
+
+
+		$id_ujian = $this->input->post('id', true);
+		//$print_r();
+		//print($id_ujian);
+
+			$d_update = [
+				
+				'aktif' => 0
+				
+			];
+
+			$where = [
+				'ujian_id' => $id_ujian
+			];
+
+			$action = $this->ujian->resetUjian($d_update, $where);
+
+			$data = [
+				 	'status' => true,
+				 	'msg'	 => 'Berhasil direset!'
+				 ];
+
+		 
+		 $this->output_json($data);
+
+
+
+		// $action = $this->ujian->resetUjian('0', $id_ujian);
+			
+		// $data['status'] = $action ? TRUE : FALSE;
+		
+		// $this->output_json($data);
 	}
 	
 	public function token($id)

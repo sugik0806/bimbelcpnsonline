@@ -119,6 +119,17 @@
                                         <a class="btn btn-info" href="<?=base_url('ujian/token/'.$ls->id_ujian.'/review')?>">
                                             <i class="fa fa-check"></i> Tinjauan
                                         </a>
+
+<!-- <?=$lsh->tgl_selesai ?>  -->
+<!--  <?=$tgl_selesaimin7 ?>  -->
+                                    
+                                        <?php if( $ls->bisareset > 0) : ?>
+                                        <button class="btn btn-warning" onclick="return keReset(<?=$ls->id_ujian?>);">
+                                            <i class="fa fa-pencil"></i> Ulangi
+                                        </button>
+
+                                        <?php endif; ?>
+
                                 <?php elseif( $ls->sedangujian > 0 ) : ?>
                                 
                                   <a class="btn btn-warning" href="<?=base_url('ujian/token/'.$ls->id_ujian)?>">

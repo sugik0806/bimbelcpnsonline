@@ -83,4 +83,55 @@ $(document).ready(function () {
             $('td:eq(0)', row).html(index);
         }
     });
+
+
+    
 });
+
+
+    function keReset(ujian_id) {
+        console.info(ujian_id);
+
+        $.ajax({
+          url: base_url + "ujian/reset",
+           data: {
+                id: ujian_id
+            },
+          type: "POST",
+          success: function(response) {
+            if (response.msg) {
+              var title = response.status ? "Berhasil" : "Gagal";
+              var type = response.status ? "success" : "error";
+              Swal({
+                title: title,
+                text: response.msg,
+                type: type
+              });
+            }
+            //reload_ajax();
+            window.location.href = base_url+'ujian/list';
+          }
+        });
+         //window.location.href = base_url+'dokumen';
+         // $("#reset").on("click", ".btn-aktif", function() {
+         //   let id = $(this).data("id");
+
+         //   $.ajax({
+         //     url: base_url + "ujian/reset",
+         //     data: "id=" + ujian_id,
+         //     type: "GET",
+         //     success: function(response) {
+         //       if (response.msg) {
+         //         var title = response.status ? "Berhasil" : "Gagal";
+         //         var type = response.status ? "success" : "error";
+         //         Swal({
+         //           title: title,
+         //           text: response.msg,
+         //           type: type
+         //         });
+         //       }
+         //       reload_ajax();
+         //     }
+         //   });
+         // });
+    }

@@ -43,13 +43,27 @@ class Ujian_model extends CI_Model {
         return $this->datatables->generate();
     }
 
-    public function getListUjianbox($id, $kelas, $id_matkul)
+    public function getListUjianbox($id, $kelas, $id_matkul, $tgl_selesaimin7)
     {
         //$query1 = $this->db->query("SELECT COUNT(id) FROM h_ujian WHERE mahasiswa_id={$id} AND status='N'");
         $query1 = $this->db->query("SELECT * FROM h_ujian WHERE mahasiswa_id={$id} AND status='N' AND aktif=1")->num_rows();
 
 
-        $this->db->select("a.id_ujian, e.nama_dosen, d.nama_kelas, a.nama_ujian, b.nama_matkul, a.jumlah_soal, CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, CONCAT( a.waktu, ' Menit') as menit, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.aktif = 1) AS ada, (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'Y' AND h.aktif = 1) AS sedangujian");
+        $this->db->select("
+            a.id_ujian, 
+            e.nama_dosen, 
+            d.nama_kelas, 
+            a.nama_ujian, 
+            b.nama_matkul, 
+            a.jumlah_soal, 
+            CONCAT(a.tgl_mulai, ' <br/> (', a.waktu, ' Menit)') as waktu, 
+            CONCAT( a.waktu, ' Menit') as menit, 
+            (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.aktif = 1) AS ada, 
+            (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'Y' AND h.aktif = 1) AS sedangujian,
+            (SELECT COUNT(id) FROM h_ujian h WHERE h.mahasiswa_id = {$id} AND h.ujian_id = a.id_ujian AND h.status = 'N' AND h.tgl_selesai < '$tgl_selesaimin7') AS bisareset
+            ");
+
+        //$this->db->where('tgl_selesai <', $tgl_selesaimin7);
         $this->db->from('m_ujian a'); 
         $this->db->join('matkul b', 'a.matkul_id = b.id_matkul');
         $this->db->join('kelas_dosen c', "a.dosen_id = c.dosen_id");
@@ -450,6 +464,24 @@ public function getJumlahPertanyaan($id, $mhs, $id_soal)
         $this->db->update('h_ujian'); 
         // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
     }
+
+
+     public function resetUjian($input, $where)
+    {
+        $this->db->set('aktif', $input{'aktif'});
+        $this->db->where('ujian_id', $where{'ujian_id'});
+        $this->db->update('h_ujian'); 
+        // gives UPDATE `mytable` SET `field` = 'field+1' WHERE `id` = 2
+    }
+
+    //  public function update($table, $data, $pk, $tgl_selesaimin7, $idmhsIn = null, $batch = false)
+    // {
+    //     $this->db->where('tgl_selesai <', $tgl_selesaimin7);
+    //     //$this->db->where_in('mahasiswa_id', $idmhsIn); // hanya yang paket bimbel yang nonactive
+    //     $this->db->update($table,$data);
+
+    // }   
+
 
      public function modeNormal($input, $where)
     {
