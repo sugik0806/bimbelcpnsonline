@@ -40,6 +40,7 @@
             <thead>
                 <tr>
                     <th>No.</th>
+                    <th>Tanggal</th>
                     <th>Nama Pengeluaran</th>
                     <th>Nominal</th>
 					<th class="text-center">

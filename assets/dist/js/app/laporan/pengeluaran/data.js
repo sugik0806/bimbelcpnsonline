@@ -75,6 +75,9 @@ $(document).ready(function() {
         searchable: false
       },
       {
+        data: "tanggal_pengeluaran"
+      },
+      {
         data: "nama_pengeluaran"
       },
       {

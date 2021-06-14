@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $('.datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    
     $('form#pengeluaran input').on('change', function () {
         $(this).parent('.form-group').removeClass('has-error');
         $(this).next('.help-block').text('');

@@ -13,6 +13,10 @@ $(document).ready(function () {
         $(this).next('.help-block').text('');
     });
 
+    $('.datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
     $('form#pengeluaran').on('submit', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -63,6 +67,12 @@ function generate(n) {
                 <td>${i}</td>
                 <td>
                     <div class="form-group">
+                        <input name="tanggal[${i}]" type="text" class="datetimepicker form-control" placeholder="Tanggal">
+                        <small class="help-block text-right"></small>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
                         <input autocomplete="off" type="text" name="nama_pengeluaran[${i}]" class="input-sm form-control">
                         <small class="help-block text-right"></small>
                     </div>
@@ -73,6 +83,7 @@ function generate(n) {
                         <small class="help-block text-right"></small>
                     </div>
                 </td>
+                
             </tr>
             `;
         $('#inputs').append(inputs);

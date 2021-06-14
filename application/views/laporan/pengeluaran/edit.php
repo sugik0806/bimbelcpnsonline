@@ -24,6 +24,7 @@
                     <thead>
                         <tr>
                             <th># No</th>
+                            <th>Tanggal</th>
                             <th>Nama Pengeluaran</th>
                             <th>Nominal</th>
                         </tr>
@@ -34,6 +35,13 @@
                         foreach ($pengeluaran as $j) : ?>
                         <tr>
                             <td><?=$no?></td>
+                            <td>
+                                <div class="form-group">
+                                    <?=form_hidden('id_pengeluaran['.$no.']', $j->tanggal_pengeluaran)?>
+                                    <input autofocus="autofocus" onfocus="this.select()" autocomplete="off" value="<?=$j->tanggal_pengeluaran?>" type="text" name="tanggal[<?=$no?>]" class="input-sm form-control">
+                                    <small class="help-block text-right"></small>
+                                </div>
+                            </td>
                             <td>
                                 <div class="form-group">
                                     <?=form_hidden('id_pengeluaran['.$no.']', $j->id_pengeluaran)?>

@@ -89,12 +89,15 @@ class Pengeluaran extends CI_Controller
 		for ($i = 1; $i <= $rows; $i++) {
 			$nama_pengeluaran = 'nama_pengeluaran[' . $i . ']';
 			$nominal = 'nominal[' . $i . ']';
+			$tanggal = 'tanggal[' . $i . ']';
 			$this->form_validation->set_rules($nama_pengeluaran, 'Pengeluaran', 'required');
 			$this->form_validation->set_rules($nominal, 'Nominal', 'required');
+			$this->form_validation->set_rules($tanggal, 'Tanggal', 'required');
 			$this->form_validation->set_message('required', '{field} Wajib diisi');
 
 			if ($this->form_validation->run() === FALSE) {
 				$error[] = [
+					$tanggal => form_error($tanggal),
 					$nama_pengeluaran => form_error($nama_pengeluaran),
 					$nominal => form_error($nominal)
 				];
@@ -102,14 +105,15 @@ class Pengeluaran extends CI_Controller
 			} else {
 				if ($mode == 'add') {
 					$insert[] = [
+						'tanggal_pengeluaran' => $this->input->post($tanggal, true),
 						'nama_pengeluaran' => $this->input->post($nama_pengeluaran, true),
 						'nominal' => $this->input->post($nominal, true),
-						'tanggal_pengeluaran' => date('Y-m-d'),
 						'status_pengurangan' => 0
 					];
 				} else if ($mode == 'edit') {
 					$update[] = array(
 						'id_pengeluaran'	=> $this->input->post('id_pengeluaran[' . $i . ']', true),
+						'tanggal_pengeluaran' => $this->input->post($tanggal, true),
 						'nama_pengeluaran' 	=> $this->input->post($nama_pengeluaran, true),
 						'nominal' => $this->input->post($nominal, true)
 					);
