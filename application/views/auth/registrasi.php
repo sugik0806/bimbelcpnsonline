@@ -168,10 +168,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            	<a class="btn btn-primary btn-block btn-flat pull-left" style="border-radius:2px;background-color:#228B22;color:#fffffa" href="https://wa.me/6282244795027?text=Mohon%20info,%20Bimbingan%20Belajar%20CPNS%20di%20bimbelCPNSonline.id" target="_blank">Daftar Via Whatsapp</a>
 	            </div> -->
 
-	            <div class="col-xs-6 pull-right">
+	            <div class="col-md-6">
 
 	            	<!-- <?= form_submit('submit', lang('create_user_submit_btn'), array('id'=>'submit','class'=>'btn btn-primary btn-block btn-flat'));?> -->
-	            	<button type="submit" id="submit" name="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
+	            	<button id="submit" name="submit" class="btn btn-primary btn-block btn-flat">Daftar</button>
 	            </div>
 
 	            <div class="col-md-12" style="padding-top: 10px; padding-bottom: 20px">
