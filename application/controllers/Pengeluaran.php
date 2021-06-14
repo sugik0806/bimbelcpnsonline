@@ -104,7 +104,8 @@ class Pengeluaran extends CI_Controller
 					$insert[] = [
 						'nama_pengeluaran' => $this->input->post($nama_pengeluaran, true),
 						'nominal' => $this->input->post($nominal, true),
-						'tanggal_pengeluaran' => date('Y-m-d')
+						'tanggal_pengeluaran' => date('Y-m-d'),
+						'status_pengurangan' => 0
 					];
 				} else if ($mode == 'edit') {
 					$update[] = array(
