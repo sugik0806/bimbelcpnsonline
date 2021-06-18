@@ -27,6 +27,7 @@
                             <th>Tanggal</th>
                             <th>Nama Pengeluaran</th>
                             <th>Nominal</th>
+                            <th>Rekening</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,17 @@
                                     <?=form_hidden('nominal['.$no.']', $j->nominal)?>
                                     <input autofocus="autofocus" onfocus="this.select()" autocomplete="off" value="<?=$j->nominal?>" type="text" name="nominal[<?=$no?>]" class="input-sm form-control">
                                     <small class="help-block text-right"></small>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <?=form_hidden('rekening['.$no.']', $j->rekening)?>
+                                    <select value="<?=$j->rekening?>" name="rekening[<?=$no?>]" class="select2 pull-left">
+                                        <option value="0">-- Rekening --</option>
+                                        <option value="0143252019">0143252019</option>
+                                        <option value="9000025229858">9000025229858</option>
+                                    </select>
+                                    <small class="help-block"></small>
                                 </div>
                             </td>
                         </tr>

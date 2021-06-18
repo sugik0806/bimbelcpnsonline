@@ -83,6 +83,16 @@ function generate(n) {
                         <small class="help-block text-right"></small>
                     </div>
                 </td>
+                <td>
+                <div class="form-group">
+                    <select name="rekening[${i}]" class="select2 pull-left">
+                        <option value="0">-- Rekening --</option>
+                        <option value="0143252019">0143252019</option>
+                        <option value="9000025229858">9000025229858</option>
+                    </select>
+                    <small class="help-block"></small>
+                </div>
+                </td>
                 
             </tr>
             `;

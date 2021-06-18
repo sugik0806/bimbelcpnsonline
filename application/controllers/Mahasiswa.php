@@ -138,7 +138,7 @@ class Mahasiswa extends CI_Controller
 				'rekening'		=> '9000025229858', //0143252019
 				'referal' 		=> $this->input->post('referal', true),
 				'referal_fee'   => 0,
-				'status_transfer' => 1
+				'status_transfer' => 0
 
 				
 			];

@@ -27,6 +27,7 @@
                             <th>Tanggal</th>
                             <th>Nama Pengeluaran</th>
                             <th>Nominal</th>
+                            <th>Rekening</th>
                         </tr>
                     </thead>
                     <tbody id="inputs">

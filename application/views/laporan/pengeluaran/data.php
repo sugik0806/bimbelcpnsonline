@@ -43,6 +43,7 @@
                     <th>Tanggal</th>
                     <th>Nama Pengeluaran</th>
                     <th>Nominal</th>
+                    <th>Rekening</th>
 					<th class="text-center">
 						<input type="checkbox" id="select_all">
 					</th>

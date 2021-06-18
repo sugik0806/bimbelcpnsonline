@@ -122,7 +122,7 @@ class Laporan_model extends CI_Model {
 
     public function getDataPengeluaran($tgl_awal, $tgl_akhir)
     {
-        $this->datatables->select('id_pengeluaran,tanggal_pengeluaran,nama_pengeluaran, nominal');
+        $this->datatables->select('id_pengeluaran,tanggal_pengeluaran,nama_pengeluaran, nominal,rekening');
         $this->datatables->from('pengeluaran');
         $this->db->order_by('id_pengeluaran');
         $this->db->where('tanggal_pengeluaran >=', $tgl_awal);

@@ -84,6 +84,9 @@ $(document).ready(function() {
         data: "nominal"
       },
       {
+        data: "rekening"
+      },
+      {
         data: "bulk_select",
         orderable: false,
         searchable: false

@@ -90,32 +90,44 @@ class Pengeluaran extends CI_Controller
 			$nama_pengeluaran = 'nama_pengeluaran[' . $i . ']';
 			$nominal = 'nominal[' . $i . ']';
 			$tanggal = 'tanggal[' . $i . ']';
+			$rekening = 'rekening[' . $i . ']';
 			$this->form_validation->set_rules($nama_pengeluaran, 'Pengeluaran', 'required');
 			$this->form_validation->set_rules($nominal, 'Nominal', 'required');
 			$this->form_validation->set_rules($tanggal, 'Tanggal', 'required');
+			$this->form_validation->set_rules($rekening, 'Rekening', 'required');
 			$this->form_validation->set_message('required', '{field} Wajib diisi');
 
 			if ($this->form_validation->run() === FALSE) {
 				$error[] = [
 					$tanggal => form_error($tanggal),
 					$nama_pengeluaran => form_error($nama_pengeluaran),
-					$nominal => form_error($nominal)
+					$nominal => form_error($nominal),
+					$rekening => form_error($rekening)
 				];
 				$status = FALSE;
 			} else {
+				$ifrekening = $this->input->post($rekening, true);
+				if ($ifrekening == 9000025229858) {
+					$status_pengurangan = 0;
+				}else{
+					$status_pengurangan = 2;
+				}
 				if ($mode == 'add') {
 					$insert[] = [
 						'tanggal_pengeluaran' => $this->input->post($tanggal, true),
 						'nama_pengeluaran' => $this->input->post($nama_pengeluaran, true),
 						'nominal' => $this->input->post($nominal, true),
-						'status_pengurangan' => 0
+						'rekening' => $ifrekening,
+						'status_pengurangan' => $status_pengurangan,
 					];
 				} else if ($mode == 'edit') {
 					$update[] = array(
 						'id_pengeluaran'	=> $this->input->post('id_pengeluaran[' . $i . ']', true),
 						'tanggal_pengeluaran' => $this->input->post($tanggal, true),
 						'nama_pengeluaran' 	=> $this->input->post($nama_pengeluaran, true),
-						'nominal' => $this->input->post($nominal, true)
+						'nominal' => $this->input->post($nominal, true),
+						'rekening' => $ifrekening,
+						'status_pengurangan' => $status_pengurangan
 					);
 				}
 				$status = TRUE;
