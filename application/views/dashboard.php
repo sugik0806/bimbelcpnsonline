@@ -328,7 +328,8 @@
                        </div>
 
                        <div class="col-lg-6 col-xs-6">
-                           <div class="small-box bg-green" onclick="return keUpgradeTryout();">
+                           <!-- <div class="small-box bg-green" onclick="return keUpgradeTryout();"> -->
+                            <div class="small-box bg-green" onclick="return keTryout();">
                            <div class="inner">
                                <h3>Tryout</h3>
                                <p>List Tryout</p>
@@ -336,9 +337,12 @@
                            <div class="icon">
                                <i class="fa fa-pencil"></i>
                            </div>
-                           <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
+                          <!--  <a href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20ikut%20Tryout" target="_blank" class="small-box-footer">
                               <h5>Upgrade Untuk Ikut Tryout <i class="fa fa-money fa-lg"></i></h5>
-                           </a>
+                           </a> -->
+                           <a href="<?= base_url('ujian/list') ?>" class="small-box-footer">
+                                <h5>Masuk <i class="fa fa-arrow-circle-right fa-lg"></i></h5>
+                            </a>
                            </div>
                        </div>
 

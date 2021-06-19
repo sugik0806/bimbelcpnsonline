@@ -78,6 +78,8 @@ class Ujian_model extends CI_Model {
         }
         if ($kelas == 4) {
              $this->db->limit(3);
+        }if ($kelas == 1) {
+             $this->db->limit(3);
         }
         return $this->db->get()->result();
 
