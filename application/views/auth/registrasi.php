@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						
 				
 						<?php if( $this->uri->segment(3) == 1) : ?>
-							<h2 class="alert alert-info text-center">Pendaftaran Akun <b>Paket Materi Rp. <?=$hargaDinamis?></b></h2>
+							<h2 class="alert alert-info text-center">Pendaftaran Akun <b>Paket Bimbel Mini Rp. <?=$hargaDinamis?></b></h2>
 							<h5 class="text-right"><b>Ada pengurangan angka unik !</b></h5>
 						<?php elseif( $this->uri->segment(3) == 2) : ?>
 							<h2 class="alert alert-success text-center">Pendaftaran Akun <b>Paket Soal Rp. <?=$hargaDinamis?></b></h2>
@@ -127,9 +127,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 					<label for="jurusan">Paket *</label>
 	 					<select id="jurusan" name="jurusan" class="form-control select2">
 	 						<option value="">-- Pilih --</option>
-	 						<option value="1">Paket Materi</option>
+	 						<option value="1">Paket Bimbel Mini</option>
 	 						<option value="2">Paket Soal</option>
 	 						<option value="3">Paket Bimbel</option>
+	 						<option value="4">Paket Soal Mini</option>
 	 					</select>
 	 					
 	 				<?php endif; ?>
