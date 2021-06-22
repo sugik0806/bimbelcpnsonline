@@ -88,9 +88,28 @@
 
                           <?php foreach($listHasil as $lsh) : ?>
                               <?php if( $ls->ada > 0 && ($ls->id_ujian == $lsh->id_ujian)) : ?>
-                                  <span class="info-box-text text-right">TWK: <?=$lsh->twk?></span>
-                                  <span class="info-box-text text-right">TIU: <?=$lsh->tiu?></span>
-                                  <span class="info-box-text text-right">TKP: <?=$lsh->tkp?></span>
+                                  <span class="info-box-text text-right">TWK: <?=$lsh->twk?>
+                                      <?php if( $lsh->twk > 126) : ?>
+                                        <i class="fa fa-check bg-green "></i>
+                                      <?php else : ?> 
+                                        <i class="fa fa-window-close bg-red"> </i>
+                                      <?php endif; ?>
+                                  </span>
+                                   
+                                  <span class="info-box-text text-right">TIU: <?=$lsh->tiu?>
+                                      <?php if( $lsh->tiu > 80 ) : ?>
+                                        <i class="fa fa-check bg-green"></i>
+                                      <?php else : ?> 
+                                        <i class="fa fa-window-close bg-red"> </i>
+                                      <?php endif; ?>
+                                  </span>
+                                  <span class="info-box-text text-right">TKP: <?=$lsh->tkp?>
+                                      <?php if( $lsh->tkp > 65) : ?>
+                                        <i class="fa fa-check bg-green"></i>
+                                      <?php else : ?> 
+                                        <i class="fa fa-window-close bg-red"> </i>
+                                      <?php endif; ?>
+                                  </span>
 
                                   <span class="info-box-number text-right">Nilai Kamu: <?=$lsh->nilai?></span>
                                    <span class="info-box-text text-right"><?=$lsh->nilai*100/500?>% Berpeluang Lolos SKD</span>
