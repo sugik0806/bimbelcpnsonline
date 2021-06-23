@@ -167,12 +167,12 @@
                      <?php endforeach; ?>
                  </div>
 
-                 <?php if( $mhs->id_kelas != 4) : ?>
+                 <?php if( $mhs->id_kelas == 2 || $mhs->id_kelas == 3) : ?>
                  <div class="col-md-12">
                    <b><p style="margin: 10px;">#Paket Pemantapan Akan Tampil Setelah Kamu Menyelesaikan 10 Paket Soal dan Pendaftaran CPNS sudah dibuka.</p></b>
                  </div>
 
-                 <?php elseif( $mhs->id_kelas == 4) : ?>
+                 <?php elseif( $mhs->id_kelas == 4 || $mhs->id_kelas == 1 ) : ?>
                  
                  <div class="col-md-12" >
                    <a style="margin: 10px;" class="btn btn-warning pull-right" href="https://wa.me/6282244795027?text=Saya%20mau%20Upgrade%20Paket%20untuk%20tambah%20Tryout" target="_blank" >
