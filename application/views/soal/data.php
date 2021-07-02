@@ -1,4 +1,4 @@
-<style type="text/css">
+<!-- <style type="text/css">
     .big-box h2 {
         text-align: center;
         width: 100%;
@@ -29,10 +29,10 @@
         color:black ! important;
         opacity:1.0;
     }
-</style>
+</style> -->
 
 <!-- modal -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">        
         <div class="col-md-12" >
             
@@ -43,7 +43,7 @@
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                             <h3 class="modal-title" id="myModalLabel"><strong>Indikator Aspek</strong>
                             </br>
-                            <!-- <small>Published Juni, 2015</small></h3> -->
+                           
                         </div>
                         <div class="modal-body">  
                             <div class="col-md-6">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- end modal -->
 
 <div class="box">
@@ -147,7 +147,7 @@
 			<div class="col-sm-4 pull-right">
 				<div class="pull-right">
 					<!-- <a href="<?=base_url('soal/aspek')?>" class="btn bg-yellow btn-flat btn-sm"><i class="fa fa-eye"></i> Aspek</a> -->
-					<a  onclick="loadModal()" class="btn btn-flat btn-sm btn-warning" data-toggle="modal" data-target="#modal1">Aspek</a>
+					<!-- <a  onclick="loadModal()" class="btn btn-flat btn-sm btn-warning" data-toggle="modal" data-target="#modal1">Aspek</a> -->
 					<a href="<?=base_url('soal/add')?>" class="btn bg-purple btn-flat btn-sm"><i class="fa fa-plus"></i> Buat Soal</a>
 					<a href="<?= base_url('soal/import') ?>" class="btn btn-sm btn-flat btn-success"><i class="fa fa-upload"></i> Import</a>
 					<button type="button" onclick="reload_ajax()" class="btn btn-flat btn-sm bg-maroon"><i class="fa fa-refresh"></i> Reload</button>
