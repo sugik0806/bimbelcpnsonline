@@ -146,7 +146,8 @@ class Ujian_model extends CI_Model {
         public function getAspek()
     {
         $this->db->select('*');
-        $this->db->from('m_aspek');
+        $this->db->from('m_aspek a');
+        $this->db->join('jenis j', 'a.tipe=j.id');
 
         return $this->db->get()->result();
     }

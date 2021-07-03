@@ -114,7 +114,7 @@ div  {background-color: lightblue;}
                                     $sdm = $soal->id_aspek;
                                     foreach ($aspek as $d) : 
                                         $dm = $d->id_aspek;?>
-                                        <option <?=$sdm===$dm?"selected":"";?> value="<?=$dm?>/<?=$soal->id_soal ?>"><?=$d->nama_aspek?></option>
+                                        <option <?=$sdm===$dm?"selected":"";?> value="<?=$dm?>/<?=$soal->id_soal ?>"><?=$d->nama_aspek?> - <?=$d->tipe?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <!-- <small class="help-block" style="color: #dc3545"><?=form_error('id')?></small> -->
