@@ -119,7 +119,7 @@ class Ujian_model extends CI_Model {
     public function getAspekByIdUjian($id)
     {
 
-        $this->db->select('a.id_aspek, c.nama_ujian, a.nama_aspek, d.tipe');
+        $this->db->select('a.id_aspek, c.nama_ujian, a.nama_aspek, d.tipe, (SELECT Count( tb_soal.id_aspek ) FROM tb_soal WHERE tb_soal.id_aspek = b.id_aspek and tb_soal.id_ujian = '. $id .') as jumlah');
         $this->db->from('m_aspek a');
         $this->db->join('tb_soal b', 'a.id_aspek=b.id_aspek');
         $this->db->join('m_ujian c', 'b.id_ujian=c.id_ujian');

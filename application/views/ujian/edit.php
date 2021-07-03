@@ -91,7 +91,7 @@
                 <?php foreach($aspek as $info) : ?>
                 
                     <div class="col-sm-12">
-                        <p><?=$info->nama_aspek;?></p>
+                        <p><?=$info->nama_aspek;?> - <?=$info->jumlah;?></p>
                         <!-- <h4><?=$info->tipe;?></h4> -->
                     </div>
                     
