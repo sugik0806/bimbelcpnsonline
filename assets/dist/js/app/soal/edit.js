@@ -172,6 +172,26 @@ function kotrol_element() {
      kotrol_element();
  });
 
+$('#id_aspek').on('change', function(){
+     let id = $(this).val();
+      $.getJSON(base_url+'soal/edit_aspek/' + id , function (data) {
+        console.info(data);
+        if (data.status == true) {
+            Swal({
+                "title": "Sukses",
+                "text": "Data Berhasil disimpan",
+                "type": "success"
+            }).then((result) => {
+                if (result.value) {
+                    //window.location.href = base_url+'soal';
+                  // location.reload();
+                }
+            });
+        }
+        
+    });
+ });
+
          // Load Kelas By Jurusan
  $('#matkul_id').on('change', function () {
      load_jenis($(this).val());

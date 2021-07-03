@@ -170,7 +170,7 @@
 				<th>Soal</th>
 				<th>Aspek</th>
 				<!-- <th width="25">Tanggal</th> -->
-				<th width="25" class="text-center">Aksi</th>
+				<th class="text-center">Aksi</th>
             </tr>        
         </thead>
         <tfoot>
@@ -185,7 +185,7 @@
 				<th>Soal</th>
 				<th>Aspek</th>
 				<!-- <th width="25">Tanggal</th> -->
-				<th width="25" class="text-center">Aksi</th>
+				<th class="text-center">Aksi</th>
             </tr>
         </tfoot>
         </table>

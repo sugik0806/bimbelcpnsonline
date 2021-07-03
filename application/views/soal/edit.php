@@ -104,6 +104,26 @@ div  {background-color: lightblue;}
                                 <input type="text" readonly="readonly" class="form-control" value="<?=$dosen->nama_dosen; ?> (<?=$dosen->nama_matkul; ?>)"> -->
                                 <?php  ?>
                             </div>
+
+                            <div class="form-group col-sm-6">
+                                <label for="aspek" class="control-label">Aspek</label>
+                                <?php ?>
+                                <select required="required" name="id_aspek" id="id_aspek" class="select2 form-group" style="width:100% !important">
+                                    <option value="" disabled selected>Pilih Aspek</option>
+                                    <?php 
+                                    $sdm = $soal->id_aspek;
+                                    foreach ($aspek as $d) : 
+                                        $dm = $d->id_aspek;?>
+                                        <option <?=$sdm===$dm?"selected":"";?> value="<?=$dm?>/<?=$soal->id_soal ?>"><?=$d->nama_aspek?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <!-- <small class="help-block" style="color: #dc3545"><?=form_error('id')?></small> -->
+                                
+                               <!--  <input type="hidden" name="id" value="<?=$jenis->id;?>"> -->
+                                <!-- <input type="hidden" name="matkul_id" value="<?=$dosen->matkul_id;?>">
+                                <input type="text" readonly="readonly" class="form-control" value="<?=$dosen->nama_dosen; ?> (<?=$dosen->nama_matkul; ?>)"> -->
+                                <?php  ?>
+                            </div>
                             
                             
                             <div class="col-sm-12">

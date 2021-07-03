@@ -143,6 +143,14 @@ class Ujian_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+        public function getAspek()
+    {
+        $this->db->select('*');
+        $this->db->from('m_aspek');
+
+        return $this->db->get()->result();
+    }
+
         public function getUjianByIdMatkul($id)
     {
         $this->db->select('*');

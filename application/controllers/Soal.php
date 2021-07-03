@@ -212,7 +212,8 @@ class Soal extends CI_Controller {
             'soal'      => $this->soal->getSoalById($id),
             'jenis'     => $this->master->getJenisByID($dataSoal->matkul_id),
             'matkul'    => $this->master->getAllMatkul(),
-            'ujian'     => $this->ujian->getUjianByIdMatkul($dataSoal->matkul_id)
+            'ujian'     => $this->ujian->getUjianByIdMatkul($dataSoal->matkul_id),
+            'aspek'     => $this->ujian->getAspek()
         ];
         //print_r($data['ujian']->id_ujian);
         //print_r($data['soal']->id_ujian);
@@ -286,6 +287,21 @@ class Soal extends CI_Controller {
 	{
 		$this->output_json($this->soal->getDataSoal($id, $dosen), false);
     }
+
+    public function edit_aspek($id_aspek, $id_soal)
+    {
+        $dataR = [
+            'status'      => true
+        ];
+        //push array
+        $data['id_aspek'] = $id_aspek;
+        //update data
+        $id_soal = $id_soal;
+        $this->master->update('tb_soal', $data, 'id_soal', $id_soal);
+        $this->output_json($dataR);
+    }
+
+    
 
     public function databyujian($id_ujian, $id_tipe)
     {
