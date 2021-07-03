@@ -184,6 +184,79 @@
         <div class="btn btn-danger btn-flat btn-sm"></div><strong>SKD Atau SKB!</strong> Lewat Waktu.
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <canvas id="cart4"></canvas>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+    var ctx = document.getElementById("cart4").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+        labels: [<?php foreach($info_box_aspek as $info) : ?>"<?=$info->nama_aspek;?>", <?php endforeach; ?>],
+        datasets: [{
+            label: 'Aspek',
+            borderColor: "#3e95cd",
+            fill: false,
+            data:[<?php foreach($info_box_aspek as $info) : ?><?=$info->total;?>,<?php endforeach; ?>],
+             backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(103, 12, 15, 0.2)',
+                    'rgba(93, 133, 155, 0.2)',
+                    ]
+        }]
+        },
+    });
+</script>
 
 <script type="text/javascript">
    

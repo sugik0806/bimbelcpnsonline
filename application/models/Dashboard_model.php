@@ -70,6 +70,18 @@ class Dashboard_model extends CI_Model {
 
     }
 
+    public function getDashboardAspekSoal()
+    {
+        $this->db->select('a.id_aspek, a.nama_aspek, d.tipe, (SELECT Count( tb_soal.id_aspek ) FROM tb_soal WHERE tb_soal.id_aspek = b.id_aspek) as total');
+        $this->db->from('m_aspek a');
+        $this->db->join('tb_soal b', 'a.id_aspek=b.id_aspek');
+        $this->db->join('jenis d', 'd.id=b.tipe');
+        $this->db->order_by('a.nama_aspek', 'asc');
+        $this->db->distinct();
+        return $this->db->get()->result();
+
+    }
+
 
     public function getDashboardPesertaGEO()
     {

@@ -83,6 +83,14 @@ class Dashboard extends CI_Controller {
 		return $info_box_ran;
 	}
 
+
+	public function info_box_aspek()
+	{
+		$box['box'] = $this->dashboard->getDashboardAspekSoal();
+		$info_box_aspek = json_decode(json_encode($box['box']), FALSE);
+		return $info_box_aspek;
+	}
+
 	
 
 	public function index()
@@ -101,6 +109,8 @@ class Dashboard extends CI_Controller {
 
 			$data['info_box_geo'] = $this->user_box_geo();
 		} elseif ( $this->ion_auth->in_group('dosen') ) {
+			//print_r($this->info_box_aspek());
+			$data['info_box_aspek'] = $this->info_box_aspek();
 			$matkul = ['matkul' => 'dosen.matkul_id=matkul.id_matkul'];
 			$data['dosen'] = $this->dashboard->get_where('dosen', 'nip', $user->username, $matkul)->row();
 
