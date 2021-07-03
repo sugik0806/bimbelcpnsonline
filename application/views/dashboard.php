@@ -183,11 +183,17 @@
         <div class="btn btn-info btn-flat btn-sm"></div><strong>SKB!</strong> Masuk Waktu.
         <div class="btn btn-danger btn-flat btn-sm"></div><strong>SKD Atau SKB!</strong> Lewat Waktu.
     </div>
-</div>
+</div><br>
 <div class="row">
     <div class="col-md-12">
-        <canvas id="cart4"></canvas>
-    </div>
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="col-md-12">
+                    <canvas id="cart4"></canvas>
+                </div>
+            </div>
+        </div> 
+    </div>       
 </div>
 
 <script type="text/javascript">
