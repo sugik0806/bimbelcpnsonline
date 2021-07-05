@@ -125,6 +125,19 @@ class Mahasiswa extends CI_Controller
 			$this->output_json($data);
 		} else {
 			$token = strtoupper(random_string('alpha', 5));
+			$refvalue = $this->input->post('referal', true);
+
+			$kelas = $this->master->getKelasById($this->input->post('jurusan', true));
+			$diskon = $this->input->post('diskon', true);
+			$netto = $kelas[0]->harga - $diskon;
+
+			if ($refvalue == "") {
+				$referalFee = 0;
+			}else{
+				$referal = $this->master->getMarketingByRef($refvalue);
+				$referalFee = $netto  * $referal[0]->fee / 100;
+			}
+
 			$input = [
 				'nim' 			=> $this->input->post('nim', true),
 				'email' 		=> $this->input->post('email', true),
@@ -137,7 +150,7 @@ class Mahasiswa extends CI_Controller
 				'diskon'        => $this->input->post('diskon', true),
 				'rekening'		=> '9000025229858', //0143252019
 				'referal' 		=> $this->input->post('referal', true),
-				'referal_fee'   => 0,
+				'referal_fee'   => round($referalFee),
 				'status_transfer' => 0
 
 				
