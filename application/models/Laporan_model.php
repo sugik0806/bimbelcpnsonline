@@ -28,7 +28,7 @@ class Laporan_model extends CI_Model {
             m.angka_unik, 
             m.diskon, 
             m.rekening,
-            (t.jumlah_bayar) as net,
+            (t.jumlah_bayar - m.referal_fee) as net,
             (t.tanggal_bayar) as tanggal_konfirmasi, 
             (SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total'
         );
@@ -115,8 +115,6 @@ class Laporan_model extends CI_Model {
             k.harga, 
             m.angka_unik, 
             m.diskon, 
-            m.jumlah_bayar,
-            m.bayar_upgrade,
             (k.harga) as net, 
             m.referal_fee as fee, 
             (SELECT nama_marketing FROM v_referal INNER JOIN mahasiswa ON mahasiswa.referal = v_referal.referal where mahasiswa.id_mahasiswa = m.id_mahasiswa) as penerima_fee, 
