@@ -62,7 +62,7 @@ class Laporan_model extends CI_Model {
             m.angka_unik, 
             m.diskon, 
             m.rekening, 
-            (t.jumlah_bayar) as net
+            (t.jumlah_bayar - m.referal_fee) as net
             ');
         $this->db->from('mahasiswa m');
         $this->db->join('kelas k', 'k.id_kelas = m.kelas_id');
@@ -126,6 +126,7 @@ class Laporan_model extends CI_Model {
         $this->datatables->where('m.id_mahasiswa !=', 1);
         $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
         $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->datatables->where('m.referal_fee >', 0);
         if ($penerima_fee != '0') {
             $this->datatables->where('m.referal', $penerima_fee);
         }
@@ -155,6 +156,7 @@ class Laporan_model extends CI_Model {
         $this->db->where_not_in('m.id_mahasiswa', 1);
         $this->db->where('m.tanggal_konfirmasi >=', $tgl_awal);
         $this->db->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->db->where('m.referal_fee >', 0);
         if ($penerima_fee != '0') {
             $this->db->where('m.referal', $penerima_fee);
         }
