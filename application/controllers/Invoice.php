@@ -67,6 +67,9 @@ class Invoice extends CI_Controller {
                         'nama' => $datapeserta->nama,
                         'file' => $datapeserta->url_bukti,
                         'jumlah_transfer' => number_format($datapeserta->harga - $datapeserta->angka_unik  - $datapeserta->diskon),
+                        'total_transfer' => $datapeserta->harga - $datapeserta->angka_unik  - $datapeserta->diskon,
+                        'rekening' => $datapeserta->rekening,
+                        'id_mahasiswa' => $datapeserta->id_mahasiswa,
                         'email' => $datapeserta->email
                     ];
 
@@ -76,7 +79,7 @@ class Invoice extends CI_Controller {
                     $this->load->view('_templates/auth/_footer');
                 }
 
-                function lakukan_konfirmasi($token) 
+                function lakukan_konfirmasi($token,$jumlah_transfer,$rekening,$id_mahasiswa) 
                 {
                     $method = $this->input->post('method', true);
                     $this->validasi();
@@ -128,7 +131,18 @@ class Invoice extends CI_Controller {
                                 'token' => $token
                             ];
 
+                            $dataPembayaran = [
+                                'id_mahasiswa' => $id_mahasiswa,
+                                'jumlah_bayar' => $jumlah_transfer,
+                                'status_transfer' => 0,
+                                'rekening' => $rekening,
+                                'tanggal_bayar' => date('Y-m-d')
+                            ];
+
                             $this->master->updateData($data, $where);
+                            $this->master->create('t_pembayaran', $dataPembayaran);
+                            
+                            
                             
                             $kontenHTML = '<p>Konfirmasi Berhasil, Akun Kamu Akan Segera Aktif !</p> Tunggu Email Pembertahuan Berikutnya';
                             $subject = 'Konfirmasi Berhasil';

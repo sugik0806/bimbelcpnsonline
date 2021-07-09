@@ -95,11 +95,18 @@
                         <small class="help-block"></small>
                     </div>
                     <div class="form-group">
+                        <label for="diskon">Bayar Upgrade</label>
+                        <input value="<?=$mahasiswa->bayar_upgrade?>" placeholder="Bayar Upgrade" type="number" name="bayar_upgrade" class="form-control">
+                        <small class="help-block"></small>
+                    </div>
+                    <div class="form-group">
                         <label for="referal">Kode Referal Marketing / Email sponsor (Jika Ada)</label>
                         <p>
                             <input class="form-control" type="text" id="referal" name="referal" placeholder="Isikan referal" value="<?=$mahasiswa->referal?>"/>
                         </p>
                     </div>
+
+                    
                     <div class="form-group pull-right">
                         <button type="reset" class="btn btn-flat btn-default"><i class="fa fa-rotate-left"></i> Reset</button>
                         <button type="submit" id="submit" class="btn btn-flat bg-purple"><i class="fa fa-save"></i> Simpan</button>

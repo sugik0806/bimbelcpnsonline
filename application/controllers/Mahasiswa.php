@@ -151,17 +151,17 @@ class Mahasiswa extends CI_Controller
 				'rekening'		=> '9000025229858', //0143252019
 				'referal' 		=> $this->input->post('referal', true),
 				'referal_fee'   => round($referalFee),
-				'status_transfer' => 0
-
 				
 			];
 			if ($method === 'add') {
 				$input['token'] = $token;
 				$input['tanggal_daftar'] = date('Y-m-d');
 				$input['angka_unik'] = 0;//random_string('numeric',3);
+				//$input['status_transfer'] = 0;//random_string('numeric',3);
 				$action = $this->master->create('mahasiswa', $input);
 			} else if ($method === 'edit') {
 				$id = $this->input->post('id_mahasiswa', true);
+				//$input['bayar_upgrade'] = $this->input->post('bayar_upgrade', true);
 				$action = $this->master->update('mahasiswa', $input, 'id_mahasiswa', $id);
 			}
 

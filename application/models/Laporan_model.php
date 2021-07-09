@@ -5,38 +5,76 @@ class Laporan_model extends CI_Model {
     
       public function getPendapatan($tgl_awal, $tgl_akhir, $rekening, $statusTransfer)
     {
-        $this->datatables->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, m.rekening,(k.harga - m.angka_unik - m.diskon - m.referal_fee) as net,m.tanggal_konfirmasi ,(SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total');
+        // $this->datatables->select('
+        //     m.id_mahasiswa, 
+        //     m.nama, 
+        //     k.nama_kelas, 
+        //     k.harga, 
+        //     m.angka_unik, 
+        //     m.diskon, 
+        //     m.rekening,
+        //     (k.harga - m.angka_unik - m.diskon - m.referal_fee) as net,
+        //     m.tanggal_konfirmasi, 
+        //     m.jumlah_bayar, 
+        //     m.bayar_upgrade,
+        //     (SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total'
+        // );
+
+        $this->datatables->select('
+            m.id_mahasiswa, 
+            m.nama, 
+            k.nama_kelas, 
+            k.harga, 
+            m.angka_unik, 
+            m.diskon, 
+            m.rekening,
+            (t.jumlah_bayar) as net,
+            (t.tanggal_bayar) as tanggal_konfirmasi, 
+            (SELECT SUM(net) as total FROM mahasiswa INNER JOIN kelas ON mahasiswa.kelas_id = kelas.id_kelas INNER JOIN users ON users.email = mahasiswa.email WHERE mahasiswa.id_mahasiswa NOT IN (1)) as total'
+        );
         $this->datatables->from('mahasiswa m');
         $this->datatables->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->datatables->join('users u', 'u.email = m.email');
-        $this->datatables->where('m.id_mahasiswa !=', 1);
-        $this->datatables->where('m.tanggal_konfirmasi >=', $tgl_awal);
-        $this->datatables->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->datatables->join('t_pembayaran t', 't.id_mahasiswa = m.id_mahasiswa');
+        $this->datatables->where('t.id_mahasiswa !=', 1);
+        $this->datatables->where('t.tanggal_bayar >=', $tgl_awal);
+        $this->datatables->where('t.tanggal_bayar <=', $tgl_akhir);
         if ($rekening != 0) {
-            $this->datatables->where('m.rekening', $rekening);
+            $this->datatables->where('t.rekening', $rekening);
         }
         if ($statusTransfer != 'all') {
-            $this->datatables->where('m.status_transfer', $statusTransfer);
+            $this->datatables->where('t.status_transfer', $statusTransfer);
         }
         
-        $this->db->order_by('m.id_mahasiswa', 'asc');
+        $this->db->order_by('t.tanggal_bayar', 'asc');
 
         return $this->datatables->generate();
     }
 
     public function getPendapatanReport($tgl_awal, $tgl_akhir, $rekening)
     {
-        $this->db->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, m.rekening, (k.harga - m.angka_unik - m.diskon - m.referal_fee) as net');
+        //$this->db->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, m.rekening, (k.harga - m.angka_unik - m.diskon - m.referal_fee) as net');
+        $this->db->select('
+            m.id_mahasiswa,
+            m.nama, 
+            k.nama_kelas, 
+            k.harga, 
+            m.angka_unik, 
+            m.diskon, 
+            m.rekening, 
+            (t.jumlah_bayar) as net
+            ');
         $this->db->from('mahasiswa m');
         $this->db->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->db->join('users u', 'u.email = m.email');
-        $this->db->where_not_in('m.id_mahasiswa', 1);
-        $this->db->where('m.tanggal_konfirmasi >=', $tgl_awal);
-        $this->db->where('m.tanggal_konfirmasi <=', $tgl_akhir);
+        $this->db->join('t_pembayaran t', 't.id_mahasiswa = m.id_mahasiswa');
+        $this->db->where_not_in('t.id_mahasiswa', 1);
+        $this->db->where('t.tanggal_bayar >=', $tgl_awal);
+        $this->db->where('t.tanggal_bayar <=', $tgl_akhir);
         if ($rekening != 0) {
-            $this->db->where('m.rekening', $rekening);
+            $this->db->where('t.rekening', $rekening);
         }
-        $this->db->order_by('m.id_mahasiswa', 'asc');
+        $this->db->order_by('t.tanggal_bayar', 'asc');
 
 
         return $this->db->get()->result();
@@ -77,6 +115,8 @@ class Laporan_model extends CI_Model {
             k.harga, 
             m.angka_unik, 
             m.diskon, 
+            m.jumlah_bayar,
+            m.bayar_upgrade,
             (k.harga) as net, 
             m.referal_fee as fee, 
             (SELECT nama_marketing FROM v_referal INNER JOIN mahasiswa ON mahasiswa.referal = v_referal.referal where mahasiswa.id_mahasiswa = m.id_mahasiswa) as penerima_fee, 
@@ -99,7 +139,18 @@ class Laporan_model extends CI_Model {
     public function getFeeReport($tgl_awal, $tgl_akhir, $penerima_fee)
     {
         ///print_r($penerima_fee);
-        $this->db->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, k.harga, m.referal_fee, (SELECT nama_marketing FROM v_referal INNER JOIN mahasiswa ON mahasiswa.referal = v_referal.referal where mahasiswa.id_mahasiswa = m.id_mahasiswa) as penerima_fee');
+        //$this->db->select('m.id_mahasiswa, m.nama, k.nama_kelas, k.harga, m.angka_unik, m.diskon, k.harga, m.referal_fee, (SELECT nama_marketing FROM v_referal INNER JOIN mahasiswa ON mahasiswa.referal = v_referal.referal where mahasiswa.id_mahasiswa = m.id_mahasiswa) as penerima_fee');
+        $this->db->select('
+            m.id_mahasiswa, 
+            m.nama, 
+            k.nama_kelas, 
+            k.harga, 
+            m.angka_unik, 
+            m.diskon, 
+            k.harga, 
+            m.referal_fee, 
+            (SELECT nama_marketing FROM v_referal INNER JOIN mahasiswa ON mahasiswa.referal = v_referal.referal where mahasiswa.id_mahasiswa = m.id_mahasiswa) as penerima_fee
+            ');
         $this->db->from('mahasiswa m');
         $this->db->join('kelas k', 'k.id_kelas = m.kelas_id');
         $this->db->join('users u', 'u.email = m.email');

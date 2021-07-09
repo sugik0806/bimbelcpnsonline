@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 	<div class="col-md-12" style="padding-top: 30px; padding-bottom: 30px">
-		<?=form_open_multipart('invoice/lakukan_konfirmasi/'.$token, array('id'=>'formkonfirmasi'), array('method'=>'add'));?>
+		<?=form_open_multipart('invoice/lakukan_konfirmasi/'.$token.'/'.$total_transfer.'/'.$rekening.'/'.$id_mahasiswa, array('id'=>'formkonfirmasi'), array('method'=>'add'));?>
 		<div class="container div-1">
 			<div class="login-box-body">
 				    <div class="col-md-6 text-center" style="padding-top: 50px">
@@ -141,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						  	<li class="header" style="background-color:#4CAF50"><?php echo $jurusan;?></li>
 						    <li class="grey">Silakan Transfer Rp. <?php echo $jumlah_transfer;?></li>
 						    <li>Rekening Mandiri</li>
-						    <li>9000025229858</li>
+						    <li><?php echo $rekening;?></li>
 						    <li>Atas Nama : Sugik Kusmanto</li>
 						    
 							
