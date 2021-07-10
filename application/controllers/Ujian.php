@@ -611,7 +611,7 @@ if (!empty($soal_urut_ok)) {
 				// $html .= '<div class="w-25">'.$jawaban_benar.$s->jawabanpc.'</div>';
 
 				if ($s->pembahasan != null && $q_soal->review == "Y") {
-					$penjelasan = "<hr><b>Pembahasan:</b> </br></br><b>Aspek: </b>"."<b>".$s->nama_aspek."</b>".$s->pembahasan. "</br>"; 
+					$penjelasan = "<hr><b>Pembahasan:</b> </br></br><b>Aspek: </b>"."<b>".$s->nama_aspek."</b>, ".$s->pembahasan. "</br>"; 
 				}else{
 					$penjelasan = "</br>";
 				}
