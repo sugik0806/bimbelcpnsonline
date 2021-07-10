@@ -380,6 +380,7 @@ public function getJumlahPertanyaan($id, $mhs, $id_soal)
     {
         $this->db->select("*, {$pc_urut_soal1} AS jawabanpc");
         $this->db->from('tb_soal');
+        $this->db->join('m_aspek a', 'tb_soal.id_aspek=a.id_aspek');
         $this->db->join('jenis j', 'tb_soal.tipe=j.id');
         $this->db->where('id_soal', $pc_urut_soal_arr);
         return $this->db->get()->row();
