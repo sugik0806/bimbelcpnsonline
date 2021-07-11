@@ -94,11 +94,11 @@
                         <input value="<?=$mahasiswa->diskon?>" placeholder="Diskon" type="number" name="diskon" class="form-control">
                         <small class="help-block"></small>
                     </div>
-                    <div class="form-group">
+                   <!--  <div class="form-group">
                         <label for="diskon">Bayar Upgrade</label>
                         <input value="<?=$mahasiswa->bayar_upgrade?>" placeholder="Bayar Upgrade" type="number" name="bayar_upgrade" class="form-control">
                         <small class="help-block"></small>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="referal">Kode Referal Marketing / Email sponsor (Jika Ada)</label>
                         <p>
